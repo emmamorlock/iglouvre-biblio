@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>IGLouvre - Biblio - Contrôle qualité</title>
+    <style type="text/css">
+      <!-- 
+  body { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; }
+  table, th, td { border: 1px solid black; text-align:left;font-size :100%; }
+  thead { font-weight:bold; }
+  span.resp:nth-child(odd) { display:block; color:maroon; }
+  span.resp:nth-child(even) { display:block; color:green; }
+  span.role { color:silver; }
+-->
+    </style>
+  </head>
+  <body>
+    <div class="conteneur">
+      <h1>IGLouvre - Bibliographie - Contrôle qualité</h1>
+      <h2>BookSection</h2>
+      <p>2015-01-28+01:00</p>
+      <table>
+        <thead>
+          <tr>
+            <td class="1">annee</td>
+            <td class="2">titre article</td>
+            <td class="3">auteurs article</td>
+            <td class="4">titre-book</td>
+            <td class="5">titre-book-short</td>
+            <td class="6">extra</td>
+            <td class="7">auteurs book</td>
+            <td class="8">lien</td>
+          </tr>
+        </thead>
+        <tbody>
+          <result>
+            <tr>
+              <td class="1">1998</td>
+              <td class="2">Choix d'inscriptions. La profession médicale dans
+                            l'épigraphie</td>
+              <td class="3">
+                <span class="resp">Massar Natacha <span class="role">(auteur)</span>
+                </span>
+                <span class="resp">Nom2 prenom2 <span class="role">(translator)</span>
+                </span>
+              </td>
+              <td class="4">Au temps d'Hippocrate. Médecine et société en Grèce
+                            antique</td>
+              <td class="5"/>
+              <td class="6"/>
+              <td class="7">
+                <span class="resp">Verbanck-Piérard Annie <span class="role">(scientificEditor)</span>
+                </span>
+              </td>
+              <td class="8">
+                <a href="http://zotero.org/groups/248770/items/27FZ5QCZ" title="Massar1998" target="_blank">vers Zotero</a>
+              </td>
+            </tr>
+          </result>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
