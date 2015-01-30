@@ -35,7 +35,8 @@ let $n := count($doc//biblStruct[@type='book']) return <p>Nombre d'items : {$n}<
 
   <table>
     <thead>   
-      <tr>       
+      <tr> 
+        <td class="0">ref. bibl</td>
         <td class="1">Annee</td>
         <td class="2">Titre-ensemble</td>
         <td class="3">Numero volume</td>
@@ -65,6 +66,9 @@ let $note := $bibl/note
 let $creators := $monogr/*[name()="author" or name()='editor' or  name()='respStmt']
 let $espace := " "
 
+(: xslt :)
+
+(: fin xslt :)
 
 (: partie pour trier:)
 order by $titre-ensemble, $collection, $annee
@@ -84,6 +88,7 @@ return
 <result>
 
      <tr>
+         <td class="0">{xslt:transform-text(<dummy/>, 'basic.xsl')}</td>
         <td class="1">{string($annee)}</td>
         <td class="2">{data($titre-ensemble)}</td>    
         <td class="3">{data($volume)}</td>
