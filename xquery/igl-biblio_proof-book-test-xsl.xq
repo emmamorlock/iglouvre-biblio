@@ -29,39 +29,37 @@
 <h1>IGLouvre - Bibliographie - Contrôle qualité</h1>
 <h2>Monographies (type Zotero "book") </h2>
 <p>Date : {current-date()}</p>
-{for $doc in db:open('igl_bibliography')//TEI
-let $n := count($doc//biblStruct[@type='book']) return <p>Nombre d'items : {$n}</p> }
 
-(: test :)
+
+
+(: test xslt :)
+
 {
-
   
-let $in :=
-<teiHeader>
-        <fileDesc>
-            <titleStmt>
-                <title>Exported from Zotero for iglouvre</title>
-            </titleStmt>
-            <publicationStmt>
-                <p>unpublished1</p>
-                <p>unpublished2</p>
-            </publicationStmt>
-            <sourceDesc>
-                <p>Generated from Zotero database</p>
-            </sourceDesc>
-        </fileDesc>
-    </teiHeader>
-
+  let $in :=
+  db:open('igl_bibliography')//TEI
 let $style :=
   <xsl:stylesheet version='2.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
   <xsl:output method='xml'/>
     <xsl:template match="/">
-      <xsl:for-each select='publicationStmt/p'><b><xsl:apply-templates select='.'/></b>: <br/></xsl:for-each>   
+<html>
+  <body>
+    <div>
+      <xsl:for-each select='//titleStmt/title'>
+      • <b><xsl:apply-templates select='.'/></b>: <br/>
+      </xsl:for-each>
+    </div>
+  </body>
+</html>
     </xsl:template>
   </xsl:stylesheet>
  
 return xslt:transform($in, $style)
+  
 }
+
+
+
 
   <table>
     <thead>   
@@ -96,9 +94,7 @@ let $note := $bibl/note
 let $creators := $monogr/*[name()="author" or name()='editor' or  name()='respStmt']
 let $espace := " "
 
-(: xslt :)
 
-(: fin xslt :)
 
 (: partie pour trier:)
 order by $titre-ensemble, $collection, $annee
