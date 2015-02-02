@@ -99,58 +99,62 @@ exemples à faire
             </xsl:variable>
 
             <xsl:choose>
-                
-                <!-- contributor role implies text before name -->                
+
+                <!-- contributor role implies text before name -->
                 <xsl:when test="tei:resp = 'contributor'">
                     <xsl:text> (avec </xsl:text>
                     <xsl:value-of select="normalize-space($string)"/>
                     <xsl:text>)</xsl:text>
-                    
+
                     <!-- 'and' or 'comma' separator -->
                     <xsl:choose>
                         <xsl:when test="following-sibling::tei:respStmt/tei:resp = 'contributor'"/>
-                        <xsl:when test="count(following-sibling::tei:*/tei:surname/text()) = 1 or count(following-sibling::tei:*/tei:name/text()) = 1 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) = 1">
+                        <xsl:when
+                            test="count(following-sibling::tei:*/tei:surname/text()) = 1 or count(following-sibling::tei:*/tei:name/text()) = 1 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) = 1">
                             <xsl:text> et </xsl:text>
                         </xsl:when>
-                        <xsl:when test="count(following-sibling::tei:*/tei:surname/text()) != 0 or count(following-sibling::tei:*/tei:name/text()) != 0 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) != 0">
+                        <xsl:when
+                            test="count(following-sibling::tei:*/tei:surname/text()) != 0 or count(following-sibling::tei:*/tei:name/text()) != 0 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) != 0">
                             <xsl:text>, </xsl:text>
                         </xsl:when>
                     </xsl:choose>
                 </xsl:when>
-               
-                <xsl:otherwise>                  
-                                          
+
+                <xsl:otherwise>
+
                     <xsl:variable name="role">
                         <xsl:choose>
                             <xsl:when test="@role ='scientificEditor'or @role = 'editor'">
                                 <xsl:text> (ed.)</xsl:text>
-                            </xsl:when>                           
+                            </xsl:when>
                             <xsl:when test="@role ='seriesEditor'">
                                 <xsl:text> (dir.)</xsl:text>
-                            </xsl:when>                            
+                            </xsl:when>
                             <xsl:when test="contains(.,'translator')">
                                 <xsl:text> (trad.)</xsl:text>
                             </xsl:when>
                         </xsl:choose>
                     </xsl:variable>
-                    
+
                     <xsl:value-of select="normalize-space(concat($string, ' ', $role))"/>
-                    
-                   
-                    
+
+
+
                     <!-- 'and' or 'comma' separator -->
                     <xsl:choose>
                         <xsl:when test="following-sibling::tei:respStmt/tei:resp = 'contributor'"/>
-                        <xsl:when test="count(following-sibling::tei:*/tei:surname/text()) = 1 or count(following-sibling::tei:*/tei:name/text()) = 1 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) = 1">
+                        <xsl:when
+                            test="count(following-sibling::tei:*/tei:surname/text()) = 1 or count(following-sibling::tei:*/tei:name/text()) = 1 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) = 1">
                             <xsl:text> et </xsl:text>
                         </xsl:when>
-                        <xsl:when test="count(following-sibling::tei:*/tei:surname/text()) != 0 or count(following-sibling::tei:*/tei:name/text()) != 0 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) != 0">
+                        <xsl:when
+                            test="count(following-sibling::tei:*/tei:surname/text()) != 0 or count(following-sibling::tei:*/tei:name/text()) != 0 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) != 0">
                             <xsl:text>, </xsl:text>
                         </xsl:when>
-                        
+
                     </xsl:choose>
-                    
-                  <!-- 
+
+                    <!-- 
                     <xsl:if test="not(position()=last())">
                         <xsl:text>, </xsl:text>
                     </xsl:if>
@@ -159,8 +163,8 @@ exemples à faire
                         <xsl:value-of select="concat($role,', ')"/>
                     </xsl:if>
               -->
-                    
-                   
+
+
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:for-each>
@@ -195,8 +199,6 @@ exemples à faire
         <xsl:apply-templates select="tei:imprint/tei:date/@when"/>
     </xsl:template>
 
-
-
     <!--  template match -->
 
     <xsl:template match="tei:author">
@@ -227,7 +229,21 @@ exemples à faire
     </xsl:template>
 
     <xsl:template match="tei:forename">
-        <xsl:value-of select="concat(substring(.,1,1),'. ')"/>
+        <!-- regex : consonnant - not vowel - any  -->
+        <xsl:analyze-string select="." regex="([b-zçB-ZÇ])([hrl])(.*)">
+            <xsl:matching-substring>                
+                    <tei:forename>                   
+                        <xsl:value-of select="regex-group(1)"/>
+                        <xsl:value-of select="regex-group(2)"/>
+                        <xsl:text>. </xsl:text>
+                    </tei:forename>                
+            </xsl:matching-substring>            
+            <xsl:non-matching-substring>
+                <tei:forename>
+                    <xsl:value-of select="concat(upper-case(substring(.,1,1)),'. ')"/>
+                </tei:forename>
+            </xsl:non-matching-substring>
+        </xsl:analyze-string>
     </xsl:template>
 
     <xsl:template match="tei:monogr[1]">

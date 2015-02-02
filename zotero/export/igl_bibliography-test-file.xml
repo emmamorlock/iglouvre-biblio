@@ -22,7 +22,7 @@
                 <biblStruct type="bookSection" xml:id="Blass1905">
                     <analytic>
                         <title level="a">Die kretischen Inschriften</title>
-                        <author><forename>Friedrich</forename><forename>Friedrich</forename><surname>Blass</surname></author>
+                        <author><forename>Friedrich</forename><surname>Blass</surname></author>
                     </analytic>
                     <monogr>
                         <title level="m">Sammlung der griechischen Dialekt-Inschriften</title>
@@ -50,22 +50,22 @@
                 <biblStruct type="book" xml:id="testEM1">
                     <analytic>
                         <title level="a">titre article</title>
-                        <author><forename>Prénom1AuteurArticle</forename><forename>Prénom2AuteurArticle</forename><surname>NomAuteurArticle</surname></author>
+                        <author><forename>Claire</forename><forename>Anne</forename><surname>Auteur</surname></author>
 
                         <respStmt>
                             <resp>contributor</resp>
-                            <persName><forename>PrenomContributor</forename><surname>NomContributeur</surname></persName>
+                            <persName><forename>Marie</forename><surname>Contributeur</surname></persName>
                         </respStmt>
 
                     </analytic>
                     <monogr>
                         <title level="m">+++++++++++</title>
                         <title level="m" type="short">titre court M</title>
-                        <author><forename>Prénom1AuteurMonographie</forename><forename>Prénom2AuteurMonographie</forename><surname>NomAuteurMonographie</surname></author>
+                        <author><forename>Philippe</forename><forename>Antoine</forename><surname>Nom</surname></author>
                         <editor role="scientificEditor"
-                                ><forename>Prénom1Editeur</forename><surname>NomEditeur1</surname></editor>
+                                ><forename>Jean</forename><surname>Nom2</surname></editor>
                         <editor role="seriesEditor"
-                                ><forename>prénom1Editeur2</forename><surname>NomEditeur2</surname></editor>
+                                ><forename>Alice</forename><surname>Nom3</surname></editor>
                         <imprint>
                             <biblScope unit="volume">vol</biblScope>
                             <biblScope unit="pp">pages</biblScope>
@@ -130,7 +130,7 @@
                     <monogr>
                         <title level="m">+++++++++++</title>
                         <title level="m" type="short">titre court M</title>
-                        <author><forename>Prénom1AuteurMonographie</forename><forename>Prénom2AuteurMonographie</forename><surname>NomAuteurMonographie</surname></author>
+                        <author><forename>Prénom1 AuteurMonographie</forename><forename>Prénom2AuteurMonographie</forename><surname>NomAuteurMonographie</surname></author>
                         <editor role="editor"
                                 ><forename>Prénom1Editeur</forename><surname>NomEditeur1</surname></editor>
                         <editor role="editor"
