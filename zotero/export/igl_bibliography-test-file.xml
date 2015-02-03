@@ -50,22 +50,34 @@
                 <biblStruct type="book" xml:id="testEM1">
                     <analytic>
                         <title level="a">titre article</title>
-                        <author><forename>Claire</forename><forename>Anne</forename><surname>Auteur</surname></author>
-
+                        <author><forename>Claire</forename><surname>Vrille</surname></author>
+                        <editor role="scientificEditor"
+                            ><forename>Στέφ-ανος</forename><surname>Κουμανούδης</surname></editor>
+                        <editor role="scientificEditor"
+                            ><forename>Στέφανος</forename><surname>Κουμανούδης</surname></editor>
+                        <editor role="scientificEditor"
+                            ><forename>Αγγ-ελος</forename><surname>Ματθαίου</surname></editor>
                         <respStmt>
                             <resp>contributor</resp>
-                            <persName><forename>Marie</forename><surname>Contributeur</surname></persName>
+                            <persName><forename>Marie</forename><surname>Titi</surname></persName>
                         </respStmt>
 
                     </analytic>
                     <monogr>
                         <title level="m">+++++++++++</title>
                         <title level="m" type="short">titre court M</title>
-                        <author><forename>Philippe</forename><forename>Antoine</forename><surname>Nom</surname></author>
+                        <author><forename>Claire</forename><surname>Vrille</surname></author>
                         <editor role="scientificEditor"
-                                ><forename>Jean</forename><surname>Nom2</surname></editor>
-                        <editor role="seriesEditor"
-                                ><forename>Alice</forename><surname>Nom3</surname></editor>
+                            ><forename>Στέφανος Α.</forename><surname>Κουμανούδης</surname></editor>
+                        <editor role="scientificEditor"
+                            ><forename>Στέφανος Ν.</forename><surname>Κουμανούδης</surname></editor>
+                        <editor role="scientificEditor"
+                            ><forename>Αγγελος Π.</forename><surname>Ματθαίου</surname></editor>
+                        <respStmt>
+                            <resp>contributor</resp>
+                            <persName><forename>Marie</forename><surname>Titi</surname></persName>
+                        </respStmt>
+                        
                         <imprint>
                             <biblScope unit="volume">vol</biblScope>
                             <biblScope unit="pp">pages</biblScope>
@@ -86,17 +98,22 @@
                         <title level="m">Hyettos de Béotie et la chronologie des archontes fédéraux
                             entre 250 et 171 avant J.‑C.</title>
                         <title level="m" type="short">Hyettos</title>
-                        <author><forename>Roland</forename><surname>Étienne</surname></author>
+                        <author><forename>Anne-Marie</forename><surname>Étienne</surname></author>
+                        <author><forename>Anne</forename><surname>Étienne</surname></author>
+                        <author><forename>David</forename><surname>titi</surname></author>
+                        <author><forename>Jean-Pierre</forename><surname>tutu</surname></author>
+                        <author><forename>chritian</forename><surname>christian</surname></author>
                         <author><forename>Denis</forename><surname>Knoepfler</surname></author>
+                        <author><forename>philipe-jean</forename><surname>philippe-jean</surname></author>
                         <respStmt>
                             <resp>contributor</resp>
                             <persName><forename>John
-                                Michael</forename><surname>Fossey</surname></persName>
+                            </forename><forename>Michael</forename><surname>Fossey</surname></persName>
                         </respStmt>
                         <respStmt>
                             <resp>translator</resp>
-                            <persName><forename>jean
-                                </forename><surname>toto</surname></persName>
+                            <persName><forename>Jean-Pierre
+                            </forename><surname>toto</surname></persName>
                         </respStmt>
                         <imprint>
                             <pubPlace>Athènes, Grèce</pubPlace>
@@ -113,28 +130,13 @@
 
                 <!-- **************************************** -->
                 <biblStruct type="book" xml:id="Samama2003">
-                    <!-- 
-                    <monogr>
-                        <title level="m">Les médecins dans le monde grec. Sources épigraphiques sur
-                            la naissance d'un corps médical</title>
-                        <title level="m" type="short">test</title>
-                        <author><forename>Évelyne</forename><surname>Samama</surname></author>
-                        <imprint>
-                            <date when="2003"/>
-                        </imprint>
-                    </monogr>
-                    
-                    
-                     -->
-
                     <monogr>
                         <title level="m">+++++++++++</title>
                         <title level="m" type="short">titre court M</title>
-                        <author><forename>Prénom1 AuteurMonographie</forename><forename>Prénom2AuteurMonographie</forename><surname>NomAuteurMonographie</surname></author>
-                        <editor role="editor"
-                                ><forename>Prénom1Editeur</forename><surname>NomEditeur1</surname></editor>
-                        <editor role="editor"
-                                ><forename>prénom1Editeur2</forename><surname>NomEditeur2</surname></editor>
+                        <author><forename>rodolphe</forename><forename>Henri</forename><surname>Blanc</surname></author>
+                        <author><forename>anne</forename><forename>marie</forename><surname>proust</surname></author>
+                        <editor role="scientificEditor"
+                                ><forename>Charles</forename><surname>Duval</surname></editor>
                         <imprint>
                             <biblScope unit="volume">56</biblScope>
                             <biblScope unit="pp">pages</biblScope>
@@ -235,11 +237,12 @@
                 <biblStruct type="book" xml:id="testEM2">
                     <analytic>
                         <title level="a">titre article</title>
-                        <author><forename>Prénom1AuteurArticle</forename><forename>Prénom2AuteurArticle</forename><surname>NomAuteurArticle</surname></author>
                         
+                        <author><forename>Jean</forename><surname>Dupond</surname></author>
+                        <author><forename>anne-Philippe</forename><surname>Dupont</surname></author>
                         <respStmt>
                             <resp>contributor</resp>
-                            <persName><forename>PrenomContributor</forename><surname>NomContributeur</surname></persName>
+                            <persName><forename>jean-michel</forename><surname>michel</surname></persName>
                         </respStmt>
                         
                     </analytic>
@@ -247,9 +250,13 @@
                         <title level="m">Les médecins dans le monde grec. Sources épigraphiques sur
                             la naissance d'un corps médical</title>
                         <title level="m" type="short">test</title>
-                        <author><forename>Évelyne</forename><surname>Samama</surname></author>
-                        <editor role="scientificEditor"><forename>ahmed</forename><surname>gueroui</surname></editor>
-                        <editor role="scientificEditor"><forename>emma</forename><surname>morlo</surname></editor>
+                        
+                        <author><forename>Jean</forename><surname>Dupond</surname></author>
+                        <author><forename>anne-Philippe</forename><surname>Dupont</surname></author>
+                        <respStmt>
+                            <resp>contributor</resp>
+                            <persName><forename>jean-michel</forename><surname>michel</surname></persName>
+                        </respStmt>
                         <imprint>
                          
                             <date when="2003"/>

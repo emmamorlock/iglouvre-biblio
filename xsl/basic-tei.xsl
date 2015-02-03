@@ -52,7 +52,7 @@ exemples à faire
                     <xsl:value-of select="//tei:titleStmt/tei:title"/>
                 </title>
                 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-                <link rel="stylesheet" type="text/css" media="screen, projection" href="theores.css"/>
+
             </head>
             <xsl:apply-templates select="//tei:listBibl"/>
         </html>
@@ -93,79 +93,48 @@ exemples à faire
 
     <xsl:template name="creators">
         <xsl:for-each select="tei:author|tei:editor|tei:respStmt">
-
             <xsl:variable name="string">
                 <xsl:apply-templates/>
             </xsl:variable>
-
+            <xsl:variable name="role">
+                <xsl:choose>
+                    <xsl:when test="@role ='scientificEditor'or @role = 'editor'">
+                        <xsl:text> (ed.)</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="@role ='seriesEditor'">
+                        <xsl:text> (dir.)</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="contains(.,'translator')">
+                        <xsl:text> (trad.)</xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+            </xsl:variable>
+            <!-- 1/ Name and role -->
             <xsl:choose>
-
-                <!-- contributor role implies text before name -->
-                <xsl:when test="tei:resp = 'contributor'">
+                <!-- contributor role in resp-->
+                <xsl:when test=".[@type= 'contributor']">
                     <xsl:text> (avec </xsl:text>
                     <xsl:value-of select="normalize-space($string)"/>
+                    <!-- todo : ajouter récursion si on a plusieurs collaborateurs -->
                     <xsl:text>)</xsl:text>
-
-                    <!-- 'and' or 'comma' separator -->
-                    <xsl:choose>
-                        <xsl:when test="following-sibling::tei:respStmt/tei:resp = 'contributor'"/>
-                        <xsl:when
-                            test="count(following-sibling::tei:*/tei:surname/text()) = 1 or count(following-sibling::tei:*/tei:name/text()) = 1 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) = 1">
-                            <xsl:text> et </xsl:text>
-                        </xsl:when>
-                        <xsl:when
-                            test="count(following-sibling::tei:*/tei:surname/text()) != 0 or count(following-sibling::tei:*/tei:name/text()) != 0 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) != 0">
-                            <xsl:text>, </xsl:text>
-                        </xsl:when>
-                    </xsl:choose>
+                </xsl:when>
+                <!-- general case -->
+                <xsl:otherwise>
+                    <!-- <xsl:value-of select="normalize-space(concat($string, ' ', $role))"/> -->
+                    <xsl:variable name="result" select="$string"/>
+                    <xsl:value-of select="normalize-space($result)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            <!-- 2/ separator -->
+            <!-- 'and' or 'comma' separator -->
+            <xsl:choose>
+                <xsl:when test="count(following-sibling::tei:*[local-name()='author' or local-name()='editor' or local-name()='respStmt']) = 1">
+                    <xsl:text> et </xsl:text>
                 </xsl:when>
 
-                <xsl:otherwise>
-
-                    <xsl:variable name="role">
-                        <xsl:choose>
-                            <xsl:when test="@role ='scientificEditor'or @role = 'editor'">
-                                <xsl:text> (ed.)</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="@role ='seriesEditor'">
-                                <xsl:text> (dir.)</xsl:text>
-                            </xsl:when>
-                            <xsl:when test="contains(.,'translator')">
-                                <xsl:text> (trad.)</xsl:text>
-                            </xsl:when>
-                        </xsl:choose>
-                    </xsl:variable>
-
-                    <xsl:value-of select="normalize-space(concat($string, ' ', $role))"/>
-
-
-
-                    <!-- 'and' or 'comma' separator -->
-                    <xsl:choose>
-                        <xsl:when test="following-sibling::tei:respStmt/tei:resp = 'contributor'"/>
-                        <xsl:when
-                            test="count(following-sibling::tei:*/tei:surname/text()) = 1 or count(following-sibling::tei:*/tei:name/text()) = 1 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) = 1">
-                            <xsl:text> et </xsl:text>
-                        </xsl:when>
-                        <xsl:when
-                            test="count(following-sibling::tei:*/tei:surname/text()) != 0 or count(following-sibling::tei:*/tei:name/text()) != 0 or count(following-sibling::tei:*/tei:persName/tei:surname/text()) != 0">
-                            <xsl:text>, </xsl:text>
-                        </xsl:when>
-
-                    </xsl:choose>
-
-                    <!-- 
-                    <xsl:if test="not(position()=last())">
-                        <xsl:text>, </xsl:text>
-                    </xsl:if>
-                 
-                    <xsl:if test="position()=last()">
-                        <xsl:value-of select="concat($role,', ')"/>
-                    </xsl:if>
-              -->
-
-
-                </xsl:otherwise>
+                <xsl:when test="count(following-sibling::tei:*[local-name()='author' or local-name()='editor' or local-name()='respStmt']) != 0">
+                    <xsl:text>, </xsl:text>
+                </xsl:when>
             </xsl:choose>
         </xsl:for-each>
     </xsl:template>
@@ -201,11 +170,6 @@ exemples à faire
 
     <!--  template match -->
 
-    <xsl:template match="tei:author">
-        <span class="author">
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
 
     <xsl:template match="tei:series/tei:biblScope">
         <xsl:value-of select="."/>
@@ -229,21 +193,126 @@ exemples à faire
     </xsl:template>
 
     <xsl:template match="tei:forename">
-        <!-- regex : consonnant - not vowel - any  -->
-        <xsl:analyze-string select="." regex="([b-zçB-ZÇ])([hrl])(.*)">
-            <xsl:matching-substring>                
-                    <tei:forename>                   
-                        <xsl:value-of select="regex-group(1)"/>
-                        <xsl:value-of select="regex-group(2)"/>
-                        <xsl:text>. </xsl:text>
-                    </tei:forename>                
-            </xsl:matching-substring>            
-            <xsl:non-matching-substring>
-                <tei:forename>
-                    <xsl:value-of select="concat(upper-case(substring(.,1,1)),'. ')"/>
+        <!-- pour tester 
+        <xsl:value-of select="concat('|',.,'|')"></xsl:value-of>
+        <xsl:text> </xsl:text>
+        
+        p{L} 
+        -->
+        <!-- si le prénom commence par une voyelle -->
+        <xsl:analyze-string select="." regex="(^[aeoiuyéèàùâêîôûäëïöüAEIOUYÉÈÀÙÂÊÎÔÛÄËÏÖÜ])(.[^\-]*)(\-?)(.*)">
+            
+            <xsl:matching-substring>
+                <!-- <xsl:text>voyelle</xsl:text> -->
+                <tei:forename>                    
+                    <xsl:value-of select="concat(upper-case(regex-group(1)),'.')"/>
+                    <xsl:choose>
+                        <xsl:when test="not(regex-group(3) = '')">
+                            <xsl:value-of select="regex-group(3)"/>
+                            <xsl:value-of select="concat(upper-case(substring(regex-group(4),1,1)),'. ')"/> 
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text> </xsl:text>
+                        </xsl:otherwise>
+                    </xsl:choose>                  
                 </tei:forename>
+            </xsl:matching-substring>
+
+            <xsl:non-matching-substring>
+                <!-- si digramme + r ou l  -->
+                <xsl:analyze-string select="." regex="(^[^aeoiuyéèàùâêîôûäëïöüAEIOUYÉÈÀÙÂÊÎÔÛÄËÏÖÜ])([hrl])([rl])(.[^\-]*)(\-?)(.*)">
+                    <xsl:matching-substring>
+                        <!-- <xsl:text>consonne trigr</xsl:text> -->
+                        
+                        <tei:forename>
+                            <!-- <xsl:text>1</xsl:text> -->
+                            <xsl:value-of select="upper-case(regex-group(1))"/>
+                            <xsl:value-of select="regex-group(2)"/>
+                            <xsl:value-of select="regex-group(3)"/>
+                            <xsl:text>.</xsl:text>                                                   
+                            <xsl:choose>
+                                <xsl:when test="not(regex-group(5)='')">
+                                    <xsl:value-of select="regex-group(3)"/>
+                                    <xsl:value-of select="concat(upper-case(substring(regex-group(6),1,1)),'. ')"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:text> </xsl:text>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </tei:forename>
+                    </xsl:matching-substring>
+                    <xsl:non-matching-substring>
+
+                        <!-- si digramme   -->
+                        <xsl:analyze-string select="." regex="(^[^aeoiuyéèàùâêîôûäëïöüAEIOUYÉÈÀÙÂÊÎÔÛÄËÏÖÜ])([hrl])(.[^\-]*)(\-?)(.*)">
+                            <xsl:matching-substring>
+                                <!-- <xsl:text>consonne digr</xsl:text> -->
+                                
+                                <tei:forename>
+                                    <!-- <xsl:text>2</xsl:text> -->
+                                    <xsl:value-of select="upper-case(regex-group(1))"/>
+                                    <xsl:value-of select="regex-group(2)"/>
+                                    <xsl:text>.</xsl:text>
+                                    <xsl:choose>
+                                        <xsl:when test="not(regex-group(4)='')">
+                                            <xsl:value-of select="regex-group(4)"/>
+                                            <xsl:value-of select="concat(upper-case(substring(regex-group(5),1,1)),'. ')"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:text> </xsl:text>
+                                        </xsl:otherwise>
+                                    </xsl:choose>                               
+                                </tei:forename>
+                            </xsl:matching-substring>
+                            <xsl:non-matching-substring>
+                                <tei:forename>
+                                    <!-- 
+                                    <xsl:value-of select="concat('|',.,'|')"></xsl:value-of>
+                                    <xsl:value-of select="concat(upper-case(substring(.,1,1)),'. ')"/>  
+                                     -->
+                                    
+                                    <xsl:analyze-string select="." regex="(.[^\-]*)(\-?)(.*)">
+                                        <xsl:matching-substring>                                            
+                                            <tei:forename>
+                                                
+                                                <!-- <xsl:text>3</xsl:text> -->
+                                                <!--  <xsl:value-of select="concat('|1',regex-group(1),'|2',regex-group(2),'|3',regex-group(3),'|4',regex-group(4),'|')"></xsl:value-of>--> 
+                                                <xsl:value-of select="upper-case(substring(regex-group(1),1,1))"/>
+                                                <xsl:if test="not(starts-with(regex-group(1),' '))">
+                                                    <!-- bizarre mais seule manière trouvée de ne pas avoir un point isolé -->
+                                                    <xsl:text>.</xsl:text>
+                                                </xsl:if>
+                                                <xsl:choose>
+                                                    <xsl:when test="not(regex-group(2)='')">
+                                                        <xsl:value-of select="regex-group(2)"/>
+                                                        <xsl:value-of select="concat(upper-case(substring(regex-group(3),1,1)),'. ')"/>
+                                                    </xsl:when>
+                                                    <xsl:otherwise>
+                                                        <xsl:text> </xsl:text>
+                                                    </xsl:otherwise>
+                                                </xsl:choose>                               
+                                            </tei:forename>
+                                        </xsl:matching-substring>
+                                        <xsl:non-matching-substring>
+                                           <!--  <xsl:text>4</xsl:text>-->
+                                            <!--  
+                                            <xsl:value-of select="concat('|',.,'|')"></xsl:value-of>-->
+                                            <!-- <xsl:value-of select="upper-case(substring(.,1,1))"/>  --> 
+                                        </xsl:non-matching-substring>
+                                    </xsl:analyze-string>
+                                </tei:forename>
+                            </xsl:non-matching-substring>
+                        </xsl:analyze-string>
+                    </xsl:non-matching-substring>
+                </xsl:analyze-string>
             </xsl:non-matching-substring>
+
         </xsl:analyze-string>
+
+    </xsl:template>
+
+    <xsl:template match="tei:surname">
+        <xsl:value-of select="concat(upper-case(substring(.,1,1)),substring(., 2))"/>
     </xsl:template>
 
     <xsl:template match="tei:monogr[1]">
@@ -269,22 +338,15 @@ exemples à faire
     <xsl:template match="tei:monogr[2]">
         <!-- titre ensemble -->
         <xsl:if test="tei:monogr[2]">
-            <span class="titreEnsemble">
+            <span class="title">
                 <xsl:apply-templates select="title"/>
             </span>
         </xsl:if>
     </xsl:template>
 
-
-
-
-
     <xsl:template match="tei:series">
         <xsl:apply-templates/>
     </xsl:template>
 
-    <xsl:template match="tei:surname">
-        <xsl:apply-templates/>
-    </xsl:template>
 
 </xsl:stylesheet>
