@@ -114,7 +114,7 @@ return
 <result>
 
      <tr>
-         <td class="0">{xslt:transform-text(<publicationStmt/>, 'basic.xsl')}</td>
+         <td class="0">{xslt:transform-text(<publicationStmt/>, 'variable.xsl')}</td>
         <td class="1">{string($annee)}</td>
         <td class="2">{data($titre-ensemble)}</td>    
         <td class="3">{data($volume)}</td>

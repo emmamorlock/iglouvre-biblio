@@ -32,16 +32,40 @@
 
 
 
-
 (: test xslt :)
 
 {
   
   let $in :=
-  db:open('igl_bibliography')
-  let $style := doc('variable.xsl')
+ <biblStruct type="book" xml:id="Łajtar2003a">
+                    <monogr>
+                        <title level="m">Khartoum Greek</title>
+                        <title level="m" type="short">I.Khartoum</title>
+                        <author><forename>Adam</forename><surname>Łajtar</surname></author>
+                        <imprint>
+                            <pubPlace>Louvain, Belgique</pubPlace>
+                            <biblScope unit="volume">I</biblScope>
+                            <publisher>Peeters and Departement Oosterse Studies</publisher>
+                            <date when="2003"/>
+                        </imprint>
+                    </monogr>
+                    <series><title level="s">Orientalia Lovaniensia analecta</title><biblScope
+                            unit="volume">122</biblScope></series>
+                    <monogr>
+                        <title>Catalogue of the Greek Inscriptions in the Sudan National Museum at
+                            Khartoum</title>
+                        <imprint>
+                            <biblScope/>
+                        </imprint>
+                    </monogr>
+                    <idno type="ISBN">90-429125-29</idno>
+                    <idno type="callNumber">$</idno>
+                    <idno type="zotero-uri">http://zotero.org/groups/248770/items/22HVPMSW</idno>
+                    <idno type="archiveLocation">I-Khartoum</idno>
+                </biblStruct>
+  let $style := doc('../xsl/iglouvre-biblio-controle.xsl')
  
-return xslt:transform($in, $style)
+return (xslt:transform($in, $style) )
   
 }
 
@@ -101,7 +125,7 @@ return
 <result>
 
      <tr>
-         <td class="0">{xslt:transform-text(<publicationStmt/>, 'basic.xsl')}</td>
+        <td class="0">{xslt:transform-text(<publicationStmt/>, 'basic.xsl')}</td>
         <td class="1">{string($annee)}</td>
         <td class="2">{data($titre-ensemble)}</td>    
         <td class="3">{data($volume)}</td>

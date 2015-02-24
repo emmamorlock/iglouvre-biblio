@@ -2,7 +2,8 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0"
+    xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -52,11 +53,11 @@
                         <title level="a">titre article</title>
                         <author><forename>Claire</forename><surname>Vrille</surname></author>
                         <editor role="scientificEditor"
-                            ><forename>Στέφ-ανος</forename><surname>Κουμανούδης</surname></editor>
+                                ><forename>Στέφ-ανος</forename><surname>Κουμανούδης</surname></editor>
                         <editor role="scientificEditor"
-                            ><forename>Στέφανος</forename><surname>Κουμανούδης</surname></editor>
+                                ><forename>Στέφανος</forename><surname>Κουμανούδης</surname></editor>
                         <editor role="scientificEditor"
-                            ><forename>Αγγ-ελος</forename><surname>Ματθαίου</surname></editor>
+                                ><forename>Αγγ-ελος</forename><surname>Ματθαίου</surname></editor>
                         <respStmt>
                             <resp>contributor</resp>
                             <persName><forename>Marie</forename><surname>Titi</surname></persName>
@@ -65,19 +66,19 @@
                     </analytic>
                     <monogr>
                         <title level="m">+++++++++++</title>
-                        <title level="m" type="short">titre court M</title>
+                        <title level="m" type="short">lorem ipsum 0000</title>
                         <author><forename>Claire</forename><surname>Vrille</surname></author>
                         <editor role="scientificEditor"
-                            ><forename>Στέφανος Α.</forename><surname>Κουμανούδης</surname></editor>
+                                ><forename>Στέφανος Α.</forename><surname>Κουμανούδης</surname></editor>
                         <editor role="scientificEditor"
-                            ><forename>Στέφανος Ν.</forename><surname>Κουμανούδης</surname></editor>
+                                ><forename>Στέφανος Ν.</forename><surname>Κουμανούδης</surname></editor>
                         <editor role="scientificEditor"
-                            ><forename>Αγγελος Π.</forename><surname>Ματθαίου</surname></editor>
+                                ><forename>Αγγελος Π.</forename><surname>Ματθαίου</surname></editor>
                         <respStmt>
                             <resp>contributor</resp>
                             <persName><forename>Marie</forename><surname>Titi</surname></persName>
                         </respStmt>
-                        
+
                         <imprint>
                             <biblScope unit="volume">vol</biblScope>
                             <biblScope unit="pp">pages</biblScope>
@@ -92,7 +93,7 @@
                     </monogr>
                     <idno type="zotero-uri">http://zotero.org/users/568042/items/63BGW9XX</idno>
                 </biblStruct>
-                
+
                 <biblStruct type="book" xml:id="Étienne1976">
                     <monogr>
                         <title level="m">Hyettos de Béotie et la chronologie des archontes fédéraux
@@ -108,12 +109,12 @@
                         <respStmt>
                             <resp>contributor</resp>
                             <persName><forename>John
-                            </forename><forename>Michael</forename><surname>Fossey</surname></persName>
+                                    </forename><forename>Michael</forename><surname>Fossey</surname></persName>
                         </respStmt>
                         <respStmt>
                             <resp>translator</resp>
                             <persName><forename>Jean-Pierre
-                            </forename><surname>toto</surname></persName>
+                                </forename><surname>toto</surname></persName>
                         </respStmt>
                         <imprint>
                             <pubPlace>Athènes, Grèce</pubPlace>
@@ -122,7 +123,7 @@
                         </imprint>
                     </monogr>
                     <series><title level="s">BCH. Suppl.</title><biblScope unit="volume"
-                        >3</biblScope></series>
+                            >3</biblScope></series>
                     <idno type="callNumber">$</idno>
                     <idno type="zotero-uri">http://zotero.org/groups/248770/items/2KFDFSW9</idno>
                     <idno type="archiveLocation">Hyettos</idno>
@@ -132,7 +133,7 @@
                 <biblStruct type="book" xml:id="Samama2003">
                     <monogr>
                         <title level="m">+++++++++++</title>
-                        <title level="m" type="short">titre court M</title>
+                        <title level="m" type="short">dolor sit amet</title>
                         <author><forename>rodolphe</forename><forename>Henri</forename><surname>Blanc</surname></author>
                         <author><forename>anne</forename><forename>marie</forename><surname>proust</surname></author>
                         <editor role="scientificEditor"
@@ -143,8 +144,6 @@
                             <date when="2000"/>
                         </imprint>
                     </monogr>
-
-
                     <series>
                         <title level="s">Hautes études du monde gréco-romain</title>
                         <biblScope unit="volume">31</biblScope>
@@ -237,20 +236,20 @@
                 <biblStruct type="book" xml:id="testEM2">
                     <analytic>
                         <title level="a">titre article</title>
-                        
+
                         <author><forename>Jean</forename><surname>Dupond</surname></author>
                         <author><forename>anne-Philippe</forename><surname>Dupont</surname></author>
                         <respStmt>
                             <resp>contributor</resp>
                             <persName><forename>jean-michel</forename><surname>michel</surname></persName>
                         </respStmt>
-                        
+
                     </analytic>
                     <monogr>
                         <title level="m">Les médecins dans le monde grec. Sources épigraphiques sur
                             la naissance d'un corps médical</title>
                         <title level="m" type="short">test</title>
-                        
+
                         <author><forename>Jean</forename><surname>Dupond</surname></author>
                         <author><forename>anne-Philippe</forename><surname>Dupont</surname></author>
                         <respStmt>
@@ -258,12 +257,12 @@
                             <persName><forename>jean-michel</forename><surname>michel</surname></persName>
                         </respStmt>
                         <imprint>
-                         
+
                             <date when="2003"/>
                         </imprint>
                     </monogr>
-                    <series><title level="s">titre series</title><biblScope
-                        unit="volume">122</biblScope></series>
+                    <series><title level="s">titre series</title><biblScope unit="volume"
+                            >122</biblScope></series>
                     <monogr>
                         <title>titre ensemble</title>
                         <imprint>
@@ -272,11 +271,6 @@
                     </monogr>
                     <idno type="zotero-uri">http://zotero.org/users/568042/items/63BGW9XX</idno>
                 </biblStruct>
-                
-                
-                
-                
-               
 
             </listBibl>
         </body>

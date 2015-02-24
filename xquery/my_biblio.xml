@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Exported from Zotero for iglouvre</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>unpublished</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Generated from Zotero database</p>
+            </sourceDesc>
+        </fileDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <listBibl>
+                <biblStruct type="book" xml:id="Łajtar2003a">
+                    <monogr>
+                        <title level="m">Khartoum Greek</title>
+                        <title level="m" type="short">I.Khartoum</title>
+                        <author><forename>Adam</forename><surname>Łajtar</surname></author>
+                        <imprint>
+                            <pubPlace>Louvain, Belgique</pubPlace>
+                            <biblScope unit="volume">I</biblScope>
+                            <publisher>Peeters and Departement Oosterse Studies</publisher>
+                            <date when="2003"/>
+                        </imprint>
+                    </monogr>
+                    <series><title level="s">Orientalia Lovaniensia analecta</title><biblScope
+                        unit="volume">122</biblScope></series>
+                    <monogr>
+                        <title>Catalogue of the Greek Inscriptions in the Sudan National Museum at
+                            Khartoum</title>
+                        <imprint>
+                            <biblScope/>
+                        </imprint>
+                    </monogr>
+                    <idno type="ISBN">90-429125-29</idno>
+                    <idno type="callNumber">$</idno>
+                    <idno type="zotero-uri">http://zotero.org/groups/248770/items/22HVPMSW</idno>
+                    <idno type="archiveLocation">I-Khartoum</idno>
+                </biblStruct>
+                
+                <biblStruct type="book" xml:id="Le_Bas1870">
+                    <monogr>
+                        <title level="m">Inscriptions grecques et latines de la Syrie</title>
+                        <title level="m" type="short">LBW</title>
+                        <author><forename>Philippe</forename><surname>Le Bas</surname></author>
+                        <author><forename>William
+                        </forename><forename>Henry</forename><surname>Waddington</surname></author>
+                        <imprint>
+                            <pubPlace>Paris, France</pubPlace>
+                            <publisher>F. Didot</publisher>
+                            <date when="1870"/>
+                        </imprint>
+                    </monogr>
+                    <idno type="callNumber">$ Vérifier titre abrégé ? Un second ouvrage de
+                        Waddington porte le même</idno>
+                    <idno type="zotero-uri">http://zotero.org/groups/248770/items/25RFZRWB</idno>
+                    <idno type="archiveLocation">LBW</idno>
+                </biblStruct>
+                <biblStruct type="book" xml:id="Whitehead1986">
+                    <monogr>
+                        <title level="m">The Demes of Attica, 508-7 ‑ ca. 250 B.C. A Political and
+                            Social Study</title>
+                        <title level="m" type="short">Whitehead, Demes</title>
+                        <author><forename>David</forename><surname>Whitehead</surname></author>
+                        <imprint>
+                            <pubPlace>Princeton, États-Unis</pubPlace>
+                            <publisher>Princeton University Press</publisher>
+                            <date when="1986"/>
+                        </imprint>
+                    </monogr>
+                    <note>9780691094120</note>
+                    <idno type="ISBN">0-691-09412-8</idno>
+                    <idno type="callNumber">$</idno>
+                    <idno type="zotero-uri">http://zotero.org/groups/248770/items/26FMPNIF</idno>
+                    <idno type="archiveLocation">Whitehead-Demes</idno>
+                </biblStruct>
+                <biblStruct type="book" xml:id="Berns2002">
+                    <monogr>
+                        <title level="m">Patris und imperium. Kulturelle und politische Identität in
+                            den Städten der römischen Provinzen Kleinasiens in der frühen
+                            Kaiserzeit. Kolloquium Köln, November 1998</title>
+                        <title level="m" type="short">Patris und Imperium</title>
+                        <editor role="scientificEditor"
+                            ><forename>Christof</forename><surname>Berns</surname></editor>
+                        <editor role="scientificEditor"><forename>Henner
+                            von</forename><surname>Hesberg</surname></editor>
+                        <editor role="scientificEditor"
+                            ><forename>Lutgarde</forename><surname>Vandeput</surname></editor>
+                        <editor role="scientificEditor"
+                            ><forename>Marc</forename><surname>Waelkens</surname></editor>
+                        <imprint>
+                            <pubPlace>Louvain, Belgique</pubPlace>
+                            <publisher>Peeters</publisher>
+                            <date when="2002"/>
+                        </imprint>
+                    </monogr>
+                    <series><title level="s">BABesch. Suppl.</title><biblScope unit="volume"
+                        >8</biblScope></series>
+                    <note>L'ouvrage porte par erreur l'ISSN 0165-9367 de la collection principale. -
+                        Contributions en allemand, anglais (6) et français (1)</note>
+                    <idno type="ISBN">90-429-1179-4</idno>
+                    <idno type="callNumber">$ 00002</idno>
+                    <idno type="zotero-uri">http://zotero.org/groups/248770/items/26WRSMFQ</idno>
+                    <idno type="archiveLocation">Patris-und-Imperium</idno>
+                </biblStruct>
+            </listBibl>
+        </body>
+    </text>
+</TEI>
+
+

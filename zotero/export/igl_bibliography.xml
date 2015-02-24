@@ -2,7 +2,7 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
+<TEI xmlns="http://www.tei-c.org/ns/1.0"  xmlns:xsl='http://www.w3.org/1999/XSL/Transform'>
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -22,6 +22,7 @@
                 <biblStruct type="book" xml:id="Łajtar2003a">
                     <monogr>
                         <title level="m">Khartoum Greek</title>
+                        <title level="m">toto</title>
                         <title level="m" type="short">I.Khartoum</title>
                         <author><forename>Adam</forename><surname>Łajtar</surname></author>
                         <imprint>
@@ -44,6 +45,7 @@
                     <idno type="callNumber">$</idno>
                     <idno type="zotero-uri">http://zotero.org/groups/248770/items/22HVPMSW</idno>
                     <idno type="archiveLocation">I-Khartoum</idno>
+                    <note>test de note</note>
                 </biblStruct>
                 <biblStruct type="book" xml:id="British_Academy1880">
                     <monogr>
@@ -1460,7 +1462,7 @@
                         </imprint>
                     </monogr>
                     <monogr>
-                        <title>00000</title>
+                        <title>Test titre d'ensemble</title>
                         <imprint>
                             <biblScope/>
                         </imprint>
