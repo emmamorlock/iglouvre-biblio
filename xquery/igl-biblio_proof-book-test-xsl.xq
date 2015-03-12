@@ -46,7 +46,7 @@ let $style :=
   <body>
     <div>
       <xsl:for-each select='//titleStmt/title'>
-      • <b><xsl:apply-templates select='.'/></b>: <br/>
+        <b><xsl:apply-templates select='.'/></b>: <br/>
       </xsl:for-each>
     </div>
   </body>
@@ -114,7 +114,7 @@ return
 <result>
 
      <tr>
-         <td class="0">{xslt:transform-text(<publicationStmt/>, 'variable.xsl')}</td>
+        <td class="0">{xslt:transform-text(<publicationStmt/>, 'variable.xsl')}</td>
         <td class="1">{string($annee)}</td>
         <td class="2">{data($titre-ensemble)}</td>    
         <td class="3">{data($volume)}</td>
