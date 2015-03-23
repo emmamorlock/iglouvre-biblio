@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:html="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xsl tei html">
+    <xd:doc xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" scope="stylesheet">
+        <xd:desc>
+            <xd:p><xd:b>Created on:</xd:b> March 23, 2015</xd:p>
+            <xd:p><xd:b>Author:</xd:b> Emmanuelle Morlock</xd:p>
+            <xd:p>IGLouvre project's stylesheet: Transformation of bibliographic data for quality control.</xd:p>
+        </xd:desc>
+    </xd:doc>
     <!-- todo : nombre de volumes -->
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     <!-- +++++++++++++++++++++ éléments non affichés -->
