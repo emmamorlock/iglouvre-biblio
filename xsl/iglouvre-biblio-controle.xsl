@@ -2,98 +2,66 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:html="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xsl tei html">
     <xsl:import href="iglouvre-biblio-commun.xsl"/>
     <xsl:output indent="yes" method="xml" omit-xml-declaration="yes"/>
-    <!-- todo : traitement des forename : tokenize  -->
-    <!-- todo : traitement des forename  : autres alphabets-->
     <!-- todo : nombre de volumes -->
-    <!-- 
-    MONOGAPHIES
-    [Créateur], [Titre. Sous-titre], [Titre de la collection]* [numéro dans la collection]**, [date de publication], [nombre de volumes].
-    É. Samama, Les médecins dans le monde grec. Sources épigraphiques sur la naissance d’un corps médical, Hautes études du monde romain 31, 2003.
-    
-    CONTRIBUTIONS A DES OUVRAGES
-    [Auteur], « [Titre de l’article] », in [Créateur], [Titre de l’ouvrage. Sous-titre de l’ouvrage], [édition], [Titre de la collection]* [numéro dans la collection] **, [date de publication], [localisation].
-    N. Massar, « Choix d’inscriptions. La profession médicale dans l’épigraphie », in A. Verbanck-Piérard (éd.), Au temps d’Hippocrate. Médecine et société en Grèce antique, 1998, p. 83-97.
- 
-    CONTRIBUTION A DES ACTES DE COLLOQUES 
-    [Auteur], « [Titre de l’article] », in [Créateur] (éd.), [Titre de l’ouvrage. Sous-titre de l’ouvrage], [intitulé du colloque]*, [édition], [Titre de la collection]** [numéro dans la collection]***, [date de publication], [localisation].
- 
-    ARTICLE DE PERIODIQUE
-    [Auteur], « [Titre de l’article] », [Titre du périodique abrégé s’il existe] [volume du périodique]/[numéro du périodique], [date de publication], [localisation].
-    
-    ARTICLE DE DICTIONNAIRE 
-    [Auteur], s.v. «  [Titre de l’article de dictionnaire ou d’encyclopédie] », [Titre court du dictionnaire ou de l’encyclopédie], [date de publication], [localisation].
- 
-    CAS AVEC TITRE D ENSEMBLE
-    
-    a: Cas d’un article (type Zotero chapitre d’ouvrage) paru dans un volume faisant partie d’un ensemble.
-    [Auteur], « [Titre de l’article] », in [Editeur scientifique] et [Editeur scientifique] (ed.), [Titre d’ensemble]. [numéro du volume], [Titre du volume], [date de publication], [localisation].
-    F. Blass, « Die kretischen Inschriften », in H. Collitz et F. Bechtel (éd.), Sammlung der griechischen Dialekt-Inschriften. III, 2, Die Inschriften der dorischen Gebiete ausser Lakonien, Thera, Melos, Kreta, Sicilien, 1905, p. 227-423.
- 
-    b: 
-    [éditeur scientifique] et [éditeur scientifique] (éd.), [Titre d’ensemble]. [numéro de volume], [Titre du volume],[date de publication].
-    M. Guarducci et F. Halbherr (éd.), Inscriptiones creticae. I, Tituli Cretae mediae praeter Gortynios, 1935.
-
-
-exemples à faire
-- 1 auteur et deux éditeurs scientifiques
-- 1 auteur, 1 traducteur et 2 éditeurs scientifiques
-
-
- -->
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     <!-- +++++++++++++++++++++ paramètres -->
-    <xsl:param name="tri"/>
+    <xsl:param name="in">
+        <xsl:text>in </xsl:text>
+    </xsl:param>
     <!-- +++++++++++++++++++++ Structure de la page -->
     <xsl:template match="tei:TEI">
         <html>
             <head>
+                <!-- google fonts -->
+                <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Pro|Lora|Cantarell|Droid+Serif|Inconsolata|Yanone+Kaffeesatz" rel="stylesheet" type="text/css"/>
+                <!--  -->
                 <style type="text/css"> 
                     <xsl:comment>
                     <![CDATA[ 
                     body{
-                        font-family:Verdana, Arial, Helvetica, sans-serif;
-                        font-size:14px;
+                        font-family:Inconsolata, sans-serif;
+                        font-size:12px;
                     }
+                    body > h2 {margin:3em 0 1.8em 0}
+                    h2 {text-align:center}
                     table{
                         border-collapse:collapse;
                         border-spacing:2px;
                         border-color:gray;
-                        width:95%;
+                        width:85%;
+                        margin-left:auto;
+                        margin-right:auto;
                     }
-                    th{
-                        height:50px;
+                    h2, th{
+                        font-family:'Yanone Kaffesatz', sans-serif;font-size:2em;
                     }
-                    table,
-                    th,
-                    td{
+                    table, th, td{
                         border:1px solid #98bf21;
-                        font-family:'times new roman', sans-serif;
+                        font-family:Inconsolata,sans-serif;
                     }
+                    thead {font-weight:bold;color:blueviolet;}
                     td{
-                        text-align:left;
-                        font-size:90%;
-                        padding:3px 7px 2px 7px;
+                        text-align:left;                        
+                        padding:1.5em 1em;
+                        font-family:Cantarell,serif;
                     }
                     td{
                         height:50px;
-                        vertical-align:bottom;
+                        vertical-align:top;
                     }
                     td.note{
                         word-wrap:break-word;
-                        overflow:hidden;
-                        font-size:.75em;
-                    }
-                    td.00{
-                        white-space:pre-wrap;
-                        color:silver;
-                        font-family:"Lucida Console";
-                    }
-                    td.0b{
-                        width:50%;
-                    }
-                    thead{
-                        font-weight:bold;
-                    }
+                        overflow:hidden;  
+                        font-size:.75em;                       
+                    } 
+                    td.longue {font-family:Cantarell,sans-serif;max-width:30em;}
+
+                    td.allege {font-family:Cantarell,sans-serif;max-width:30em;}
+                    
+                    td.lemme {font-family:Cantarell,sans-serif;max-width:30em;min-width:15em;}
+                    
+                    td.liens {max-width:10em;}
+                   
                     tr:nth-child(odd){
                         background-color:#EAF2D3;
                     }
@@ -111,174 +79,549 @@ exemples à faire
                     span.role{
                         font-size:75%;
                     }
-                    span.title{
+                    span.title, span.italics, span.allege .meeting{
+                        font-style:italic;
+                    }                                      
+                     span.s, span.a {
+                        font-style:normal;
+                    }                    
+                    span.title > span.title{
+                        font-style:normal;
+                    }
+                     span.s > span.title{
                         font-style:italic;
                     }
-                     span.ensemble{
-                        color:red;
+                     span.balise, span.alerte {
+                        color:Tomato;
                     }
-                    span.test{
-                        color:silver;
-                    }
-                    ]]>
-                    </xsl:comment>
-                        
+                    sup {font-size:.7em; font-style:italic;margin-left: -.2em;}
                     
+                    .allege .meeting{font-style:italic;}
+                    
+                     
+                    /* ************************ */
+                    /* à modifier selon confort 
+                    / ************************** */
+                    
+                    .test {color:silver}
+                    .normal {color:black;}
+                    .s {color:VioletRed}
+                    .ensemble {color:Tomato;}
+                    .lemme {}
+                    .longue .note { color:Fuchsia; }                    
+                    .allege .test, .allege .s, .allege .ensemble {color:black;}
+                  
+                   /* ******************************** */
+                   /* stylage du popup                  */
+                   /* from  pop up from http://websemantics.co.uk/resources/accessible_css3_modal_pop-ups/#links */
+                   /* *********************************** */
+                       .pop-up {position:absolute; top:0; left:-500em}
+                       .pop-up:target {position:absolute; left:0;}
+                       .popBox {
+                            background:AliceBlue;
+                            font-size:.85em;
+                            min-height:50%;
+                            height:auto;
+                            padding: 1.75em; 
+                            text-align:left;
+                            text-indent:3em;
+                            font-family:Consolas,monospace;
+                          
+                            /* alternatively fixed width / height and negative margins from 50% */
+                            position:absolute; left:30%; top:15%;
+                          
+                            z-index:1;
+                            /* padding:1%; removed 17/07/2012 */
+                            border:1px solid #3a3a3a;
+                          
+                            /* CSS3 rounded corners, drop-shadow and opacity fade in */
+                            -moz-border-radius:12px;
+                            border-radius:12px;
+                            -webkit-box-shadow:2px 2px 4px #3a3a3a;
+                            -moz-box-shadow:2px 2px 4px #3a3a3a;
+                            box-shadow:2px 2px 4px #3a3a3a;
+                            opacity:0;
+                            -webkit-transition: opacity 0.5s ease-in-out;
+                            -moz-transition: opacity 0.5s ease-in-out;
+                            -o-transition: opacity 0.5s ease-in-out;
+                            -ms-transition: opacity 0.5s ease-in-out;
+                            transition: opacity 0.5s ease-in-out;
+                          }
+                          :target .popBox {position:fixed; opacity:1;}                         
+                          .popBox:hover {box-shadow:3px 3px 6px #5a5a5a;}
+                          .popBox a.close{position:absolute;right:2em;bottom:2em;}
+                          .popBox h2{text-indent:0;}
+  
+                    ]]>
+                    </xsl:comment>         
                 </style>
             </head>
             <body>
                 <h1>IGLouvre - Biblio - Contrôle</h1>
-                <h2>Monographies (type Zotero "book") </h2>
                 <p>Date : <xsl:value-of select="current-dateTime()"/></p>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>TEI</td>
-                            <td class="0a">ref. bibl. abrégée</td>
-                            <td class="0b">ref. bibl complète</td>
-                            <!-- <td class="note">Note</td> -->
-                            <td class="10">Lien</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <xsl:for-each select="//tei:biblStruct[@type='book']">
-                            <!-- tri par ref. abrégée / date publication, asc -->
-                            <!--  
-                                <xsl:sort select="tei:monogr/tei:title[@type='short']"/>
-                                <xsl:sort select="tei:monogr/tei:imprint/tei:date/@when"/>
-                            -->
-                            <!-- tri par titre d'ensemble / titre / date publication asc -->
-                            <!--  -->
-                            <xsl:sort select="tei:monogr[2]"/>
-                            <xsl:sort select="tei:monogr/tei:title[@type='short']"/>
-                            <xsl:sort select="tei:monogr/tei:imprint/tei:date/@when"/>
+                <p>Critères de tri : Titre d'ensemble | Collection | Créateur | Année de publication</p>
+                <xsl:for-each-group select="//tei:biblStruct" group-by="./@type">
+                    <h2>Type Zotero : <xsl:value-of select="current-grouping-key()"/></h2>
+                    <table>
+                        <thead>
                             <tr>
-                                <xsl:choose>
-                                    <xsl:when test="tei:monogr[2]">
-                                        <xsl:call-template name="table-td-ensemble"/>
-                                    </xsl:when>
-                                    <xsl:otherwise>
-                                        <xsl:call-template name="table-td"/>
-                                    </xsl:otherwise>
-                                </xsl:choose>
+                                <td class="longue">Forme longue<br/><i>pour bibliographie générale</i></td>
+                                <td class="lemme">Forme courte 1.<br/><i>pour lemme ('shortTitle' ∃)</i></td>
+                                <td class="allege">Forme courte 2. <br/><i>pour lemme ('shortTitle' ∄)</i></td>
+                                <td class="note">Champ 'note'</td>
+                                <td class="liens">Liens</td>
                             </tr>
-                        </xsl:for-each>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <xsl:for-each select="current-group()">
+                                <!-- Critères de tri -->
+                                <xsl:sort select="tei:monogr[2]"/>
+                                <xsl:sort select="tei:series/tei:title[@level='s'][1][not(@type='short')]"/>
+                                <xsl:sort select="tei:analytic/tei:author[1]//tei:surname"/>
+                                <xsl:sort select="tei:monogr/tei:author[1]//tei:surname"/>
+                                <xsl:sort select="tei:monogr/tei:editor[1]//tei:surname"/>
+                                <xsl:sort select="tei:monogr/tei:respStmt[1]//tei:surname"/>
+                                <xsl:sort select="tei:monogr/tei:imprint/tei:date/@when"/>
+                                <xsl:call-template name="tr"/>
+                            </xsl:for-each>
+                        </tbody>
+                    </table>
+                </xsl:for-each-group>
             </body>
         </html>
     </xsl:template>
-    <!-- <xsl:apply-templates select="//tei:biblStruct" mode="longRef"/> -->
-    <xsl:template name="table-td">
-        <td class="00">
-            <!-- <xsl:call-template name="codeTEI"/> -->
-        </td>
-        <td class="0a">
-            <xsl:apply-templates select="tei:monogr[1]/tei:title[@type='short']"/>
-        </td>
-        <td class="0b">
-            <xsl:apply-templates select="." mode="plat"/>
-        </td>
-        <!--  
-        <td class="note">
-            <xsl:apply-templates select="tei:note"/>
-        </td>
-        -->
-        <td class="10">
-            <xsl:apply-templates select="tei:idno[@type='zotero-uri']"/>
-        </td>
+    <xsl:template name="tr">
+        <tr>
+            <td class="longue">
+                <!-- forme de la référence pour la liste bibliographique générale -->
+                <xsl:variable name="maintxt">
+                    <xsl:apply-templates select="."/>
+                </xsl:variable>
+                <xsl:variable name="maintxt2">
+                    <xsl:apply-templates select="$maintxt" mode="zoteroItalics"/>
+                    <xsl:call-template name="pointFinal">
+                        <xsl:with-param name="content" select="$maintxt"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:apply-templates select="$maintxt2" mode="zoteroItalics"/>
+            </td>
+            <td class="lemme">
+                <!-- forme de la référence pour le lemme -->
+                <xsl:variable name="maintxt">
+                    <xsl:apply-templates select="." mode="lemme"/>
+                </xsl:variable>
+                <xsl:variable name="maintxt2">
+                    <xsl:apply-templates select="$maintxt" mode="zoteroItalics"/>
+                </xsl:variable>
+                <xsl:apply-templates select="$maintxt2" mode="zoteroItalics"/>
+            </td>
+            <td class="allege">
+                <!-- forme allégée -->
+                <xsl:variable name="maintxt">
+                    <xsl:apply-templates select="." mode="allege"/>
+                </xsl:variable>
+                <xsl:variable name="maintxt2">
+                    <xsl:apply-templates select="$maintxt" mode="zoteroItalics"/>
+                    <xsl:call-template name="pointFinal">
+                        <xsl:with-param name="content" select="$maintxt"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:apply-templates select="$maintxt2" mode="zoteroItalics"/>
+            </td>
+            <td class="note">
+                <xsl:apply-templates select="tei:note"/>
+            </td>
+            <td class="liens">
+                <!-- pop up from http://websemantics.co.uk/resources/accessible_css3_modal_pop-ups/#links -->
+                <xsl:variable name="id" select="@xml:id"/>
+                <a href="#{$id}">TEI</a>
+                <div id="{$id}" class="pop-up">
+                    <div class="popBox">
+                        <div class="popScroll">
+                            <h2>Code TEI</h2>
+                            <xsl:apply-templates select="." mode="codeXML"/>
+                        </div>
+                        <a href="" class="close">
+                            <span>Fermer</span>
+                        </a>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <!-- Lien vers zotero -->
+                <xsl:apply-templates select="tei:idno[@type='zotero-uri']"/>
+            </td>
+        </tr>
     </xsl:template>
-    <xsl:template name="table-td-ensemble">
-        <td class="00">
-            <xsl:call-template name="codeTEI"/>
-        </td>
-        <td class="0a">
-            <xsl:apply-templates select="tei:monogr[1]/tei:title[@type='short']"/>
-        </td>
-        <td class="0b">
-            <xsl:apply-templates select="tei:monogr[2]"/>
-        </td>
-        <!--  
-        <td class="note">
-            <xsl:apply-templates select="tei:note"/>
-        </td>
-        -->
-        <td class="10">
-            <xsl:apply-templates select="tei:idno[@type='zotero-uri']"/>
-        </td>
-    </xsl:template>
-    <xsl:template name="codeTEI">
-        <!-- 
-            <xsl:text>&lt;</xsl:text>
-            <xsl:value-of select="local-name()"/>
-            <xsl:text>&gt;</xsl:text>
-            <xsl:apply-templates/>
-       -->  
-    </xsl:template>
-    <xsl:template match="tei:idno[@type='zotero-uri']">
-        <xsl:variable name="uri" select="."/>
-        <a href="{$uri}" target="_blank">vers Zot.</a>
-    </xsl:template>
-    <xsl:template match="tei:note">
-        <xsl:choose>
-            <xsl:when test="text()">
-                <span class="note">
-                    <xsl:apply-templates/>
+    <xsl:template match="tei:biblStruct">
+        <!-- s'il y a article -->
+        <xsl:if test="tei:analytic">
+            <!-- auteur(s) de l'article -->
+            <xsl:for-each select="tei:analytic/tei:author">
+                <xsl:call-template name="makeCreator">
+                    <xsl:with-param name="creator">
+                        <xsl:sequence select="."/>
+                    </xsl:with-param>
+                    <xsl:with-param name="separator">
+                        <xsl:choose>
+                            <xsl:when test="position() = last()-1">
+                                <xsl:text> et </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:text>, </xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </xsl:for-each>
+            <!-- 's.v.' si @type='dictionaryEntry' -->
+            <xsl:if test="@type='dictionaryEntry'">
+                <span class="italics">
+                    <xsl:text>s.&#8239;v.&#160;</xsl:text>
                 </span>
+            </xsl:if>
+            <!-- titre de l'article -->
+            <xsl:text> &#171;&#8239;</xsl:text>
+            <xsl:apply-templates select="tei:analytic/tei:title[@level='a'][not(@type='short')]"/>
+            <xsl:text>&#8239;&#187;</xsl:text>
+            <!-- separateur -->
+            <xsl:text>, </xsl:text>
+            <!-- in -->
+            <xsl:if test="@type='bookSection' or @type='conferencePaper'">
+                <xsl:value-of select="$in"/>
+            </xsl:if>
+        </xsl:if>
+        <!-- createurs -->
+        <!-- on traite d'abord les auteurs / editeurs  -->
+        <xsl:if test="(tei:monogr[1]/tei:author or tei:monogr[1]/tei:editor or tei:monogr[1]/tei:respStmt) and not(@type='dictionaryEntry')">
+            <xsl:for-each select="tei:monogr[1]/tei:author|tei:monogr[1]/tei:editor">
+                <xsl:call-template name="makeCreator">
+                    <xsl:with-param name="creator">
+                        <xsl:sequence select="."/>
+                    </xsl:with-param>
+                    <xsl:with-param name="separator">
+                        <xsl:choose>
+                            <xsl:when test="position() = last()"/>
+                            <xsl:when test="position() = last()-1">
+                                <xsl:text> et </xsl:text>
+                            </xsl:when>
+                            <xsl:when test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:when>
+                        </xsl:choose>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </xsl:for-each>
+            <!-- on traite ensuite les contributeurs  -->
+            <xsl:for-each-group select="tei:monogr[1]/tei:respStmt" group-by="tei:resp">
+                <xsl:text> (</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="current-grouping-key() ='translator'">
+                        <xsl:text>trad.&#160;</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="current-grouping-key() ='contributor'">
+                        <xsl:text>avec </xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:for-each select="current-group()">
+                    <xsl:apply-templates select="."/>
+                    <xsl:choose>
+                        <xsl:when test="position() = last()"/>
+                        <xsl:when test="position() = last()-1">
+                            <xsl:text> et </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="position() != last()">
+                            <xsl:text>, </xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:for-each>
+                <xsl:text>)</xsl:text>
+            </xsl:for-each-group>
+            <!-- separateur -->
+            <xsl:text>, </xsl:text>
+        </xsl:if>
+        <!-- titre d'ensemble -->
+        <xsl:if test="tei:monogr[2]">
+            <xsl:apply-templates select="tei:monogr[2]/tei:title[@level='m']"/>
+            <!-- separateur -->
+            <xsl:text>. </xsl:text>
+            <!-- numero du volume -->
+            <xsl:if test="(@type='book' or @type='thesis') and tei:monogr/tei:biblScope[@unit='volume'] and tei:monogr[1]/tei:biblScope[@unit='volume']">
+                <xsl:apply-templates select="tei:monogr[1]/tei:biblScope[@unit='volume']"/>
+                <!-- separateur -->
+                <xsl:text>, </xsl:text>
+            </xsl:if>
+        </xsl:if>
+        <!-- titre du volume ou du périodique-->
+        <xsl:choose>
+            <xsl:when test="@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection'">
+                <xsl:choose>
+                    <xsl:when test="tei:monogr[1]/tei:title[@type='short']">
+                        <xsl:apply-templates select="tei:monogr[1]/tei:title[@type='short']"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="tei:monogr[1]/tei:title[not(@type='short')]"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+                <!-- separateur -->
             </xsl:when>
             <xsl:otherwise>
-                <xsl:text>NA</xsl:text>
+                <xsl:if test="tei:monogr[1]/tei:title[@level='m']">
+                    <xsl:apply-templates select="tei:monogr[1]/tei:title[not(@type='short')]"/>
+                </xsl:if>
+                <!-- separateur -->
             </xsl:otherwise>
         </xsl:choose>
-    </xsl:template>
-    <xsl:template match="tei:biblStruct" mode="plat">
-        <!-- affiche la référence longue sans survol -->
-        <xsl:apply-templates select="tei:monogr[1]" mode="plat"/>
-        <xsl:if test="series">
-            <xsl:call-template name="series"/>
-            <xsl:text>,</xsl:text>
+        <!-- edition -->
+        <xsl:if test="tei:monogr[1]/tei:edition">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:monogr[1]/tei:edition"/>
         </xsl:if>
-        <xsl:call-template name="publicationDate"/>
-        <!-- #TODO : nombre de volumes : ajouter le champ en TEI via le translator zotero -->
-    </xsl:template>
-    <xsl:template match="tei:biblStruct" mode="longRef">
-        <!-- affiche la référence longue avec la référence abrégée au survol -->
-        <xsl:apply-templates select="tei:monogr[1]" mode="longRef"/>
-        <xsl:if test="series">
-            <xsl:call-template name="series"/>
-            <xsl:text>,</xsl:text>
+        <!-- meeting -->
+        <xsl:if test="@type='conferencePaper' and tei:monogr[1]/tei:meeting">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:monogr[1]/tei:meeting"/>
         </xsl:if>
-        <xsl:call-template name="publicationDate"/>
-        <!-- #TODO : nombre de volumes : ajouter le champ en TEI via le translator zotero -->
+        <!-- collection -->
+        <xsl:if test="tei:series">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:series"/>
+        </xsl:if>
+        <!-- numéro de volume -->
+        <xsl:if test="(@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection') and tei:monogr[1]/tei:biblScope[@unit='volume']">
+            <xsl:apply-templates select="tei:monogr[1]/tei:biblScope[@unit='volume']"/>
+        </xsl:if>
+        <!-- année de publication -->
+        <xsl:if test="tei:monogr[1]/tei:imprint/tei:date">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:monogr[1]/tei:imprint/tei:date"/>
+        </xsl:if>
+        <!-- nombre de volumes -->
+        <xsl:if test="tei:monogr[1]/tei:extent">
+            <!-- separateur -->
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:monogr[1]/tei:extent"/>
+        </xsl:if>
+        <!-- pagination -->
+        <xsl:if test="@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection'">
+            <xsl:apply-templates select="tei:monogr/tei:biblScope[@unit='pp']"/>
+        </xsl:if>
+        <!-- note -->
+        <xsl:if test="descendant::tei:note">
+            <xsl:text> </xsl:text>
+            <xsl:text>[</xsl:text>
+            <xsl:apply-templates select="descendant::tei:note"/>
+            <xsl:text>]</xsl:text>
+        </xsl:if>
     </xsl:template>
-    <xsl:template match="tei:biblStruct" mode="shortRef">
-        <!-- affiche la référence abrégée avec la référence longue au survol -->
-        <li>
+    <xsl:template match="tei:biblStruct" mode="allege">
+        <!-- s'il y a article -->
+        <xsl:if test="tei:analytic">
+            <!-- auteur(s) de l'article -->
+            <xsl:for-each select="tei:analytic/tei:author">
+                <xsl:call-template name="makeCreator">
+                    <xsl:with-param name="creator">
+                        <xsl:sequence select="."/>
+                    </xsl:with-param>
+                    <xsl:with-param name="separator">
+                        <xsl:choose>
+                            <xsl:when test="position() = last()-1">
+                                <xsl:text> et </xsl:text>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:text>, </xsl:text>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </xsl:for-each>
+            <!-- 's.v.' si @type='dictionaryEntry' -->
+            <xsl:if test="@type='dictionaryEntry'">
+                <span class="italics">
+                    <xsl:text>s.&#8239;v.&#160;</xsl:text>
+                </span>
+            </xsl:if>
+            <!-- titre de l'article -->
+            <xsl:text> &#171;&#8239;</xsl:text>
+            <xsl:apply-templates select="tei:analytic/tei:title[@level='a'][not(@type='short')]"/>
+            <xsl:text>&#8239;&#187;</xsl:text>
+            <!-- separateur -->
+            <xsl:text>, </xsl:text>
+            <!-- in -->
+            <xsl:if test="@type='bookSection' or @type='conferencePaper'">
+                <xsl:value-of select="$in"/>
+            </xsl:if>
+        </xsl:if>
+        <!-- createurs -->
+        <!-- on traite d'abord les auteurs / editeurs  -->
+        <xsl:if test="(tei:monogr[1]/tei:author or tei:monogr[1]/tei:editor or tei:monogr[1]/tei:respStmt) and not(@type='dictionaryEntry')">
+            <xsl:for-each select="tei:monogr[1]/tei:author|tei:monogr[1]/tei:editor">
+                <xsl:call-template name="makeCreator">
+                    <xsl:with-param name="creator">
+                        <xsl:sequence select="."/>
+                    </xsl:with-param>
+                    <xsl:with-param name="separator">
+                        <xsl:choose>
+                            <xsl:when test="position() = last()"/>
+                            <xsl:when test="position() = last()-1">
+                                <xsl:text> et </xsl:text>
+                            </xsl:when>
+                            <xsl:when test="position() != last()">
+                                <xsl:text>, </xsl:text>
+                            </xsl:when>
+                        </xsl:choose>
+                    </xsl:with-param>
+                </xsl:call-template>
+            </xsl:for-each>
+            <!-- on traite ensuite les contributeurs  -->
+            <xsl:for-each-group select="tei:monogr[1]/tei:respStmt" group-by="tei:resp">
+                <xsl:text> (</xsl:text>
+                <xsl:choose>
+                    <xsl:when test="current-grouping-key() ='translator'">
+                        <xsl:text>trad.&#160;</xsl:text>
+                    </xsl:when>
+                    <xsl:when test="current-grouping-key() ='contributor'">
+                        <xsl:text>avec </xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+                <xsl:for-each select="current-group()">
+                    <xsl:apply-templates select="."/>
+                    <xsl:choose>
+                        <xsl:when test="position() = last()"/>
+                        <xsl:when test="position() = last()-1">
+                            <xsl:text> et </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="position() != last()">
+                            <xsl:text>, </xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:for-each>
+                <xsl:text>)</xsl:text>
+            </xsl:for-each-group>
+            <!-- separateur -->
+            <xsl:text>, </xsl:text>
+        </xsl:if>
+        <!-- titre d'ensemble -->
+        <xsl:if test="tei:monogr[2]">
+            <xsl:apply-templates select="tei:monogr[2]/tei:title[@level='m']"/>
+            <!-- separateur -->
+            <xsl:text>. </xsl:text>
+            <!-- numero du volume -->
+            <xsl:apply-templates select="tei:monogr[2]/tei:biblScope[@unit='volume']"/>
+        </xsl:if>
+        <!-- titre du volume ou du périodique-->
+        <xsl:choose>
+            <xsl:when test="@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection'">
+                <xsl:choose>
+                    <xsl:when test="tei:monogr[1]/tei:title[@type='short']">
+                        <xsl:apply-templates select="tei:monogr[1]/tei:title[@type='short']"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates select="tei:monogr[1]/tei:title[not(@type='short')]"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:if test="tei:monogr[1]/tei:title[@level='m']">
+                    <xsl:apply-templates select="tei:monogr[1]/tei:title[not(@type='short')]"/>
+                </xsl:if>
+            </xsl:otherwise>
+        </xsl:choose>
+        <!-- edition -->
+        <xsl:if test="tei:monogr[1]/tei:edition/text()">
+            <!-- si le premier caractère est un chiffre, on l'affiche en exposant pour indiquer le numéro d'édition -->
+            <!-- si c'est autre chose, on affiche un message d'alerte -->
+            <!-- à documenter dans le guide de saisie Zotero -->
+            <xsl:variable name="num">
+                <xsl:value-of select="substring(tei:monogr[1]/tei:edition/text(), 1, 1)"/>
+            </xsl:variable>
             <xsl:choose>
-                <xsl:when test="@type='book'">
-                    <xsl:variable name="id" select="@xml:id"/>
-                    <xsl:variable name="linkUri" select="tei:idno[@type='zotero-uri']"/>
-                    <xsl:variable name="longRef">
-                        <xsl:apply-templates select="tei:monogr[1]"/>
-                        <xsl:if test="series">
-                            <xsl:call-template name="series"/>
-                            <xsl:text>,</xsl:text>
-                        </xsl:if>
-                        <xsl:call-template name="publicationDate"/>
-                    </xsl:variable>
-                    <!--  <xsl:variable name="test" select="translate(normalize-unicode($longRef),'áàâäéèêëíìîïóòôöúùûü','aaaaeeeeiiiioooouuuu')"/>-->
-                    <span class="shortRef">
-                        <a href="{$linkUri}" title="{$longRef}">
-                            <xsl:value-of select="tei:monogr[1]/tei:title[@type='short']"/>
-                        </a>
-                    </span>
+                <xsl:when test="contains('0123456789',$num)">
+                    <sup>
+                        <xsl:value-of select="$num"/>
+                    </sup>
                 </xsl:when>
+                <xsl:otherwise>
+                    <xsl:apply-templates select="tei:monogr[1]/tei:edition"/>
+                </xsl:otherwise>
             </xsl:choose>
-        </li>
+        </xsl:if>
+        <!-- meeting -->
+        <xsl:if test="@type='conferencePaper' and tei:monogr[1]/tei:meeting">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:monogr[1]/tei:meeting"/>
+        </xsl:if>
+        <!-- collection -->
+        <!-- pas de collection -->
+        <!-- numéro de volume -->
+        <xsl:if test="(@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection') and tei:monogr/tei:biblScope[@unit='volume']">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:monogr/tei:biblScope[@unit='volume']"/>
+        </xsl:if>
+        <!-- année de publication -->
+        <xsl:if test="tei:monogr[1]/tei:imprint/tei:date">
+            <xsl:text> (</xsl:text>
+            <xsl:apply-templates select="tei:monogr[1]/tei:imprint/tei:date"/>
+            <xsl:text>)</xsl:text>
+        </xsl:if>
+        <!-- pas de extent (nbr volumes) -->
+        <!-- pagination -->
+        <xsl:if test="(@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection') and tei:monogr/tei:biblScope[@unit='pp']">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="tei:monogr/tei:biblScope[@unit='pp']"/>
+        </xsl:if>
+        <!-- note -->
+        <xsl:if test="descendant::tei:note">
+            <xsl:text>, </xsl:text>
+            <xsl:apply-templates select="descendant::tei:note"/>
+        </xsl:if>
+    </xsl:template>
+    <xsl:template name="pointFinal">
+        <xsl:param name="content"/>
+        <xsl:if test="not(ends-with($content,'.'))">
+            <!-- point final -->
+            <xsl:text>.</xsl:text>
+        </xsl:if>
+    </xsl:template>
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <xsl:template match="tei:biblStruct" mode="lemme">
+        <!-- s'il y a un titre abrégé, on construit la référence courte, sinon rien -->
+        <!-- le titre abrégé -->
+        <span class="lemme">
+            <xsl:choose>
+                <xsl:when test="@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection'">
+                    <xsl:choose>
+                        <xsl:when test="tei:analytic/tei:title[@level='a'][@type='short']">
+                            <xsl:apply-templates select="tei:analytic/tei:title[@level='a'][@type='short']"/>
+                            <!-- separateur -->
+                            <xsl:text>, </xsl:text>
+                            <!-- citedRange -->
+                            <xsl:text>p.&#8239;ou n°&#8239;000...</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise/>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="@type='book' or @type='thesis'">
+                            <xsl:if test="tei:monogr/tei:title[@level='m'][@type='short']">
+                                <xsl:variable name="string">
+                                    <xsl:apply-templates select="tei:monogr/tei:title[@level='m'][@type='short']"/>
+                                </xsl:variable>
+                                <xsl:value-of select="concat($string,', ')"/>
+                                <!-- citedRange -->
+                                <xsl:text>p.&#8239;ou n°&#8239;000...</xsl:text>
+                            </xsl:if>
+                        </xsl:when>
+                        <xsl:otherwise/>
+                    </xsl:choose>
+                </xsl:otherwise>
+            </xsl:choose>
+        </span>
     </xsl:template>
     <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
     <!-- templates de surcharge de iglouvre-biblio-commun.xsl -->
     <xsl:template match="tei:forename">
-        <xsl:value-of select="concat(upper-case(substring(.,1,1)),'. ')"/>
+        <xsl:value-of select="concat(upper-case(substring(.,1,1)),'.&#160;')"/>
     </xsl:template>
 </xsl:stylesheet>

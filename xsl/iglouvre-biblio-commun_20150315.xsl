@@ -41,74 +41,91 @@ exemples à faire
     <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
     <!-- +++++++++++++++++++++ éléments non affichés -->
     <xsl:template match="idno"/>
-    <xsl:template match="tei:respStmt/tei:resp"/>
+    <xsl:template match="//tei:respStmt/tei:resp"/>
     <!-- +++++++++++++++++++++ Templates nommés -->
+    <!-- +++++++++++++++++++++ ================ -->
     <xsl:template name="creators">
         <xsl:param name="context"/>
-        <!-- 
-        <xsl:text>%%</xsl:text>
-        <xsl:value-of select="$context"/>
-        <xsl:text>**</xsl:text>
-         -->
-        <!-- <xsl:for-each select="$context/tei:author|$context/tei:editor|$context/tei:respStmt"> -->
-        <xsl:for-each select="tei:author|tei:editor|tei:respStmt">
-            <xsl:variable name="string">
-                <xsl:apply-templates/>
-            </xsl:variable>
-            <xsl:variable name="role">
-                <xsl:choose>
-                    <xsl:when test="@role ='scientificEditor'or @role = 'editor'">
-                        <xsl:text> (ed.)</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="@role ='seriesEditor'">
-                        <xsl:text> (dir.)</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="contains(.,'translator')">
-                        <xsl:text> (trad.)</xsl:text>
-                    </xsl:when>
-                    <xsl:otherwise/>
-                </xsl:choose>
-            </xsl:variable>
-            <!-- 1/ Name and role -->
-            <xsl:choose>
-                <!-- contributor role in resp-->
-                <xsl:when test="@type= 'contributor'">
-                    <xsl:text> (avec </xsl:text>
-                    <xsl:value-of select="normalize-space($string)"/>
-                    <!-- todo : ajouter récursion si on a plusieurs collaborateurs -->
-                    <xsl:text>)</xsl:text>
-                </xsl:when>
-                <!-- general case -->
-                <xsl:otherwise>
-                    <!-- <xsl:value-of select="normalize-space(concat($string, ' ', $role))"/> -->
-                    <xsl:variable name="result" select="$string"/>
-                    <xsl:value-of select="normalize-space(concat(normalize-space($result),' ',$role))"/>
-                </xsl:otherwise>
-            </xsl:choose>
-            <!-- 2/ separator -->
-            <!-- 'and' or 'comma' separator -->
-            <xsl:choose>
-                <xsl:when test="count(following-sibling::tei:*[local-name()='author' or local-name()='editor' or local-name()='respStmt']) = 1">
-                    <xsl:text> et </xsl:text>
-                </xsl:when>
-                <xsl:when test="count(following-sibling::tei:*[local-name()='author' or local-name()='editor' or local-name()='respStmt']) != 0">
-                    <xsl:text>, </xsl:text>
-                </xsl:when>
-            </xsl:choose>
+        <!-- <xsl:value-of select="$context"></xsl:value-of> -->
+        <xsl:for-each select="tei:author|tei:editor">
+            <xsl:text>test</xsl:text>
+            <xsl:call-template name="makeCreator">
+                <xsl:with-param name="creator">
+                    <xsl:apply-templates select="."/>
+                </xsl:with-param>
+                <xsl:with-param name="separator">
+                    <xsl:choose>
+                        <xsl:when test="position() = last()"/>
+                        <xsl:when test="position() = last()-1">
+                            <xsl:text> et </xsl:text>
+                        </xsl:when>
+                        <xsl:when test="position() != last()">
+                            <xsl:text>, </xsl:text>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:with-param>
+            </xsl:call-template>
         </xsl:for-each>
+        <xsl:for-each-group select="tei:respStmt" group-by="tei:resp">
+            <xsl:text> (</xsl:text>
+            <xsl:choose>
+                <xsl:when test="current-grouping-key() ='translator'">
+                    <xsl:text>trad. </xsl:text>
+                </xsl:when>
+                <xsl:when test="current-grouping-key() ='contributor'">
+                    <xsl:text>avec </xsl:text>
+                </xsl:when>
+            </xsl:choose>
+            <xsl:for-each select="current-group()">
+                <xsl:apply-templates select="."/>
+                <xsl:choose>
+                    <xsl:when test="position() = last()"/>
+                    <xsl:when test="position() = last()-1">
+                        <xsl:text> et </xsl:text>
+                    </xsl:when>
+                    <xsl:when test="position() != last()">
+                        <xsl:text>, </xsl:text>
+                    </xsl:when>
+                </xsl:choose>
+            </xsl:for-each>
+            <xsl:text>)</xsl:text>
+        </xsl:for-each-group>
+    </xsl:template>
+    <xsl:template name="makeCreator">
+        <xsl:param name="creator"/>
+        <xsl:param name="separator"/>
+        <xsl:choose>
+            <xsl:when test="local-name()='author'">
+                <xsl:apply-templates/>
+                <xsl:value-of select="$separator"/>
+            </xsl:when>
+            <xsl:when test="local-name()='editor' and @role='scientificEditor'">
+                <xsl:apply-templates/>
+                <xsl:text> (ed.)</xsl:text>
+                <xsl:value-of select="$separator"/>
+            </xsl:when>
+            <xsl:when test="local-name()='editor' and @role='seriesEditor'">
+                <xsl:apply-templates/>
+                <xsl:text> (dir.)</xsl:text>
+                <xsl:value-of select="$separator"/>
+            </xsl:when>
+        </xsl:choose>
+        <!-- 'and' or 'comma' separator -->
     </xsl:template>
     <xsl:template name="publicationDate">
         <!-- virgule avant s'affiche aussi après ???
         <xsl:text>, </xsl:text>
         -->
         <xsl:param name="context"/>
+        <!-- à revoir : supprimer ? -->
         <!-- <xsl:value-of select="name($context)"/>        -->
         <xsl:value-of select="tei:imprint/tei:date/@when"/>
     </xsl:template>
     <xsl:template name="series">
+        <xsl:variable name="atts" select="concat('title',' ',../tei:series/tei:title/@level)"/>
         <!-- virgule avant -->
         <xsl:text>, </xsl:text>
-        <span class="title">
+        <span class="{$atts}">
             <xsl:value-of select="../tei:series/tei:title"/>
         </span>
         <xsl:text> </xsl:text>
@@ -118,7 +135,8 @@ exemples à faire
     </xsl:template>
     <xsl:template name="title">
         <!-- virgule avant -->
-        <span class="title">
+        <xsl:variable name="atts" select="concat('title',' ', @level)"/>
+        <span class="{$atts}">
             <xsl:choose>
                 <xsl:when test="tei:title[not(@type='short')]">
                     <xsl:for-each select="tei:title[not(@type='short')]">
@@ -150,9 +168,26 @@ exemples à faire
     <xsl:template name="date">
         <xsl:apply-templates/>
     </xsl:template>
+    <xsl:template match="tei:edition">
+        <span class="edition">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
     <xsl:template match="tei:editor">
+        <xsl:variable name="role">
+            <xsl:if test="@role ='scientificEditor' or @role = 'editor'">
+                <xsl:text> (ed.)</xsl:text>
+            </xsl:if>
+            <xsl:if test="@role ='seriesEditor'">
+                <xsl:text> (dir.)</xsl:text>
+            </xsl:if>
+            <xsl:if test="contains(.,'translator')">
+                <xsl:text> (trad.)</xsl:text>
+            </xsl:if>
+        </xsl:variable>
         <span class="editor">
             <xsl:apply-templates/>
+            <xsl:value-of select="$role"/>
         </span>
     </xsl:template>
     <xsl:template match="tei:forename">
@@ -261,102 +296,42 @@ exemples à faire
             </xsl:non-matching-substring>
         </xsl:analyze-string>
     </xsl:template>
-    <!-- +++++++++++++++++++++++++++++++++ monographies -->
-    <xsl:template match="tei:monogr[1]">
-        <xsl:if test="tei:author or tei:editor or tei:respStmt">
-            <xsl:call-template name="creators"/>
-        </xsl:if>
+    <!-- ++++++++++++++++++++++  template match -->
+    <!-- +++++++++++++++++++++ ================ -->
+    <xsl:template match="tei:monogr">
         <xsl:call-template name="title"/>
-        <xsl:if test="../tei:series">
-            <xsl:call-template name="series"/>
-            <xsl:text>,</xsl:text>
-        </xsl:if>
-        <xsl:text>, </xsl:text>
-        <xsl:call-template name="publicationDate"/>
-        <!-- #TODO ajouter tpl nombre volumes -->
     </xsl:template>
-    <xsl:template match="tei:monogr[1]" mode="longRef">
-        <xsl:if test="tei:author or tei:editor or tei:respStmt">
-            <xsl:call-template name="creators"/>
-        </xsl:if>
-        <xsl:variable name="shortRef" select="tei:title[@type='short']"/>
-        <a href="#" title="{$shortRef}">
-            <xsl:call-template name="title"/>
-        </a>
-        <xsl:if test="../tei:series">
-            <xsl:call-template name="series"/>
-        </xsl:if>
-        <xsl:text>, </xsl:text>
-        <xsl:call-template name="publicationDate"/>
-        <!-- #TODO ajouter tpl nombre volumes -->
-    </xsl:template>
-    <xsl:template match="tei:monogr[1]" mode="plat">
-        <!-- sans lien -->
-        <xsl:if test="tei:author or tei:editor or tei:respStmt">
-            <xsl:call-template name="creators">
-                <xsl:with-param name="context">
-                   
-                        <xsl:sequence select="preceding-sibling::tei:monogr[1]"/>
-                    
-                </xsl:with-param>
-            </xsl:call-template>
-        </xsl:if>
-        <xsl:call-template name="title"/>
-        <xsl:if test="../tei:series">
-            <xsl:call-template name="series"/>
-        </xsl:if>
-        <xsl:text>, </xsl:text>
-        <xsl:call-template name="publicationDate"/>
-        <!-- #TODO ajouter tpl nombre volumes -->
-    </xsl:template>
-    <xsl:template match="tei:monogr[2]">
-        <!-- cas des titres d'ensemble -->
-        <xsl:variable name="context">
-            <xsl:sequence select="preceding-sibling::tei:monogr[1]"/>
-        </xsl:variable>
-        <xsl:if test="../tei:monogr[1]/tei:author or ../tei:monogr[1]/tei:editor or ../tei:monogr[1]/tei:respStmt">
-            <xsl:call-template name="creators">
-                <xsl:with-param name="context" select="$context"/>
-            </xsl:call-template>
-        </xsl:if>
-        <xsl:apply-templates select="tei:monogr[2]"/>
-        <xsl:text>. </xsl:text>
-        <xsl:apply-templates select="tei:monogr/tei:biblScope[@unit='vol']"/>
-        <xsl:call-template name="title"/>
-        <xsl:if test="../tei:series">
-            <xsl:call-template name="series"/>
-        </xsl:if>
-        <xsl:text>, </xsl:text>
-        <xsl:call-template name="publicationDate">
-            <xsl:with-param name="context" select="$context"/>
-        </xsl:call-template>
-    </xsl:template>
-    <xsl:template match="tei:surname">
-        <xsl:value-of select="concat(upper-case(substring(.,1,1)),substring(., 2))"/>
-    </xsl:template>
-    
-    <!-- test template pour gérer les <i>italiques</i> -->
-    <!-- 
-    <xsl:template match="comment()" mode="zoteroItalics">
-        <xsl:sequence select="."/>
-    </xsl:template>
-    <xsl:template match="br" mode="zoteroItalics">
-        <xsl:sequence select="."/>
-    </xsl:template>
-     -->
+    <!-- traitement des <i> et </i> dans les champs zotero pour gérer les italiques -->
     <xsl:template match="*" mode="zoteroItalics">
         <xsl:element name="{name()}">
             <xsl:copy-of select="@*"/>
             <xsl:apply-templates mode="zoteroItalics"/>
         </xsl:element>
     </xsl:template>
-    
-
-    
     <xsl:template match="text()" mode="zoteroItalics">
-        
-        
+        <xsl:analyze-string select="." regex="(&lt;i&gt;)(.*)(&lt;/i&gt;)">
+            <xsl:matching-substring>
+                <span class="title">
+                    <xsl:value-of select="regex-group(2)"/>
+                </span>
+            </xsl:matching-substring>
+            <xsl:non-matching-substring>
+                <xsl:value-of select="."/>
+            </xsl:non-matching-substring>
+        </xsl:analyze-string>
     </xsl:template>
-    
-    
+    <xsl:template match="*" mode="codeXML">
+        <br/>
+        <xsl:text>&lt;</xsl:text>
+        <xsl:value-of select="local-name()"/>
+        <xsl:apply-templates select="@*" mode="codeXML"/>
+        <xsl:text>&gt;</xsl:text>
+        <xsl:apply-templates mode="codeXML"/>
+    </xsl:template>
+    <xsl:template match="@*" mode="codeXML">
+        <xsl:value-of select="concat(' ',local-name(), '=', '&quot;',.,'&quot;')"/>
+    </xsl:template>
+    <xsl:template match="text()" mode="codeXML">
+        <xsl:value-of select="."/>
+    </xsl:template>
 </xsl:stylesheet>
