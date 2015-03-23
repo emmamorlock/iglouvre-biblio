@@ -1,15 +1,20 @@
-# iglouvre-biblio
+# IGLouvre-biblio
 
-dossier de travail du projet pour la gestion de la bibliographie maître et le contrôle qualité
+Dossier de travail du projet IGLouvre : export et contrôle qualité des données
 ----------------------------------------------------------------------------------------------
+
+Ce dossier contient :
+- un translator Zotero (TEI-iglouvre.js) pour l'export des donnéees
+- un jeu de feuilles de styles XSL pour la transformation des données bibiliographiques dans les différentes formes html utilisées pour le projet (iglouvre-biblio-controle.xsl et iglouvre-biblio-commun.xsl)
 
 Etapes recommandées :
 
-- exporter les données depuis zotero-standalone, avec le translator "TEI-iglouvre.js"
-- vérifier et valider dans OxygenEditor
-- importer dans BaseX, en nommant la base de données :"igl_bibliography"
-- utiliser les requêtes XQuery via l'interface GUI de baseX (il y a une requête pour chaque type de fiche zotero // biblStruct/@type)
-- modifier les tris ou les styles CSS pour adapter les requêtes aux besoins du contrôle
-- pour modifier la bibliographie zotero source, utiliser le lien "vers Zotero"
+1. Installation du fichier TEI-iglouvre.js dans le dossier "translator" de votre installation de Zotero standalone
+2. Copier le dossier XSL sur un dossier de votre disque dur
+3. Exporter les données bibliographiques depuis zotero-standalone au format TEI, en utilisant le translator "TEI-iglouvre.js" (sélectionner les fiches Zotero qui vous intéressent, faire un clic-droit pour accéder au menu "Exporter" puis sélectionner le format d'export "TEI-iglouvre"
+4. Ouvre le fichier TEI/XML ainsi exporter avec Oxygen
+5. Créez un scénario de transformation (cf. http://www.oxygenxml.com/demo/Validation_Scenario.html) en pointant sur iglouvre-biblio-controle.xsl) et en utilisant le processeur Saxon HE...
+
+
 
 
