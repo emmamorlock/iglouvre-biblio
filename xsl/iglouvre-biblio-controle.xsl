@@ -19,6 +19,8 @@
     <xsl:template match="tei:TEI">
         <html>
             <head>
+                <title>IGLouvre - biblio - contrôle qualité</title>
+                <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
                 <!-- google fonts -->
                 <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Pro|Lora|Cantarell|Droid+Serif|Inconsolata|Yanone+Kaffeesatz" rel="stylesheet" type="text/css"/>
                 <!--  -->
