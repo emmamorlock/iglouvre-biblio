@@ -16,5 +16,9 @@ Etapes recommandées :
 5. Créez un scénario de transformation (cf. http://www.oxygenxml.com/demo/Validation_Scenario.html) en pointant sur iglouvre-biblio-controle.xsl) et en utilisant le processeur Saxon HE...
 
 
+--------
+--------
+Cf. https://www.zotero.org/support/dev/translators/functions
+
 
 
