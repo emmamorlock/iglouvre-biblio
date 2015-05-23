@@ -19,7 +19,7 @@
 		"Full TEI Document": true,
 		"Export Collections": false
 	},
-	"lastUpdated": "2015-03-19 00:00:00"
+	"lastUpdated": "2015-05-23 00:00:00"
 }
 
 
@@ -487,15 +487,22 @@ function generateItem(item, teiDoc) {
         imprint.appendChild(publisher);
     }
     if(item.date){
-    // #EM à revoir
+        // #EM
         var date = Zotero.Utilities.strToDate(item.date);
+        var dateStr = item.date;
         var imprintDate = teiDoc.createElementNS(ns.tei, "date");
-       
-        if(date.year) {
-            imprintDate.setAttribute("when", date.year);
+        // #EM 2015-05-23: deal with interval dates
+        if(dateStr.contains("-")) {
+            var from = dateStr.match(/^\d{4}/);
+            var to = dateStr.match(/\d{4}$/);
+            imprintDate.setAttribute("from", from);
+            if (dateStr.match(/^\d{4}-\d{4}$/)){
+                var to = dateStr.match(/\d{4}$/);
+                imprintDate.setAttribute("to", to);
+            }
         }
         else{
-            imprintDate.setAttribute("when", date);
+            imprintDate.setAttribute("from", date);
         }
         imprint.appendChild(imprintDate);
     }
