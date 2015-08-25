@@ -6,18 +6,28 @@
             <xd:p><xd:b>Created on:</xd:b> March 23, 2015</xd:p>
             <xd:p><xd:b>Author:</xd:b> Emmanuelle Morlock</xd:p>
             <xd:p>IGLouvre project's stylesheet: Transformation of bibliographic data for quality control.</xd:p>
+            <xd:p><xd:b>Last modified on:</xd:b> August 25, 2015</xd:p>
         </xd:desc>
     </xd:doc>
-    <xsl:output indent="yes" method="xml" omit-xml-declaration="yes"/>
+    
     <!-- todo : nombre de volumes -->
-    <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
+   
+    <xsl:output method="xml"
+        encoding="UTF-8"
+        indent="yes"
+        omit-xml-declaration="no"
+        standalone="yes"
+        doctype-public="-//W3C//DTD XHTML 1.0 Strict//EN"
+        doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+    
     <!-- +++++++++++++++++++++ paramètres -->
     <xsl:param name="in">
         <xsl:text>in </xsl:text>
     </xsl:param>
     <!-- +++++++++++++++++++++ Structure de la page -->
     <xsl:template match="tei:TEI">
-        <html>
+      
+        <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
                 <title>IGLouvre - biblio - contrôle qualité</title>
                 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />

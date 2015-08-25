@@ -488,8 +488,9 @@ function generateItem(item, teiDoc) {
     }
     if(item.date){
         // #EM
-        var date = Zotero.Utilities.strToDate(item.date);
         var dateStr = item.date;
+        // var date = Zotero.Utilities.strToDate(item.date);
+        // #EM : produit error dans ce contexte. Pas compris pourquoi.
         var imprintDate = teiDoc.createElementNS(ns.tei, "date");
         // #EM 2015-05-23: deal with interval dates
         if(dateStr.contains("-")) {
@@ -502,7 +503,7 @@ function generateItem(item, teiDoc) {
             }
         }
         else{
-            imprintDate.setAttribute("from", date);
+            imprintDate.setAttribute("when", item.date);
         }
         imprint.appendChild(imprintDate);
     }
