@@ -197,7 +197,17 @@
                 </span>
             </xsl:matching-substring>
             <xsl:non-matching-substring>
-                <xsl:value-of select="."/>
+                <!-- #EM ajout 20150827 : prise en compte des <sup>-->
+                <xsl:analyze-string select="." regex="(&lt;sup&gt;)(.*)(&lt;/sup&gt;)">
+                    <xsl:matching-substring>
+                        <sup>
+                            <xsl:value-of select="regex-group(2)"/>
+                        </sup>
+                    </xsl:matching-substring>
+                    <xsl:non-matching-substring>
+                        <xsl:value-of select="."/>
+                    </xsl:non-matching-substring>
+                </xsl:analyze-string>
             </xsl:non-matching-substring>
         </xsl:analyze-string>
     </xsl:template>

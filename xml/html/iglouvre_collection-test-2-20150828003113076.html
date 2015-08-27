@@ -1,0 +1,2337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <title>IGLouvre - biblio - contrôle qualité</title>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+      <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Pro|Lora|Cantarell|Droid+Serif|Inconsolata|Yanone+Kaffeesatz"
+            rel="stylesheet"
+            type="text/css"/>
+      <style type="text/css"><!--
+                     
+                    body{
+                        font-family:Inconsolata, sans-serif;
+                        font-size:12px;
+                    }
+                    body > h2 {margin:3em 0 1.8em 0}
+                    h2 {text-align:center}
+                    table{
+                        border-collapse:collapse;
+                        border-spacing:2px;
+                        border-color:gray;
+                        width:85%;
+                        margin-left:auto;
+                        margin-right:auto;
+                    }
+                    h2, th{
+                        font-family:'Yanone Kaffesatz', sans-serif;font-size:2em;
+                    }
+                    table, th, td{
+                        border:1px solid #98bf21;
+                        font-family:Inconsolata,sans-serif;
+                    }
+                    thead {font-weight:bold;color:blueviolet;}
+                    td{
+                        text-align:left;                        
+                        padding:1.5em 1em;
+                        font-family:Cantarell,serif;
+                    }
+                    td{
+                        height:50px;
+                        vertical-align:top;
+                    }
+                    td.note{
+                        word-wrap:break-word;
+                        overflow:hidden;  
+                        font-size:.75em;                       
+                    } 
+                    td.longue {font-family:Cantarell,sans-serif;max-width:30em;}
+
+                    td.allege {font-family:Cantarell,sans-serif;max-width:30em;}
+                    
+                    td.lemme {font-family:Cantarell,sans-serif;max-width:30em;min-width:15em;}
+                    
+                    td.liens {max-width:10em;}
+                   
+                    tr:nth-child(odd){
+                        background-color:#EAF2D3;
+                    }
+                    tr:nth-child(even){
+                        background-color:white;
+                    }
+                    span.resp:nth-child(odd){
+                        display:block;
+                        color:maroon;
+                    }
+                    span.resp:nth-child(even){
+                        display:block;
+                        color:green;
+                    }
+                    span.role{
+                        font-size:75%;
+                    }
+                    span.title, span.italics, span.allege .meeting{
+                        font-style:italic;
+                    }                                      
+                     span.s, span.a {
+                        font-style:normal;
+                    }                    
+                    span.title > span.title{
+                        font-style:normal;
+                    }
+                     span.s > span.title{
+                        font-style:italic;
+                    }
+                     span.balise, span.alerte {
+                        color:Tomato;
+                    }
+                    sup {font-size:.7em; font-style:italic;margin-left: -.2em;}
+                    
+                    .allege .meeting{font-style:italic;}
+                    
+                     
+                    /* ************************ */
+                    /* à modifier selon confort 
+                    / ************************** */
+                    
+                    .test {color:silver}
+                    .normal {color:black;}
+                    .s {color:VioletRed}
+                    .ensemble {color:Tomato;}
+                    .lemme {}
+                    .longue .note { color:Fuchsia; }                    
+                    .allege .test, .allege .s, .allege .ensemble {color:black;}
+                  
+                   /* ******************************** */
+                   /* stylage du popup                  */
+                   /* from  pop up from http://websemantics.co.uk/resources/accessible_css3_modal_pop-ups/#links */
+                   /* *********************************** */
+                       .pop-up {position:absolute; top:0; left:-500em}
+                       .pop-up:target {position:absolute; left:0;}
+                       .popBox {
+                            background:AliceBlue;
+                            font-size:.85em;
+                            min-height:50%;
+                            height:auto;
+                            padding: 1.75em; 
+                            text-align:left;
+                            text-indent:3em;
+                            font-family:Consolas,monospace;
+                          
+                            /* alternatively fixed width / height and negative margins from 50% */
+                            position:absolute; left:30%; top:15%;
+                          
+                            z-index:1;
+                            /* padding:1%; removed 17/07/2012 */
+                            border:1px solid #3a3a3a;
+                          
+                            /* CSS3 rounded corners, drop-shadow and opacity fade in */
+                            -moz-border-radius:12px;
+                            border-radius:12px;
+                            -webkit-box-shadow:2px 2px 4px #3a3a3a;
+                            -moz-box-shadow:2px 2px 4px #3a3a3a;
+                            box-shadow:2px 2px 4px #3a3a3a;
+                            opacity:0;
+                            -webkit-transition: opacity 0.5s ease-in-out;
+                            -moz-transition: opacity 0.5s ease-in-out;
+                            -o-transition: opacity 0.5s ease-in-out;
+                            -ms-transition: opacity 0.5s ease-in-out;
+                            transition: opacity 0.5s ease-in-out;
+                          }
+                          :target .popBox {position:fixed; opacity:1;}                         
+                          .popBox:hover {box-shadow:3px 3px 6px #5a5a5a;}
+                          .popBox a.close{position:absolute;right:2em;bottom:2em;}
+                          .popBox h2{text-indent:0;}
+  
+                    
+                    --></style>
+   </head>
+   <body>
+      <h1>IGLouvre - Biblio - Contrôle</h1>
+      <p>Date : 2015-08-28T00:31:13.104+02:00</p>
+      <p>Critères de tri : Titre d'ensemble | Collection | Créateur | Année de publication</p>
+      <h2>Type Zotero : bookSection</h2>
+      <table>
+         <thead>
+            <tr>
+               <td class="longue">Forme longue<br/>
+                  <i>pour bibliographie générale</i>
+               </td>
+               <td class="lemme">Forme courte 1.<br/>
+                  <i>pour lemme ('shortTitle' ∃)</i>
+               </td>
+               <td class="allege">Forme courte 2. <br/>
+                  <i>pour lemme ('shortTitle' ∄)</i>
+               </td>
+               <td class="note">Champ 'note'</td>
+               <td class="liens">Liens</td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr xmlns="">
+               <td class="longue">F. Blass,  « <span class="title a">Die kretischen Inschriften</span> », in H. Collitz (éd.) et F. Bechtel (éd.), <span class="title m">Sammlung der griechischen Dialekt-Inschriften</span>,  III, 2, 1905,  p. 227-423.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">SGDI III,2</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">F. Blass,  « <span class="title a">Die kretischen Inschriften</span> », in H. Collitz (éd.) et F. Bechtel (éd.), <span class="title m">Sammlung der griechischen Dialekt-Inschriften</span>,  III, 2 1905,  p. 227-423.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Blass1905">TEI</a>
+                  <div id="Blass1905" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="bookSection" id="Blass1905"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Die kretischen Inschriften<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>SGDI III,2<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Friedrich<span class="balise">
+                              <br/>&lt;surname&gt;</span>Blass<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Sammlung der griechischen Dialekt-Inschriften<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Hermann<span class="balise">
+                              <br/>&lt;surname&gt;</span>Collitz<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Friedrich<span class="balise">
+                              <br/>&lt;surname&gt;</span>Bechtel<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;date when="1905"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>III, 2<span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>227-423<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ ici le titre abrégé avait été choisi, modification par EM le 16/03/2015 selon recommandations DR, avalisé MB le 17 07<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/QDJFPXXW</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/QDJFPXXW" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">N. Massar,  « <span class="title a">Choix d'inscriptions. La profession médicale dans l'épigraphie</span> », in A. Verbanck-Piérard (éd.), <span class="title m">Au temps d'Hippocrate. Médecine et société en Grèce antique</span>, 1998,  p. 83-97.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">Massar 1998</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">N. Massar,  « <span class="title a">Choix d'inscriptions. La profession médicale dans l'épigraphie</span> », in A. Verbanck-Piérard (éd.), <span class="title m">Au temps d'Hippocrate. Médecine et société en Grèce antique</span> 1998,  p. 83-97.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Massar1998">TEI</a>
+                  <div id="Massar1998" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="bookSection" id="Massar1998"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Choix d'inscriptions. La profession médicale dans l'épigraphie<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>Massar 1998<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Natacha<span class="balise">
+                              <br/>&lt;surname&gt;</span>Massar<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Au temps d'Hippocrate. Médecine et société en Grèce antique<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Annie<span class="balise">
+                              <br/>&lt;surname&gt;</span>Verbanck-Piérard<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Mariemont, Belgique<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Musée royal de Mariemont<span class="balise">
+                              <br/>&lt;date when="1998"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>83-97<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/27FZ5QCZ<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Massar-1998</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/27FZ5QCZ" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">F. Waanders,  « <span class="title a">Aperçu des formes verbales dans les textes mycéniens : remarques sur la morphologie verbale et sur la distribution et les valeurs des thèmes temporels</span> », in P. Carlier (éd.), C. Lamberterie (éd.) et M. Egetmeyer (éd.), <span class="title m">Études mycéniennes 2010. Actes du XIIIe colloque international sur les textes égéens, Sèvres, Paris, Nanterre, 20‑23 septembre 2010</span>, 2012,  p. 563-573.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">Waanders 2012</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">F. Waanders,  « <span class="title a">Aperçu des formes verbales dans les textes mycéniens : remarques sur la morphologie verbale et sur la distribution et les valeurs des thèmes temporels</span> », in P. Carlier (éd.), C. Lamberterie (éd.) et M. Egetmeyer (éd.), <span class="title m">Études mycéniennes 2010. Actes du XIIIe colloque international sur les textes égéens, Sèvres, Paris, Nanterre, 20‑23 septembre 2010</span> 2012,  p. 563-573.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Waanders2012">TEI</a>
+                  <div id="Waanders2012" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="bookSection" id="Waanders2012"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Aperçu des formes verbales dans les textes mycéniens : remarques sur la morphologie verbale et sur la distribution et les valeurs des thèmes temporels<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>Waanders 2012<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Frits<span class="balise">
+                              <br/>&lt;surname&gt;</span>Waanders<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Études mycéniennes 2010. Actes du XIIIe colloque international sur les textes égéens, Sèvres, Paris, Nanterre, 20‑23 septembre 2010<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Pierre<span class="balise">
+                              <br/>&lt;surname&gt;</span>Carlier<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Charles de<span class="balise">
+                              <br/>&lt;surname&gt;</span>Lamberterie<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Markus<span class="balise">
+                              <br/>&lt;surname&gt;</span>Egetmeyer<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Pise, Italie<span class="balise">
+                              <br/>&lt;publisher&gt;</span>F. Serra<span class="balise">
+                              <br/>&lt;date when="2012"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>563-573<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/VSP99TXE<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Waanders-2012</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/VSP99TXE" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">J. O'Neil,  « <span class="title a">A Re-examination of the Chremonidean War</span> », in P. McKechnie (éd.) et P. Guillaume (éd.), <span class="title m">Ptolemy II Philadelphus and His World. Papers of the conference "Auckland Ptolemy Philadelphus", Auckland, 13‑16 July 2005</span>, <span class="title s">
+                     <span class="title">Mnemosyne</span>. Suppl.</span> 300, 2008,  p. 65-89.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">O'Neil 2008</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">J. O'Neil,  « <span class="title a">A Re-examination of the Chremonidean War</span> », in P. McKechnie (éd.) et P. Guillaume (éd.), <span class="title m">Ptolemy II Philadelphus and His World. Papers of the conference "Auckland Ptolemy Philadelphus", Auckland, 13‑16 July 2005</span> 2008,  p. 65-89.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#ONeil2008">TEI</a>
+                  <div id="ONeil2008" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="bookSection" id="ONeil2008"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>A Re-examination of the Chremonidean War<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>O'Neil 2008<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>James L.<span class="balise">
+                              <br/>&lt;surname&gt;</span>O'Neil<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Ptolemy II Philadelphus and His World. Papers of the conference "Auckland Ptolemy Philadelphus", Auckland, 13‑16 July 2005<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Paul<span class="balise">
+                              <br/>&lt;surname&gt;</span>McKechnie<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Philippe<span class="balise">
+                              <br/>&lt;surname&gt;</span>Guillaume<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Leyde, Pays-Bas<span class="balise">
+                              <br/>&lt;publisher&gt;</span>E. J. Brill<span class="balise">
+                              <br/>&lt;date when="2008"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>65-89<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>&lt;i&gt;Mnemosyne&lt;/i&gt;. Suppl.<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>300<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/XFN5QGCW<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>ONeil-2008</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/XFN5QGCW" target="_blank">Zot.</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h2>Type Zotero : book</h2>
+      <table>
+         <thead>
+            <tr>
+               <td class="longue">Forme longue<br/>
+                  <i>pour bibliographie générale</i>
+               </td>
+               <td class="lemme">Forme courte 1.<br/>
+                  <i>pour lemme ('shortTitle' ∃)</i>
+               </td>
+               <td class="allege">Forme courte 2. <br/>
+                  <i>pour lemme ('shortTitle' ∄)</i>
+               </td>
+               <td class="note">Champ 'note'</td>
+               <td class="liens">Liens</td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr xmlns="">
+               <td class="longue">P. Rhodes (avec D. Lewis), <span class="title m">The Decrees of the Greek States</span>, 1997.</td>
+               <td class="lemme">
+                  <span class="lemme">Rhodes, <span class="title">Decrees</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">P. Rhodes (avec D. Lewis), <span class="title m">The Decrees of the Greek States</span> 1997.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Rhodes1997">TEI</a>
+                  <div id="Rhodes1997" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Rhodes1997"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>The Decrees of the Greek States<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Rhodes, &lt;i&gt;Decrees&lt;/i&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Peter John<span class="balise">
+                              <br/>&lt;surname&gt;</span>Rhodes<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>David M.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Lewis<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Oxford, Royaume-Uni<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Clarendon Press<span class="balise">
+                              <br/>&lt;date when="1997"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>0-19-814973-5<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ 00000<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/KV7Q5UNB<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Rhodes</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/KV7Q5UNB" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">H. Van Effenterre, <span class="title m">Cretica selecta</span>, 1990, 2.</td>
+               <td class="lemme">
+                  <span class="lemme">Van Effenterre 1990, p. ou n°  000...</span>
+               </td>
+               <td class="allege">H. Van Effenterre, <span class="title m">Cretica selecta</span> 1990.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Van_Effenterre1990">TEI</a>
+                  <div id="Van_Effenterre1990" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Van_Effenterre1990"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Cretica selecta<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Van Effenterre 1990<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Henri<span class="balise">
+                              <br/>&lt;surname&gt;</span>Van Effenterre<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Amsterdam, Pays-Bas<span class="balise">
+                              <br/>&lt;publisher&gt;</span>A. M. Hakkert<span class="balise">
+                              <br/>&lt;date when="1990"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;extent&gt;</span>2<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>90-256-0929-5<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ 2 vol. en 1 t.<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/FIW7D9NH<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Van Effenterre 1990</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/FIW7D9NH" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">G. Petzl (éd.), <span class="title m">Die Beichtinschriften Westkleinasiens</span>, <span class="title s">
+                     <span class="title">EA</span>
+                  </span> 22, 1994.</td>
+               <td class="lemme">
+                  <span class="lemme">Petzl, <span class="title">Beichtinschriften</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">G. Petzl (éd.), <span class="title m">Die Beichtinschriften Westkleinasiens</span> 1994.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Petzl1994">TEI</a>
+                  <div id="Petzl1994" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Petzl1994"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Die Beichtinschriften Westkleinasiens<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Petzl, &lt;i&gt;Beichtinschriften&lt;/i&gt;<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Georg<span class="balise">
+                              <br/>&lt;surname&gt;</span>Petzl<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Bonn, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Habelt<span class="balise">
+                              <br/>&lt;date when="1994"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>&lt;i&gt;EA&lt;/i&gt;<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>22<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>3-7749-2653-0<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ EA (Epigraphica Anatolica) est une revue<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/IKS6RSK4<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Petzl-Beichtinschriften</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/IKS6RSK4" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">J. Humphrey (éd.), <span class="title m">The Roman and Byzantine Near East. Some Recent Archaeological Research</span>, <span class="title s">
+                     <span class="title">JRA</span>. Suppl. Series</span> 14, 1995.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">The Roman and Byzantine Near East</span>1, p. ou n°  000...</span>
+               </td>
+               <td class="allege">J. Humphrey (éd.), <span class="title m">The Roman and Byzantine Near East. Some Recent Archaeological Research</span> 1995.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Humphrey1995">TEI</a>
+                  <div id="Humphrey1995" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Humphrey1995"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>The Roman and Byzantine Near East. Some Recent Archaeological Research<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;The Roman and Byzantine Near East&lt;/i&gt;1<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>John<span class="balise">
+                              <br/>&lt;surname&gt;</span>Humphrey<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Ann Arbor (Mich.), États-Unis<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Journal of Roman Archaeology<span class="balise">
+                              <br/>&lt;date when="1995"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>&lt;i&gt;JRA&lt;/i&gt;. Suppl. Series<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>14<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/668BSQPF<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>The Roman-and-Byzantine-Near-East</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/668BSQPF" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">H. Wiemer, <span class="title m">Krieg, Handel und Piraterie. Untersuchungen zur Geschichte des hellenistischen Rhodos</span>, <span class="title s">
+                     <span class="title">Klio</span>. Beihefte</span> 6, 2001.</td>
+               <td class="lemme">
+                  <span class="lemme">Wiemer 2001, p. ou n°  000...</span>
+               </td>
+               <td class="allege">H. Wiemer, <span class="title m">Krieg, Handel und Piraterie. Untersuchungen zur Geschichte des hellenistischen Rhodos</span> 2001.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Wiemer2001">TEI</a>
+                  <div id="Wiemer2001" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Wiemer2001"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Krieg, Handel und Piraterie. Untersuchungen zur Geschichte des hellenistischen Rhodos<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Wiemer 2001<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Hans-Ulrich<span class="balise">
+                              <br/>&lt;surname&gt;</span>Wiemer<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Berlin, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Akademie Verl.<span class="balise">
+                              <br/>&lt;date when="2001"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>&lt;i&gt;Klio&lt;/i&gt;. Beihefte<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>6<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>3-05-003751-2<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/FSF83X8Z<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Wiemer-2001</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/FSF83X8Z" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">M. Meyer, <span class="title m">Die griechischen Urkundenreliefs</span>, <span class="title s">
+                     <span class="title">MDAI(A)</span>. Suppl.</span> 13, 1989.</td>
+               <td class="lemme">
+                  <span class="lemme">Meyer, <span class="title">Urkundenreliefs</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">M. Meyer, <span class="title m">Die griechischen Urkundenreliefs</span> 1989.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Meyer1989">TEI</a>
+                  <div id="Meyer1989" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Meyer1989"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Die griechischen Urkundenreliefs<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Meyer, &lt;i&gt;Urkundenreliefs&lt;/i&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Marion<span class="balise">
+                              <br/>&lt;surname&gt;</span>Meyer<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Berlin, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Gebr. Mann<span class="balise">
+                              <br/>&lt;date when="1989"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>&lt;i&gt;MDAI(A)&lt;/i&gt;. Suppl.<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>13<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>3-7861-1319-X<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ Le SEG traduit Beiheft (Suppl.)<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/BCSMAZUZ<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Meyer-Urkundenreliefs</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/BCSMAZUZ" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">J. Bodel (éd.) et M. Kajava (éd.), <span class="title m">Dediche sacre nel mondo greco-romano. Diffusione, funzioni, tipologie = Religious Dedications in the Greco-Roman World. Distribution, Typology, Use: Institutum
+							Romanum Finlandiae, American Academy in Rome, 19-20 aprile, 2006</span>, <span class="title s">Acta Instituti Romani Finlandiae</span> 35, 2009.</td>
+               <td class="lemme">
+                  <span class="lemme">Bodel &amp; Kajava 2009, p. ou n°  000...</span>
+               </td>
+               <td class="allege">J. Bodel (éd.) et M. Kajava (éd.), <span class="title m">Dediche sacre nel mondo greco-romano. Diffusione, funzioni, tipologie = Religious Dedications in the Greco-Roman World. Distribution, Typology, Use: Institutum
+							Romanum Finlandiae, American Academy in Rome, 19-20 aprile, 2006</span> 2009.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Bodel2009">TEI</a>
+                  <div id="Bodel2009" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Bodel2009"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Dediche sacre nel mondo greco-romano. Diffusione, funzioni, tipologie = Religious Dedications in the Greco-Roman World. Distribution, Typology, Use: Institutum
+							Romanum Finlandiae, American Academy in Rome, 19-20 aprile, 2006<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Bodel &amp; Kajava 2009<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>John<span class="balise">
+                              <br/>&lt;surname&gt;</span>Bodel<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Mika<span class="balise">
+                              <br/>&lt;surname&gt;</span>Kajava<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Rome, Italie<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Institutum Romanum Finlandiae<span class="balise">
+                              <br/>&lt;date when="2009"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Acta Instituti Romani Finlandiae<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>35<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>978-88-7140-411-0 88-7140-411-4<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/IMXBU5R5<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Dediche-sacre-nel-mondo-greco-romano</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/IMXBU5R5" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">M. Zagdoun, <span class="title m">La sculpture archaïsante dans l'art hellénistique et dans l'art romain du Haut-Empire</span>, <span class="title s">BEFAR</span> 269, 1989, 2 vol.</td>
+               <td class="lemme">
+                  <span class="lemme">Zagdoun 1989, p. ou n°  000...</span>
+               </td>
+               <td class="allege">M. Zagdoun, <span class="title m">La sculpture archaïsante dans l'art hellénistique et dans l'art romain du Haut-Empire</span> 1989.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Zagdoun1989">TEI</a>
+                  <div id="Zagdoun1989" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Zagdoun1989"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>La sculpture archaïsante dans l'art hellénistique et dans l'art romain du Haut-Empire<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Zagdoun 1989<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Mary Anne<span class="balise">
+                              <br/>&lt;surname&gt;</span>Zagdoun<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Paris, France<span class="balise">
+                              <br/>&lt;publisher&gt;</span>École française d'Athènes<span class="balise">
+                              <br/>&lt;date when="1989"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;extent&gt;</span>2 vol.<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>BEFAR<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>269<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>2-86958-023-1<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/7N2644IQ<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Zagdoun-1989</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/7N2644IQ" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">A. Bernand et É. Bernand, <span class="title m">Les inscriptions grecques et latines du Colosse de Memnon</span>, <span class="title s">BdÉ</span> 31, 1960.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">I.Col.Memnon</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">A. Bernand et É. Bernand, <span class="title m">Les inscriptions grecques et latines du Colosse de Memnon</span> 1960.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Bernand1960">TEI</a>
+                  <div id="Bernand1960" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Bernand1960"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Les inscriptions grecques et latines du Colosse de Memnon<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;I.Col.Memnon&lt;/i&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>André<span class="balise">
+                              <br/>&lt;surname&gt;</span>Bernand<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Étienne<span class="balise">
+                              <br/>&lt;surname&gt;</span>Bernand<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Le Caire, Égypte<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Institut français d'archéologie orientale<span class="balise">
+                              <br/>&lt;date when="1960"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>BdÉ<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>31<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/Q9A7PM9X<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>I-Col-Memnon</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/Q9A7PM9X" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">C. Marek, <span class="title m">Die Proxenie</span>, <span class="title s">Europäische Hochschulschriften. Reihe 3, Geschichte und ihre Hilfswissenschaften</span> 213, 1984.</td>
+               <td class="lemme">
+                  <span class="lemme">Marek, <span class="title">Proxenie</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">C. Marek, <span class="title m">Die Proxenie</span> 1984.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Marek1984">TEI</a>
+                  <div id="Marek1984" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Marek1984"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Die Proxenie<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Marek, &lt;i&gt;Proxenie&lt;/i&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Christian<span class="balise">
+                              <br/>&lt;surname&gt;</span>Marek<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Francfort-sur-le-Main, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>P. Lang<span class="balise">
+                              <br/>&lt;date when="1984"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Europäische Hochschulschriften. Reihe 3, Geschichte und ihre Hilfswissenschaften<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>213<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>3-8204-7595-8<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/B2MG2FZZ<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Marek 1984</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/B2MG2FZZ" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">É. Samama, <span class="title m">Les médecins dans le monde grec. Sources épigraphiques sur la naissance d'un corps médical</span>, <span class="title s">Hautes études du monde gréco-romain</span> 31, 2003.</td>
+               <td class="lemme">
+                  <span class="lemme">Samama ,<span class="title">Médecins</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">É. Samama, <span class="title m">Les médecins dans le monde grec. Sources épigraphiques sur la naissance d'un corps médical</span> 2003.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Samama2003">TEI</a>
+                  <div id="Samama2003" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Samama2003"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Les médecins dans le monde grec. Sources épigraphiques sur la naissance d'un corps médical<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Samama ,&lt;i&gt;Médecins&lt;/i&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Évelyne<span class="balise">
+                              <br/>&lt;surname&gt;</span>Samama<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Genève, Suisse<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Droz<span class="balise">
+                              <br/>&lt;date when="2003"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Hautes études du monde gréco-romain<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>31<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>2-600-00847-0<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/NQNWBTFV<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Samama-2003</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/NQNWBTFV" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">S. Ager, <span class="title m">Interstate Arbitrations in the Greek World, 337-90 B.C.</span>, <span class="title s">Hellenistic Culture and Society</span> 18, 1996, 1.</td>
+               <td class="lemme">
+                  <span class="lemme">Ager, <span class="title">Arbitrations</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">S. Ager, <span class="title m">Interstate Arbitrations in the Greek World, 337-90 B.C.</span> 1996.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Ager1996">TEI</a>
+                  <div id="Ager1996" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Ager1996"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Interstate Arbitrations in the Greek World, 337-90 B.C.<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Ager, &lt;i&gt;Arbitrations&lt;/i&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Sheila Louise<span class="balise">
+                              <br/>&lt;surname&gt;</span>Ager<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Berkeley (Calif.), États-Unis<span class="balise">
+                              <br/>&lt;publisher&gt;</span>University of California Press<span class="balise">
+                              <br/>&lt;date when="1996"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;extent&gt;</span>1<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Hellenistic Culture and Society<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>18<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>0-520-08162-5<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/DU4ZUWRR<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Ager-Arbitrations</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/DU4ZUWRR" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">C. Habicht (trad. M. Knoepfler et D. Knoepfler), <span class="title m">Athènes hellénistique. Histoire de la cité d'Alexandre le Grand à Marc Antoine</span>, 2e éd. revue et augmentée, <span class="title s">Histoire</span> 76, 2006.</td>
+               <td class="lemme">
+                  <span class="lemme">Habicht, <span class="title">Athènes hellénistique</span>2, p. ou n°  000...</span>
+               </td>
+               <td class="allege">C. Habicht (trad. M. Knoepfler et D. Knoepfler), <span class="title m">Athènes hellénistique. Histoire de la cité d'Alexandre le Grand à Marc Antoine</span>
+                  <sup>2</sup> 2006.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Habicht2006">TEI</a>
+                  <div id="Habicht2006" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Habicht2006"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Athènes hellénistique. Histoire de la cité d'Alexandre le Grand à Marc Antoine<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Habicht, &lt;i&gt;Athènes hellénistique&lt;/i&gt;2<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Christian<span class="balise">
+                              <br/>&lt;surname&gt;</span>Habicht<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>translator<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Martine<span class="balise">
+                              <br/>&lt;surname&gt;</span>Knoepfler<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>translator<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Denis<span class="balise">
+                              <br/>&lt;surname&gt;</span>Knoepfler<span class="balise">
+                              <br/>&lt;edition&gt;</span>2e éd. revue et augmentée<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Paris<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Les Belles Lettres<span class="balise">
+                              <br/>&lt;date when="2006"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Histoire<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>76<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ DANS LE TITRE ABRÉGÉ, METTRE LE 2 EN EXPOSANT<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/459URR3J<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Habicht-Athenes</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/459URR3J" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">K. Preisendanz (éd.) et A. Henrichs (éd.), <span class="title m">Papyri graecae magicae = Die griechischen Zauberpapyri</span>, 2., verb. Aufl., <span class="title s">Sammlung wissenschaftlicher Commentare</span>, 1973, 2.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">P.Graec.Mag.</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">K. Preisendanz (éd.) et A. Henrichs (éd.), <span class="title m">Papyri graecae magicae = Die griechischen Zauberpapyri</span>
+                  <sup>2</sup> 1973.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Preisendanz1973">TEI</a>
+                  <div id="Preisendanz1973" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Preisendanz1973"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Papyri graecae magicae = Die griechischen Zauberpapyri<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;P.Graec.Mag.&lt;/i&gt;<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Karl<span class="balise">
+                              <br/>&lt;surname&gt;</span>Preisendanz<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Albert<span class="balise">
+                              <br/>&lt;surname&gt;</span>Henrichs<span class="balise">
+                              <br/>&lt;edition&gt;</span>2., verb. Aufl.<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Stuttgart, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>B. G. Teubner<span class="balise">
+                              <br/>&lt;date when="1973"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;extent&gt;</span>2<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Sammlung wissenschaftlicher Commentare<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>3-519-04276-2<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ 00000<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/9XEVZ69U<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>P.Graec.Mag.</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/9XEVZ69U" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">P. Bruneau et J. Ducat (avec M. Brunet, A. Farnoux et J. Moretti), <span class="title m">Guide de Délos</span>, 4e éd. refondue et mise à jour, <span class="title s">Sites et monuments</span> 1, 2005.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">GD</span> &lt;sup&gt;4&lt;/sup&gt;, p. ou n°  000...</span>
+               </td>
+               <td class="allege">P. Bruneau et J. Ducat (avec M. Brunet, A. Farnoux et J. Moretti), <span class="title m">Guide de Délos</span>
+                  <sup>4</sup> 2005.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Bruneau2005">TEI</a>
+                  <div id="Bruneau2005" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Bruneau2005"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Guide de Délos<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;GD&lt;/i&gt; &lt;sup&gt;4&lt;/sup&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Philippe<span class="balise">
+                              <br/>&lt;surname&gt;</span>Bruneau<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Jean<span class="balise">
+                              <br/>&lt;surname&gt;</span>Ducat<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Michèle<span class="balise">
+                              <br/>&lt;surname&gt;</span>Brunet<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Alexandre<span class="balise">
+                              <br/>&lt;surname&gt;</span>Farnoux<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Jean-Charles<span class="balise">
+                              <br/>&lt;surname&gt;</span>Moretti<span class="balise">
+                              <br/>&lt;edition&gt;</span>4e éd. refondue et mise à jour<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Athènes, Grèce<span class="balise">
+                              <br/>&lt;publisher&gt;</span>École française d'Athènes<span class="balise">
+                              <br/>&lt;date when="2005"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Sites et monuments<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>1<span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>2-86958-210-2<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/TJ6H4ZKD<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>GD</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/TJ6H4ZKD" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">J. Balzat (éd.), R. Catling (éd.) et É. Chiricat (éd.) (avec T. Corsten), <span class="title ensemble m">A Lexicon of Greek Personal Names</span>.  V B, <span class="title m">Coastal Asia Minor. Caria to Cilicia</span>, 2013.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">LGPN</span> V.B, p. ou n°  000...</span>
+               </td>
+               <td class="allege">J. Balzat (éd.), R. Catling (éd.) et É. Chiricat (éd.) (avec T. Corsten), <span class="title ensemble m">A Lexicon of Greek Personal Names</span>. <span class="title m">Coastal Asia Minor. Caria to Cilicia</span> 2013.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Balzat2013">TEI</a>
+                  <div id="Balzat2013" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Balzat2013"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Coastal Asia Minor. Caria to Cilicia<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;LGPN&lt;/i&gt; V.B<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Jean-Sébastien<span class="balise">
+                              <br/>&lt;surname&gt;</span>Balzat<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Richard W. V.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Catling<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Édouard<span class="balise">
+                              <br/>&lt;surname&gt;</span>Chiricat<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Thomas<span class="balise">
+                              <br/>&lt;surname&gt;</span>Corsten<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Oxford, Royaume-Uni<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Clarendon Press<span class="balise">
+                              <br/>&lt;date when="2013"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>V B<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>A Lexicon of Greek Personal Names<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>0-19-927333-2<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/WXX4DNGJ<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>LGPN-V-B</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/WXX4DNGJ" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">T. Corsten (éd.) (avec R. Catling et M. Ricl), <span class="title ensemble m">A Lexicon of Greek Personal Names</span>.  V A, <span class="title m">Coastal Asia Minor. Pontos to Ionia</span>, 2010.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">LGPN</span> V.A, p. ou n°  000...</span>
+               </td>
+               <td class="allege">T. Corsten (éd.) (avec R. Catling et M. Ricl), <span class="title ensemble m">A Lexicon of Greek Personal Names</span>. <span class="title m">Coastal Asia Minor. Pontos to Ionia</span> 2010.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Corsten2010">TEI</a>
+                  <div id="Corsten2010" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Corsten2010"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Coastal Asia Minor. Pontos to Ionia<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;LGPN&lt;/i&gt; V.A<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Thomas<span class="balise">
+                              <br/>&lt;surname&gt;</span>Corsten<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Richard W. V.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Catling<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Marijana<span class="balise">
+                              <br/>&lt;surname&gt;</span>Ricl<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Oxford, Royaume-Uni<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Clarendon Press<span class="balise">
+                              <br/>&lt;date when="2010"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>V A<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>A Lexicon of Greek Personal Names<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>0-19-927333-2<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/9DTDT8FC<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>LGPN-V-A</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/9DTDT8FC" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">A. Rizakis, <span class="title ensemble m">Achaïe</span>.  I, <span class="title m">Sources textuelles et histoire régionale</span>, <span class="title s">Meletimata</span> 20, 1995, 1.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">Achaïe</span> I, p. ou n°  000...</span>
+               </td>
+               <td class="allege">A. Rizakis, <span class="title ensemble m">Achaïe</span>. <span class="title m">Sources textuelles et histoire régionale</span> 1995.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Rizakis1995">TEI</a>
+                  <div id="Rizakis1995" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Rizakis1995"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Sources textuelles et histoire régionale<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;Achaïe&lt;/i&gt; I<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Athanasios D.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Rizakis<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Athènes, Grèce<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Centre de recherches de l'Antiquité grecque et romaine, Fondation nationale de la recherche scientifique<span class="balise">
+                              <br/>&lt;date when="1995"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>I<span class="balise">
+                              <br/>&lt;extent&gt;</span>1<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Meletimata<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>20<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Achaïe<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>960-7094-87-5<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/E5SP2CUJ<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Achaie-I</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/E5SP2CUJ" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">A. Rizakis, <span class="title ensemble m">Achaïe</span>.  II, <span class="title m">La cité de Patras. Épigraphie et histoire</span>, <span class="title s">Meletimata</span> 25, 1998, 1.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">Achaïe</span> II, p. ou n°  000...</span>
+               </td>
+               <td class="allege">A. Rizakis, <span class="title ensemble m">Achaïe</span>. <span class="title m">La cité de Patras. Épigraphie et histoire</span> 1998.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Rizakis1998">TEI</a>
+                  <div id="Rizakis1998" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Rizakis1998"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>La cité de Patras. Épigraphie et histoire<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;Achaïe&lt;/i&gt; II<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Athanasios D.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Rizakis<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Athènes, Grèce<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Centre de recherches de l'Antiquité grecque et romaine, Fondation nationale de la recherche scientifique<span class="balise">
+                              <br/>&lt;date when="1998"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>II<span class="balise">
+                              <br/>&lt;extent&gt;</span>1<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Meletimata<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>25<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Achaïe<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>960-7905-02-4<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/Z5RU9RVK<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Achaie-II</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/Z5RU9RVK" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">M. Fränkel (éd.) (avec E. Fabricius et C. Schuchhardt), <span class="title ensemble m">Altertümer von Pergamon</span>.  I, <span class="title m">Die Inschriften von Pergamon. 1, Bis zum Ende der Königszeit</span>, 1890.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">I.Perg</span> I, p. ou n°  000...</span>
+               </td>
+               <td class="allege">M. Fränkel (éd.) (avec E. Fabricius et C. Schuchhardt), <span class="title ensemble m">Altertümer von Pergamon</span>. <span class="title m">Die Inschriften von Pergamon. 1, Bis zum Ende der Königszeit</span> 1890.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Fränkel1890">TEI</a>
+                  <div id="Fränkel1890" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Fränkel1890"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Die Inschriften von Pergamon. 1, Bis zum Ende der Königszeit<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;I.Perg&lt;/i&gt; I<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Max<span class="balise">
+                              <br/>&lt;surname&gt;</span>Fränkel<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Ernst<span class="balise">
+                              <br/>&lt;surname&gt;</span>Fabricius<span class="balise">
+                              <br/>&lt;respStmt&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;resp&gt;</span>contributor<span class="balise">
+                              <br/>&lt;persName&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Carl<span class="balise">
+                              <br/>&lt;surname&gt;</span>Schuchhardt<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Berlin, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>W. Spemann<span class="balise">
+                              <br/>&lt;date when="1890"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>I<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Altertümer von Pergamon<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/PHDVWJXT<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>I-Pergamon-I</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/PHDVWJXT" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">M. Guarducci (éd.), <span class="title ensemble m">Inscriptiones Creticae</span>.  I, <span class="title m">Tituli Cretae mediae praeter Gortynios</span>, 1935.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">I.Cret.</span> I, p. ou n°  000...</span>
+               </td>
+               <td class="allege">M. Guarducci (éd.), <span class="title ensemble m">Inscriptiones Creticae</span>. <span class="title m">Tituli Cretae mediae praeter Gortynios</span> 1935.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Guarducci1935">TEI</a>
+                  <div id="Guarducci1935" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Guarducci1935"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Tituli Cretae mediae praeter Gortynios<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;I.Cret.&lt;/i&gt; I<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Margherita<span class="balise">
+                              <br/>&lt;surname&gt;</span>Guarducci<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Rome, Italie<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Libreria dello Stato<span class="balise">
+                              <br/>&lt;date when="1935"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>I<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Inscriptiones Creticae<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/A9RIFHTJ<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>I-Cret-I</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/A9RIFHTJ" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">C. Fredrich (éd.), <span class="title ensemble m">Inscriptiones Graecae</span>.  XII, <span class="title m">Inscriptiones insularum maris Aegaei praeter Delum. 8, Inscriptiones insularum maris Thracici</span>, 1909.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">IG</span> XII 8, p. ou n°  000...</span>
+               </td>
+               <td class="allege">C. Fredrich (éd.), <span class="title ensemble m">Inscriptiones Graecae</span>. <span class="title m">Inscriptiones insularum maris Aegaei praeter Delum. 8, Inscriptiones insularum maris Thracici</span> 1909.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Fredrich1909">TEI</a>
+                  <div id="Fredrich1909" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Fredrich1909"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Inscriptiones insularum maris Aegaei praeter Delum. 8, Inscriptiones insularum maris Thracici<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;IG&lt;/i&gt; XII 8<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Carl<span class="balise">
+                              <br/>&lt;surname&gt;</span>Fredrich<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Berlin, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>G. Reimer<span class="balise">
+                              <br/>&lt;date when="1909"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>XII<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Inscriptiones Graecae<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/KCUFJGN4<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>IG-XII-8</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/KCUFJGN4" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">I. Kirchner (éd.), <span class="title ensemble m">Inscriptiones Graecae</span>.  II-III, <span class="title m">Inscriptiones atticae Euclidis anno posteriores</span>, , 6 [<span class="note">La forme usuelle et correcte pour l'abréviation est IG II2 quand on veut ensuite renvoyer à une inscription précise dans le corpus IG II2, 421 (donc virgule, une espace et le
+						numéro de l'inscription) Complément le 18 juillet : faire en sorte que l'exposant ne soit pas trop haut perché</span>].</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">IG</span>II&lt;sup&gt;2&lt;/sup&gt;, p. ou n°  000...</span>
+               </td>
+               <td class="allege">I. Kirchner (éd.), <span class="title ensemble m">Inscriptiones Graecae</span>. <span class="title m">Inscriptiones atticae Euclidis anno posteriores</span> , <span class="note">La forme usuelle et correcte pour l'abréviation est IG II2 quand on veut ensuite renvoyer à une inscription précise dans le corpus IG II2, 421 (donc virgule, une espace et le
+						numéro de l'inscription) Complément le 18 juillet : faire en sorte que l'exposant ne soit pas trop haut perché</span>.</td>
+               <td class="note">
+                  <span class="note">La forme usuelle et correcte pour l'abréviation est IG II2 quand on veut ensuite renvoyer à une inscription précise dans le corpus IG II2, 421 (donc virgule, une espace et le
+						numéro de l'inscription) Complément le 18 juillet : faire en sorte que l'exposant ne soit pas trop haut perché</span>
+               </td>
+               <td class="liens">
+                  <a href="#Kirchner1913">TEI</a>
+                  <div id="Kirchner1913" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Kirchner1913"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Inscriptiones atticae Euclidis anno posteriores<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;IG&lt;/i&gt;II&lt;sup&gt;2&lt;/sup&gt;<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Iohannes<span class="balise">
+                              <br/>&lt;surname&gt;</span>Kirchner<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Berlin, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>G. de Gruyter<span class="balise">
+                              <br/>&lt;date from="1913" to="1940"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>II-III<span class="balise">
+                              <br/>&lt;extent&gt;</span>6<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Inscriptiones Graecae<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;note&gt;</span>La forme usuelle et correcte pour l'abréviation est IG II2 quand on veut ensuite renvoyer à une inscription précise dans le corpus IG II2, 421 (donc virgule, une espace et le
+						numéro de l'inscription) Complément le 18 juillet : faire en sorte que l'exposant ne soit pas trop haut perché<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ Vérifier titre abrégé ? Les IG sont-elles une coll. ou un titre d'ensemble ? MB le 17 juillet : est-il possible de mettre le 2 en exposant, voir note dans
+						l'onglet notes<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/XDT67NEV<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>IG-II-2</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/XDT67NEV" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">C. Băluţă (éd.), <span class="title ensemble m">Inscript̡iile Daciei romane</span>.  III, <span class="title m">Dacia Superior. 6, Apulum, instrumentum domesticum</span>, <span class="title s">Inscripțiile antice din Dacia și Scythia Minor</span>, 1999.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">IDR</span> III,6, p. ou n°  000...</span>
+               </td>
+               <td class="allege">C. Băluţă (éd.), <span class="title ensemble m">Inscript̡iile Daciei romane</span>. <span class="title m">Dacia Superior. 6, Apulum, instrumentum domesticum</span> 1999.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Băluţă1999">TEI</a>
+                  <div id="Băluţă1999" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Băluţă1999"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Dacia Superior. 6, Apulum, instrumentum domesticum<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;IDR&lt;/i&gt; III,6<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Closça L.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Băluţă<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Bucarest, Roumanie<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Ed. Academiei Republicii Socialiste România<span class="balise">
+                              <br/>&lt;date when="1999"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>III<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>Inscripțiile antice din Dacia și Scythia Minor<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Inscript̡iile Daciei romane<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/89N4AVIR<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>IDR-III-6</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/89N4AVIR" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">É. Bernand, <span class="title ensemble m">Recueil des inscriptions grecques du Fayoum</span>.  III, <span class="title m">La "Méris" de Ptolémôn</span>, <span class="title s">BdÉ</span> 80, 1981.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title">I.Fay(o)um</span> III, p. ou n°  000...</span>
+               </td>
+               <td class="allege">É. Bernand, <span class="title ensemble m">Recueil des inscriptions grecques du Fayoum</span>. <span class="title m">La "Méris" de Ptolémôn</span> 1981.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Bernand1981">TEI</a>
+                  <div id="Bernand1981" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="book" id="Bernand1981"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>La "Méris" de Ptolémôn<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>&lt;i&gt;I.Fay(o)um&lt;/i&gt; III<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Étienne<span class="balise">
+                              <br/>&lt;surname&gt;</span>Bernand<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Le Caire, Égypte<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Institut français d'archéologie orientale du Caire<span class="balise">
+                              <br/>&lt;date when="1981"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>III<span class="balise">
+                              <br/>&lt;series&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="s"&gt;</span>BdÉ<span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>80<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Recueil des inscriptions grecques du Fayoum<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;idno type="ISBN"&gt;</span>90-04-04273-3<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ harmoniser sur trismegistos ?<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/GEA2P8TE<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>I-Fayoum-III</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/GEA2P8TE" target="_blank">Zot.</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h2>Type Zotero : dictionaryEntry</h2>
+      <table>
+         <thead>
+            <tr>
+               <td class="longue">Forme longue<br/>
+                  <i>pour bibliographie générale</i>
+               </td>
+               <td class="lemme">Forme courte 1.<br/>
+                  <i>pour lemme ('shortTitle' ∃)</i>
+               </td>
+               <td class="allege">Forme courte 2. <br/>
+                  <i>pour lemme ('shortTitle' ∄)</i>
+               </td>
+               <td class="note">Champ 'note'</td>
+               <td class="liens">Liens</td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr xmlns="">
+               <td class="longue">F. Lenormant, <span class="italics">s. v. </span> « <span class="title a">Baccanalia</span> », <span class="title m">DAGR</span>,  I, 1887,  p. 590-591.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">
+                        <span class="title">DAGR</span>, &lt;i&gt;s.v.&lt;i/&gt; « Bacchanal »</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">F. Lenormant, <span class="italics">s. v. </span> « <span class="title a">Baccanalia</span> », <span class="title m">DAGR</span>,  I 1887,  p. 590-591.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Lenormant1887">TEI</a>
+                  <div id="Lenormant1887" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="dictionaryEntry" id="Lenormant1887"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Baccanalia<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>&lt;i&gt;DAGR&lt;/i&gt;, &lt;i&gt;s.v.&lt;i/&gt; « Bacchanal »<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Fr.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Lenormant<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>DAGR<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Charles<span class="balise">
+                              <br/>&lt;surname&gt;</span>Daremberg<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>É.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Saglio<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;date when="1887"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>I<span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>590-591<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/CDFFVGEI</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/CDFFVGEI" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">G. Wissowa, <span class="italics">s. v. </span> « <span class="title a">Bacchanal</span> », <span class="title m">RE</span>,  II, 1896,  [<span class="note">col. 2721-2722</span>].</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">
+                        <span class="title">RE</span>,&lt;i&gt;s.v.&lt;i/&gt; « Bacchanal »</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">G. Wissowa, <span class="italics">s. v. </span> « <span class="title a">Bacchanal</span> », <span class="title m">RE</span>,  II 1896, <span class="note">col. 2721-2722</span>.</td>
+               <td class="note">
+                  <span class="note">col. 2721-2722</span>
+               </td>
+               <td class="liens">
+                  <a href="#Wissowa1896">TEI</a>
+                  <div id="Wissowa1896" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="dictionaryEntry" id="Wissowa1896"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Bacchanal<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>&lt;i&gt;RE&lt;/i&gt;,&lt;i&gt;s.v.&lt;i/&gt; « Bacchanal »<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Georg<span class="balise">
+                              <br/>&lt;surname&gt;</span>Wissowa<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>RE<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Stuttgart, Allemagne<span class="balise">
+                              <br/>&lt;publisher&gt;</span>J. B. Metzlerscher<span class="balise">
+                              <br/>&lt;date when="1896"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>II<span class="balise">
+                              <br/>&lt;note&gt;</span>col. 2721-2722<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/S9WWQANF</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/S9WWQANF" target="_blank">Zot.</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h2>Type Zotero : conferencePaper</h2>
+      <table>
+         <thead>
+            <tr>
+               <td class="longue">Forme longue<br/>
+                  <i>pour bibliographie générale</i>
+               </td>
+               <td class="lemme">Forme courte 1.<br/>
+                  <i>pour lemme ('shortTitle' ∃)</i>
+               </td>
+               <td class="allege">Forme courte 2. <br/>
+                  <i>pour lemme ('shortTitle' ∄)</i>
+               </td>
+               <td class="note">Champ 'note'</td>
+               <td class="liens">Liens</td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr xmlns="">
+               <td class="longue">H. Hauben,  « <span class="title a">Callicrates of Samos and Patroclus of Macedon: Champions of Ptolemaic Thalassocracy</span> », in K. Buraselis (éd.), M. Stefanou (éd.) et D. Thompson (éd.), <span class="title m">The Ptolemies, the Sea and the Nile. Studies in Waterborne Power</span>, <span class="meeting">Third international Ptolemaic Colloquium, held in the Peiraeus 18-20 September 2009</span>, 2013,  p. 39-65.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">Hauben 2013</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">H. Hauben,  « <span class="title a">Callicrates of Samos and Patroclus of Macedon: Champions of Ptolemaic Thalassocracy</span> », in K. Buraselis (éd.), M. Stefanou (éd.) et D. Thompson (éd.), <span class="title m">The Ptolemies, the Sea and the Nile. Studies in Waterborne Power</span>ù, <span class="meeting">Third international Ptolemaic Colloquium, held in the Peiraeus 18-20 September 2009</span> 2013,  p. 39-65.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Hauben2013">TEI</a>
+                  <div id="Hauben2013" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="conferencePaper" id="Hauben2013"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Callicrates of Samos and Patroclus of Macedon: Champions of Ptolemaic Thalassocracy<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>Hauben 2013<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Hans<span class="balise">
+                              <br/>&lt;surname&gt;</span>Hauben<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>The Ptolemies, the Sea and the Nile. Studies in Waterborne Power<span class="balise">
+                              <br/>&lt;meeting&gt;</span>Third international Ptolemaic Colloquium, held in the Peiraeus 18-20 September 2009<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Kostas<span class="balise">
+                              <br/>&lt;surname&gt;</span>Buraselis<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Mary<span class="balise">
+                              <br/>&lt;surname&gt;</span>Stefanou<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Dorothy J.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Thompson<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Cambridge, États-Unis<span class="balise">
+                              <br/>&lt;publisher&gt;</span>Cambridge University Press<span class="balise">
+                              <br/>&lt;date when="2013"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>39-65<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/4IWC9ANT<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Hauben-2013</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/4IWC9ANT" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">H. Hauben,  « <span class="title a">Timosthène et les autres amiraux de nationalité rhodienne au service de Ptolémées</span> », in G. Gizelis (éd.), <span class="title m">Ρόδος, 24 αιώνες. Πρακτικά του Διεθνούς επισημονικού συμποσίου, 1-5 Οκτωβρίου 1992 = Proceedings of the International Scientific Symposium Rhodes. 24
+							Centuries, October 1‑5, 1992</span>, 1996,  p. 220-242.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">Hauben 1996</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">H. Hauben,  « <span class="title a">Timosthène et les autres amiraux de nationalité rhodienne au service de Ptolémées</span> », in G. Gizelis (éd.), <span class="title m">Ρόδος, 24 αιώνες. Πρακτικά του Διεθνούς επισημονικού συμποσίου, 1-5 Οκτωβρίου 1992 = Proceedings of the International Scientific Symposium Rhodes. 24
+							Centuries, October 1‑5, 1992</span> 1996,  p. 220-242.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Hauben1996">TEI</a>
+                  <div id="Hauben1996" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="conferencePaper" id="Hauben1996"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Timosthène et les autres amiraux de nationalité rhodienne au service de Ptolémées<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>Hauben 1996<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Hans<span class="balise">
+                              <br/>&lt;surname&gt;</span>Hauben<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Ρόδος, 24 αιώνες. Πρακτικά του Διεθνούς επισημονικού συμποσίου, 1-5 Οκτωβρίου 1992 = Proceedings of the International Scientific Symposium Rhodes. 24
+							Centuries, October 1‑5, 1992<span class="balise">
+                              <br/>&lt;editor role="scientificEditor"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>G.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Gizelis<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;pubPlace&gt;</span>Athènes, Grèce<span class="balise">
+                              <br/>&lt;date when="1996"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>220-242<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/HTAANSNH<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Hauben-1996</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/HTAANSNH" target="_blank">Zot.</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h2>Type Zotero : journalArticle</h2>
+      <table>
+         <thead>
+            <tr>
+               <td class="longue">Forme longue<br/>
+                  <i>pour bibliographie générale</i>
+               </td>
+               <td class="lemme">Forme courte 1.<br/>
+                  <i>pour lemme ('shortTitle' ∃)</i>
+               </td>
+               <td class="allege">Forme courte 2. <br/>
+                  <i>pour lemme ('shortTitle' ∄)</i>
+               </td>
+               <td class="note">Champ 'note'</td>
+               <td class="liens">Liens</td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr xmlns="">
+               <td class="longue">A. Bélis,  « <span class="title a">Cithares, citharistes et citharôdes en Grèce</span> », <span class="title j">CRAI</span>,  139, 1995,  p. 1025-1065.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">Bélis 1995</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">A. Bélis,  « <span class="title a">Cithares, citharistes et citharôdes en Grèce</span> », <span class="title j">CRAI</span>,  139 1995,  p. 1025-1065.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Bélis1995">TEI</a>
+                  <div id="Bélis1995" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="journalArticle" id="Bélis1995"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Cithares, citharistes et citharôdes en Grèce<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>Bélis 1995<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Annie<span class="balise">
+                              <br/>&lt;surname&gt;</span>Bélis<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="j"&gt;</span>Comptes rendus des séances de l'Académie des inscriptions et belles-lettres<span class="balise">
+                              <br/>&lt;title level="j" type="short"&gt;</span>CRAI<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;date when="1995"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>139<span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>1025-1065<span class="balise">
+                              <br/>&lt;idno type="ISSN"&gt;</span>0065-0536<span class="balise">
+                              <br/>&lt;idno type="DOI"&gt;</span>10.3406/crai.1995.15550<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/CBMHW33H<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Belis-1995</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/CBMHW33H" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">J. Demargne,  « <span class="title a">Monuments figurés et inscriptions de Crète</span> », <span class="title j">BCH</span>,  24, 1900,  p. 222-246.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">Demargne 1900</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">J. Demargne,  « <span class="title a">Monuments figurés et inscriptions de Crète</span> », <span class="title j">BCH</span>,  24 1900,  p. 222-246.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Demargne1900">TEI</a>
+                  <div id="Demargne1900" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="journalArticle" id="Demargne1900"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Monuments figurés et inscriptions de Crète<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>Demargne 1900<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>J.<span class="balise">
+                              <br/>&lt;surname&gt;</span>Demargne<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="j"&gt;</span>Bulletin de correspondance hellénique<span class="balise">
+                              <br/>&lt;title level="j" type="short"&gt;</span>BCH<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;date when="1900"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>24<span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>222-246<span class="balise">
+                              <br/>&lt;idno type="ISSN"&gt;</span>0007-4217<span class="balise">
+                              <br/>&lt;idno type="DOI"&gt;</span>10.3406/bch.1900.3408<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/QSZPXKIF<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Demargne-1900</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/QSZPXKIF" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">M. Launey,  « <span class="title a">Études d'histoire hellénistique. II, L'exécution de Sotadès et l'expédition de Patroklos dans la mer Égée (266 av. J.‑C.)</span> », <span class="title j">REA</span>,  47, 1945,  p. 33-45.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">Launey 1945</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">M. Launey,  « <span class="title a">Études d'histoire hellénistique. II, L'exécution de Sotadès et l'expédition de Patroklos dans la mer Égée (266 av. J.‑C.)</span> », <span class="title j">REA</span>,  47 1945,  p. 33-45.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Launey1945">TEI</a>
+                  <div id="Launey1945" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="journalArticle" id="Launey1945"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Études d'histoire hellénistique. II, L'exécution de Sotadès et l'expédition de Patroklos dans la mer Égée (266 av. J.‑C.)<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>Launey 1945<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Marcel<span class="balise">
+                              <br/>&lt;surname&gt;</span>Launey<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="j"&gt;</span>Revue des études anciennes<span class="balise">
+                              <br/>&lt;title level="j" type="short"&gt;</span>REA<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;date when="1945"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>47<span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>33-45<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/HUV2R374<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Launey-1945</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/HUV2R374" target="_blank">Zot.</a>
+               </td>
+            </tr>
+            <tr xmlns="">
+               <td class="longue">G. Susini,  « <span class="title a">Supplemento epigrafico di Caso, Scarpanto, Saro, Calchi, Alinnia e Tilo</span> », <span class="title j">ASAA</span>,  41-42, ,  p. 203-292.</td>
+               <td class="lemme">
+                  <span class="lemme">
+                     <span class="title a">
+                        <span class="title">Suppl.Epigr.Rh.</span> II</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">G. Susini,  « <span class="title a">Supplemento epigrafico di Caso, Scarpanto, Saro, Calchi, Alinnia e Tilo</span> », <span class="title j">ASAA</span>,  41-42 ,  p. 203-292.</td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Susini1963">TEI</a>
+                  <div id="Susini1963" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="journalArticle" id="Susini1963"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;analytic&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="a"&gt;</span>Supplemento epigrafico di Caso, Scarpanto, Saro, Calchi, Alinnia e Tilo<span class="balise">
+                              <br/>&lt;title level="a" type="short"&gt;</span>&lt;i&gt;Suppl.Epigr.Rh.&lt;/i&gt; II<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Giancarlo<span class="balise">
+                              <br/>&lt;surname&gt;</span>Susini<span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="j"&gt;</span>Annuario della Scuola archeologica di Atene e delle missioni italiane in Oriente<span class="balise">
+                              <br/>&lt;title level="j" type="short"&gt;</span>ASAA<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;date from="1963" to="1964"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;biblScope unit="volume"&gt;</span>41-42<span class="balise">
+                              <br/>&lt;biblScope unit="pp"&gt;</span>203-292<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/9BB7PS3I<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>SupplEpigrRhII</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/9BB7PS3I" target="_blank">Zot.</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <h2>Type Zotero : thesis</h2>
+      <table>
+         <thead>
+            <tr>
+               <td class="longue">Forme longue<br/>
+                  <i>pour bibliographie générale</i>
+               </td>
+               <td class="lemme">Forme courte 1.<br/>
+                  <i>pour lemme ('shortTitle' ∃)</i>
+               </td>
+               <td class="allege">Forme courte 2. <br/>
+                  <i>pour lemme ('shortTitle' ∄)</i>
+               </td>
+               <td class="note">Champ 'note'</td>
+               <td class="liens">Liens</td>
+            </tr>
+         </thead>
+         <tbody>
+            <tr xmlns="">
+               <td class="longue">C. Veligianni-Terzi, <span class="title m">Damiurgen. Zur Entwicklung einer Magistratur</span>, 1977 [<span class="note">Univ., Fak. für Orientalistik u. Altertumswiss., Diss.</span>].</td>
+               <td class="lemme">
+                  <span class="lemme">Veligianni-Terzi<span class="title">Damiurgen</span>, p. ou n°  000...</span>
+               </td>
+               <td class="allege">C. Veligianni-Terzi, <span class="title m">Damiurgen. Zur Entwicklung einer Magistratur</span> 1977, <span class="note">Univ., Fak. für Orientalistik u. Altertumswiss., Diss.</span>
+               </td>
+               <td class="note"/>
+               <td class="liens">
+                  <a href="#Veligianni-Terzi1977">TEI</a>
+                  <div id="Veligianni-Terzi1977" class="pop-up">
+                     <div class="popBox">
+                        <div class="popScroll">
+                           <h2>Code TEI</h2>
+                           <span class="balise">
+                              <br/>&lt;biblStruct type="thesis" id="Veligianni-Terzi1977"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;monogr&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;title level="m"&gt;</span>Damiurgen. Zur Entwicklung einer Magistratur<span class="balise">
+                              <br/>&lt;title level="m" type="short"&gt;</span>Veligianni-Terzi&lt;i&gt;Damiurgen&lt;/i&gt;<span class="balise">
+                              <br/>&lt;author&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;forename&gt;</span>Chrysoúla<span class="balise">
+                              <br/>&lt;surname&gt;</span>Veligianni-Terzi<span class="balise">
+                              <br/>&lt;imprint&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;publisher&gt;</span>Heidelberg<span class="balise">
+                              <br/>&lt;date when="1977"&gt;</span>
+                           <span class="balise">
+                              <br/>&lt;note type="thesisType"&gt;</span>Univ., Fak. für Orientalistik u. Altertumswiss., Diss.<span class="balise">
+                              <br/>&lt;idno type="callNumber"&gt;</span>$ Le titre abrégé ne figure pas ds la liste du SEG<span class="balise">
+                              <br/>&lt;idno type="zotero-uri"&gt;</span>http://zotero.org/groups/248770/items/FJAKIN8C<span class="balise">
+                              <br/>&lt;idno type="archiveLocation"&gt;</span>Veligianni-TerziDamiurgen</div>
+                        <a href="" class="close">
+                           <span>Fermer</span>
+                        </a>
+                     </div>
+                  </div>
+                  <br/>
+                  <br/>
+                  <a href="http://zotero.org/groups/248770/items/FJAKIN8C" target="_blank">Zot.</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </body>
+</html>
