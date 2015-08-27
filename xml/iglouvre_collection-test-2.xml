@@ -1,0 +1,1074 @@
+<?xml version="1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt>
+				<title>Exported from Zotero for iglouvre</title>
+			</titleStmt>
+			<publicationStmt>
+				<p>unpublished</p>
+			</publicationStmt>
+			<sourceDesc>
+				<p>Generated from Zotero database</p>
+			</sourceDesc>
+		</fileDesc>
+	</teiHeader>
+	<text>
+		<body>
+			<listBibl>
+				<biblStruct type="bookSection" xml:id="Waanders2012">
+					<analytic>
+						<title level="a">Aperçu des formes verbales dans les textes mycéniens : remarques sur la morphologie verbale et sur la distribution et les valeurs des thèmes temporels</title>
+						<title level="a" type="short">Waanders 2012</title>
+						<author>
+							<forename>Frits</forename>
+							<surname>Waanders</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">Études mycéniennes 2010. Actes du XIIIe colloque international sur les textes égéens, Sèvres, Paris, Nanterre, 20‑23 septembre 2010</title>
+						<editor role="scientificEditor">
+							<forename>Pierre</forename>
+							<surname>Carlier</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Charles de</forename>
+							<surname>Lamberterie</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Markus</forename>
+							<surname>Egetmeyer</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Pise, Italie</pubPlace>
+							<publisher>F. Serra</publisher>
+							<date when="2012"/>
+						</imprint>
+						<biblScope unit="pp">563-573</biblScope>
+					</monogr>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/VSP99TXE</idno>
+					<idno type="archiveLocation">Waanders-2012</idno>
+				</biblStruct>
+				<biblStruct type="bookSection" xml:id="ONeil2008">
+					<analytic>
+						<title level="a">A Re-examination of the Chremonidean War</title>
+						<title level="a" type="short">O'Neil 2008</title>
+						<author>
+							<forename>James L.</forename>
+							<surname>O'Neil</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">Ptolemy II Philadelphus and His World. Papers of the conference "Auckland Ptolemy Philadelphus", Auckland, 13‑16 July 2005</title>
+						<editor role="scientificEditor">
+							<forename>Paul</forename>
+							<surname>McKechnie</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Philippe</forename>
+							<surname>Guillaume</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Leyde, Pays-Bas</pubPlace>
+							<publisher>E. J. Brill</publisher>
+							<date when="2008"/>
+						</imprint>
+						<biblScope unit="pp">65-89</biblScope>
+					</monogr>
+					<series>
+						<title level="s">&lt;i&gt;Mnemosyne&lt;/i&gt;. Suppl.</title>
+						<biblScope unit="volume">300</biblScope>
+					</series>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/XFN5QGCW</idno>
+					<idno type="archiveLocation">ONeil-2008</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Habicht2006">
+					<monogr>
+						<title level="m">Athènes hellénistique. Histoire de la cité d'Alexandre le Grand à Marc Antoine</title>
+						<title level="m" type="short">Habicht, &lt;i&gt;Athènes hellénistique&lt;/i&gt;2</title>
+						<author>
+							<forename>Christian</forename>
+							<surname>Habicht</surname>
+						</author>
+						<respStmt>
+							<resp>translator</resp>
+							<persName>
+								<forename>Martine</forename>
+								<surname>Knoepfler</surname>
+							</persName>
+						</respStmt>
+						<respStmt>
+							<resp>translator</resp>
+							<persName>
+								<forename>Denis</forename>
+								<surname>Knoepfler</surname>
+							</persName>
+						</respStmt>
+						<edition>2e éd. revue et augmentée</edition>
+						<imprint>
+							<pubPlace>Paris</pubPlace>
+							<publisher>Les Belles Lettres</publisher>
+							<date when="2006"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">Histoire</title>
+						<biblScope unit="volume">76</biblScope>
+					</series>
+					<idno type="callNumber">$ DANS LE TITRE ABRÉGÉ, METTRE LE 2 EN EXPOSANT</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/459URR3J</idno>
+					<idno type="archiveLocation">Habicht-Athenes</idno>
+				</biblStruct>
+				<biblStruct type="dictionaryEntry" xml:id="Lenormant1887">
+					<analytic>
+						<title level="a">Baccanalia</title>
+						<title level="a" type="short">&lt;i&gt;DAGR&lt;/i&gt;, &lt;i&gt;s.v.&lt;i/&gt; « Bacchanal »</title>
+						<author>
+							<forename>Fr.</forename>
+							<surname>Lenormant</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">DAGR</title>
+						<editor role="scientificEditor">
+							<forename>Charles</forename>
+							<surname>Daremberg</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>É.</forename>
+							<surname>Saglio</surname>
+						</editor>
+						<imprint>
+							<date when="1887"/>
+						</imprint>
+						<biblScope unit="volume">I</biblScope>
+						<biblScope unit="pp">590-591</biblScope>
+					</monogr>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/CDFFVGEI</idno>
+				</biblStruct>
+				<biblStruct type="dictionaryEntry" xml:id="Wissowa1896">
+					<analytic>
+						<title level="a">Bacchanal</title>
+						<title level="a" type="short">&lt;i&gt;RE&lt;/i&gt;,&lt;i&gt;s.v.&lt;i/&gt; « Bacchanal »</title>
+						<author>
+							<forename>Georg</forename>
+							<surname>Wissowa</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">RE</title>
+						<imprint>
+							<pubPlace>Stuttgart, Allemagne</pubPlace>
+							<publisher>J. B. Metzlerscher</publisher>
+							<date when="1896"/>
+						</imprint>
+						<biblScope unit="volume">II</biblScope>
+					</monogr>
+					<note>col. 2721-2722</note>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/S9WWQANF</idno>
+				</biblStruct>
+				<biblStruct type="conferencePaper" xml:id="Hauben2013">
+					<analytic>
+						<title level="a">Callicrates of Samos and Patroclus of Macedon: Champions of Ptolemaic Thalassocracy</title>
+						<title level="a" type="short">Hauben 2013</title>
+						<author>
+							<forename>Hans</forename>
+							<surname>Hauben</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">The Ptolemies, the Sea and the Nile. Studies in Waterborne Power</title>
+						<meeting>Third international Ptolemaic Colloquium, held in the Peiraeus 18-20 September 2009</meeting>
+						<editor role="scientificEditor">
+							<forename>Kostas</forename>
+							<surname>Buraselis</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Mary</forename>
+							<surname>Stefanou</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Dorothy J.</forename>
+							<surname>Thompson</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Cambridge, États-Unis</pubPlace>
+							<publisher>Cambridge University Press</publisher>
+							<date when="2013"/>
+						</imprint>
+						<biblScope unit="pp">39-65</biblScope>
+					</monogr>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/4IWC9ANT</idno>
+					<idno type="archiveLocation">Hauben-2013</idno>
+				</biblStruct>
+				<biblStruct type="bookSection" xml:id="Massar1998">
+					<analytic>
+						<title level="a">Choix d'inscriptions. La profession médicale dans l'épigraphie</title>
+						<title level="a" type="short">Massar 1998</title>
+						<author>
+							<forename>Natacha</forename>
+							<surname>Massar</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">Au temps d'Hippocrate. Médecine et société en Grèce antique</title>
+						<editor role="scientificEditor">
+							<forename>Annie</forename>
+							<surname>Verbanck-Piérard</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Mariemont, Belgique</pubPlace>
+							<publisher>Musée royal de Mariemont</publisher>
+							<date when="1998"/>
+						</imprint>
+						<biblScope unit="pp">83-97</biblScope>
+					</monogr>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/27FZ5QCZ</idno>
+					<idno type="archiveLocation">Massar-1998</idno>
+				</biblStruct>
+				<biblStruct type="journalArticle" xml:id="Bélis1995">
+					<analytic>
+						<title level="a">Cithares, citharistes et citharôdes en Grèce</title>
+						<title level="a" type="short">Bélis 1995</title>
+						<author>
+							<forename>Annie</forename>
+							<surname>Bélis</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="j">Comptes rendus des séances de l'Académie des inscriptions et belles-lettres</title>
+						<title level="j" type="short">CRAI</title>
+						<imprint>
+							<date when="1995"/>
+						</imprint>
+						<biblScope unit="volume">139</biblScope>
+						<biblScope unit="pp">1025-1065</biblScope>
+					</monogr>
+					<idno type="ISSN">0065-0536</idno>
+					<idno type="DOI">10.3406/crai.1995.15550</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/CBMHW33H</idno>
+					<idno type="archiveLocation">Belis-1995</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Balzat2013">
+					<monogr>
+						<title level="m">Coastal Asia Minor. Caria to Cilicia</title>
+						<title level="m" type="short">&lt;i&gt;LGPN&lt;/i&gt; V.B</title>
+						<editor role="scientificEditor">
+							<forename>Jean-Sébastien</forename>
+							<surname>Balzat</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Richard W. V.</forename>
+							<surname>Catling</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Édouard</forename>
+							<surname>Chiricat</surname>
+						</editor>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Thomas</forename>
+								<surname>Corsten</surname>
+							</persName>
+						</respStmt>
+						<imprint>
+							<pubPlace>Oxford, Royaume-Uni</pubPlace>
+							<publisher>Clarendon Press</publisher>
+							<date when="2013"/>
+						</imprint>
+						<biblScope unit="volume">V B</biblScope>
+					</monogr>
+					<monogr>
+						<title level="m">A Lexicon of Greek Personal Names</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="ISBN">0-19-927333-2</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/WXX4DNGJ</idno>
+					<idno type="archiveLocation">LGPN-V-B</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Corsten2010">
+					<monogr>
+						<title level="m">Coastal Asia Minor. Pontos to Ionia</title>
+						<title level="m" type="short">&lt;i&gt;LGPN&lt;/i&gt; V.A</title>
+						<editor role="scientificEditor">
+							<forename>Thomas</forename>
+							<surname>Corsten</surname>
+						</editor>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Richard W. V.</forename>
+								<surname>Catling</surname>
+							</persName>
+						</respStmt>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Marijana</forename>
+								<surname>Ricl</surname>
+							</persName>
+						</respStmt>
+						<imprint>
+							<pubPlace>Oxford, Royaume-Uni</pubPlace>
+							<publisher>Clarendon Press</publisher>
+							<date when="2010"/>
+						</imprint>
+						<biblScope unit="volume">V A</biblScope>
+					</monogr>
+					<monogr>
+						<title level="m">A Lexicon of Greek Personal Names</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="ISBN">0-19-927333-2</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/9DTDT8FC</idno>
+					<idno type="archiveLocation">LGPN-V-A</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Van_Effenterre1990">
+					<monogr>
+						<title level="m">Cretica selecta</title>
+						<title level="m" type="short">Van Effenterre 1990</title>
+						<author>
+							<forename>Henri</forename>
+							<surname>Van Effenterre</surname>
+						</author>
+						<imprint>
+							<pubPlace>Amsterdam, Pays-Bas</pubPlace>
+							<publisher>A. M. Hakkert</publisher>
+							<date when="1990"/>
+						</imprint>
+						<extent>2</extent>
+					</monogr>
+					<idno type="ISBN">90-256-0929-5</idno>
+					<idno type="callNumber">$ 2 vol. en 1 t.</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/FIW7D9NH</idno>
+					<idno type="archiveLocation">Van Effenterre 1990</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Băluţă1999">
+					<monogr>
+						<title level="m">Dacia Superior. 6, Apulum, instrumentum domesticum</title>
+						<title level="m" type="short">&lt;i&gt;IDR&lt;/i&gt; III,6</title>
+						<editor role="scientificEditor">
+							<forename>Closça L.</forename>
+							<surname>Băluţă</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Bucarest, Roumanie</pubPlace>
+							<publisher>Ed. Academiei Republicii Socialiste România</publisher>
+							<date when="1999"/>
+						</imprint>
+						<biblScope unit="volume">III</biblScope>
+					</monogr>
+					<series>
+						<title level="s">Inscripțiile antice din Dacia și Scythia Minor</title>
+					</series>
+					<monogr>
+						<title level="m">Inscript̡iile Daciei romane</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/89N4AVIR</idno>
+					<idno type="archiveLocation">IDR-III-6</idno>
+				</biblStruct>
+				<biblStruct type="thesis" xml:id="Veligianni-Terzi1977">
+					<monogr>
+						<title level="m">Damiurgen. Zur Entwicklung einer Magistratur</title>
+						<title level="m" type="short">Veligianni-Terzi&lt;i&gt;Damiurgen&lt;/i&gt;</title>
+						<author>
+							<forename>Chrysoúla</forename>
+							<surname>Veligianni-Terzi</surname>
+						</author>
+						<imprint>
+							<publisher>Heidelberg</publisher>
+							<date when="1977"/>
+							<note type="thesisType">Univ., Fak. für Orientalistik u. Altertumswiss., Diss.</note>
+						</imprint>
+					</monogr>
+					<idno type="callNumber">$ Le titre abrégé ne figure pas ds la liste du SEG</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/FJAKIN8C</idno>
+					<idno type="archiveLocation">Veligianni-TerziDamiurgen</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Bodel2009">
+					<monogr>
+						<title level="m">Dediche sacre nel mondo greco-romano. Diffusione, funzioni, tipologie = Religious Dedications in the Greco-Roman World. Distribution, Typology, Use: Institutum
+							Romanum Finlandiae, American Academy in Rome, 19-20 aprile, 2006</title>
+						<title level="m" type="short">Bodel &amp; Kajava 2009</title>
+						<editor role="scientificEditor">
+							<forename>John</forename>
+							<surname>Bodel</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Mika</forename>
+							<surname>Kajava</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Rome, Italie</pubPlace>
+							<publisher>Institutum Romanum Finlandiae</publisher>
+							<date when="2009"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">Acta Instituti Romani Finlandiae</title>
+						<biblScope unit="volume">35</biblScope>
+					</series>
+					<idno type="ISBN">978-88-7140-411-0 88-7140-411-4</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/IMXBU5R5</idno>
+					<idno type="archiveLocation">Dediche-sacre-nel-mondo-greco-romano</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Petzl1994">
+					<monogr>
+						<title level="m">Die Beichtinschriften Westkleinasiens</title>
+						<title level="m" type="short">Petzl, &lt;i&gt;Beichtinschriften&lt;/i&gt;</title>
+						<editor role="scientificEditor">
+							<forename>Georg</forename>
+							<surname>Petzl</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Bonn, Allemagne</pubPlace>
+							<publisher>Habelt</publisher>
+							<date when="1994"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">&lt;i&gt;EA&lt;/i&gt;</title>
+						<biblScope unit="volume">22</biblScope>
+					</series>
+					<idno type="ISBN">3-7749-2653-0</idno>
+					<idno type="callNumber">$ EA (Epigraphica Anatolica) est une revue</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/IKS6RSK4</idno>
+					<idno type="archiveLocation">Petzl-Beichtinschriften</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Meyer1989">
+					<monogr>
+						<title level="m">Die griechischen Urkundenreliefs</title>
+						<title level="m" type="short">Meyer, &lt;i&gt;Urkundenreliefs&lt;/i&gt;</title>
+						<author>
+							<forename>Marion</forename>
+							<surname>Meyer</surname>
+						</author>
+						<imprint>
+							<pubPlace>Berlin, Allemagne</pubPlace>
+							<publisher>Gebr. Mann</publisher>
+							<date when="1989"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">&lt;i&gt;MDAI(A)&lt;/i&gt;. Suppl.</title>
+						<biblScope unit="volume">13</biblScope>
+					</series>
+					<idno type="ISBN">3-7861-1319-X</idno>
+					<idno type="callNumber">$ Le SEG traduit Beiheft (Suppl.)</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/BCSMAZUZ</idno>
+					<idno type="archiveLocation">Meyer-Urkundenreliefs</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Fränkel1890">
+					<monogr>
+						<title level="m">Die Inschriften von Pergamon. 1, Bis zum Ende der Königszeit</title>
+						<title level="m" type="short">&lt;i&gt;I.Perg&lt;/i&gt; I</title>
+						<editor role="scientificEditor">
+							<forename>Max</forename>
+							<surname>Fränkel</surname>
+						</editor>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Ernst</forename>
+								<surname>Fabricius</surname>
+							</persName>
+						</respStmt>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Carl</forename>
+								<surname>Schuchhardt</surname>
+							</persName>
+						</respStmt>
+						<imprint>
+							<pubPlace>Berlin, Allemagne</pubPlace>
+							<publisher>W. Spemann</publisher>
+							<date when="1890"/>
+						</imprint>
+						<biblScope unit="volume">I</biblScope>
+					</monogr>
+					<monogr>
+						<title level="m">Altertümer von Pergamon</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/PHDVWJXT</idno>
+					<idno type="archiveLocation">I-Pergamon-I</idno>
+				</biblStruct>
+				<biblStruct type="bookSection" xml:id="Blass1905">
+					<analytic>
+						<title level="a">Die kretischen Inschriften</title>
+						<title level="a" type="short">SGDI III,2</title>
+						<author>
+							<forename>Friedrich</forename>
+							<surname>Blass</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">Sammlung der griechischen Dialekt-Inschriften</title>
+						<editor role="scientificEditor">
+							<forename>Hermann</forename>
+							<surname>Collitz</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Friedrich</forename>
+							<surname>Bechtel</surname>
+						</editor>
+						<imprint>
+							<date when="1905"/>
+						</imprint>
+						<biblScope unit="volume">III, 2</biblScope>
+						<biblScope unit="pp">227-423</biblScope>
+					</monogr>
+					<idno type="callNumber">$ ici le titre abrégé avait été choisi, modification par EM le 16/03/2015 selon recommandations DR, avalisé MB le 17 07</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/QDJFPXXW</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Marek1984">
+					<monogr>
+						<title level="m">Die Proxenie</title>
+						<title level="m" type="short">Marek, &lt;i&gt;Proxenie&lt;/i&gt;</title>
+						<author>
+							<forename>Christian</forename>
+							<surname>Marek</surname>
+						</author>
+						<imprint>
+							<pubPlace>Francfort-sur-le-Main, Allemagne</pubPlace>
+							<publisher>P. Lang</publisher>
+							<date when="1984"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">Europäische Hochschulschriften. Reihe 3, Geschichte und ihre Hilfswissenschaften</title>
+						<biblScope unit="volume">213</biblScope>
+					</series>
+					<idno type="ISBN">3-8204-7595-8</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/B2MG2FZZ</idno>
+					<idno type="archiveLocation">Marek 1984</idno>
+				</biblStruct>
+				<biblStruct type="journalArticle" xml:id="Launey1945">
+					<analytic>
+						<title level="a">Études d'histoire hellénistique. II, L'exécution de Sotadès et l'expédition de Patroklos dans la mer Égée (266 av. J.‑C.)</title>
+						<title level="a" type="short">Launey 1945</title>
+						<author>
+							<forename>Marcel</forename>
+							<surname>Launey</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="j">Revue des études anciennes</title>
+						<title level="j" type="short">REA</title>
+						<imprint>
+							<date when="1945"/>
+						</imprint>
+						<biblScope unit="volume">47</biblScope>
+						<biblScope unit="pp">33-45</biblScope>
+					</monogr>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/HUV2R374</idno>
+					<idno type="archiveLocation">Launey-1945</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Bruneau2005">
+					<monogr>
+						<title level="m">Guide de Délos</title>
+						<title level="m" type="short">&lt;i&gt;GD&lt;/i&gt; &lt;sup&gt;4&lt;/sup&gt;</title>
+						<author>
+							<forename>Philippe</forename>
+							<surname>Bruneau</surname>
+						</author>
+						<author>
+							<forename>Jean</forename>
+							<surname>Ducat</surname>
+						</author>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Michèle</forename>
+								<surname>Brunet</surname>
+							</persName>
+						</respStmt>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Alexandre</forename>
+								<surname>Farnoux</surname>
+							</persName>
+						</respStmt>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>Jean-Charles</forename>
+								<surname>Moretti</surname>
+							</persName>
+						</respStmt>
+						<edition>4e éd. refondue et mise à jour</edition>
+						<imprint>
+							<pubPlace>Athènes, Grèce</pubPlace>
+							<publisher>École française d'Athènes</publisher>
+							<date when="2005"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">Sites et monuments</title>
+						<biblScope unit="volume">1</biblScope>
+					</series>
+					<idno type="ISBN">2-86958-210-2</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/TJ6H4ZKD</idno>
+					<idno type="archiveLocation">GD</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Kirchner1913">
+					<monogr>
+						<title level="m">Inscriptiones atticae Euclidis anno posteriores</title>
+						<title level="m" type="short">&lt;i&gt;IG&lt;/i&gt;II&lt;sup&gt;2&lt;/sup&gt;</title>
+						<editor role="scientificEditor">
+							<forename>Iohannes</forename>
+							<surname>Kirchner</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Berlin, Allemagne</pubPlace>
+							<publisher>G. de Gruyter</publisher>
+							<date from="1913" to="1940"/>
+						</imprint>
+						<biblScope unit="volume">II-III</biblScope>
+						<extent>6</extent>
+					</monogr>
+					<monogr>
+						<title level="m">Inscriptiones Graecae</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<note>La forme usuelle et correcte pour l'abréviation est IG II2 quand on veut ensuite renvoyer à une inscription précise dans le corpus IG II2, 421 (donc virgule, une espace et le
+						numéro de l'inscription) Complément le 18 juillet : faire en sorte que l'exposant ne soit pas trop haut perché</note>
+					<idno type="callNumber">$ Vérifier titre abrégé ? Les IG sont-elles une coll. ou un titre d'ensemble ? MB le 17 juillet : est-il possible de mettre le 2 en exposant, voir note dans
+						l'onglet notes</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/XDT67NEV</idno>
+					<idno type="archiveLocation">IG-II-2</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Fredrich1909">
+					<monogr>
+						<title level="m">Inscriptiones insularum maris Aegaei praeter Delum. 8, Inscriptiones insularum maris Thracici</title>
+						<title level="m" type="short">&lt;i&gt;IG&lt;/i&gt; XII 8</title>
+						<editor role="scientificEditor">
+							<forename>Carl</forename>
+							<surname>Fredrich</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Berlin, Allemagne</pubPlace>
+							<publisher>G. Reimer</publisher>
+							<date when="1909"/>
+						</imprint>
+						<biblScope unit="volume">XII</biblScope>
+					</monogr>
+					<monogr>
+						<title level="m">Inscriptiones Graecae</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/KCUFJGN4</idno>
+					<idno type="archiveLocation">IG-XII-8</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Ager1996">
+					<monogr>
+						<title level="m">Interstate Arbitrations in the Greek World, 337-90 B.C.</title>
+						<title level="m" type="short">Ager, &lt;i&gt;Arbitrations&lt;/i&gt;</title>
+						<author>
+							<forename>Sheila Louise</forename>
+							<surname>Ager</surname>
+						</author>
+						<imprint>
+							<pubPlace>Berkeley (Calif.), États-Unis</pubPlace>
+							<publisher>University of California Press</publisher>
+							<date when="1996"/>
+						</imprint>
+						<extent>1</extent>
+					</monogr>
+					<series>
+						<title level="s">Hellenistic Culture and Society</title>
+						<biblScope unit="volume">18</biblScope>
+					</series>
+					<idno type="ISBN">0-520-08162-5</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/DU4ZUWRR</idno>
+					<idno type="archiveLocation">Ager-Arbitrations</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Wiemer2001">
+					<monogr>
+						<title level="m">Krieg, Handel und Piraterie. Untersuchungen zur Geschichte des hellenistischen Rhodos</title>
+						<title level="m" type="short">Wiemer 2001</title>
+						<author>
+							<forename>Hans-Ulrich</forename>
+							<surname>Wiemer</surname>
+						</author>
+						<imprint>
+							<pubPlace>Berlin, Allemagne</pubPlace>
+							<publisher>Akademie Verl.</publisher>
+							<date when="2001"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">&lt;i&gt;Klio&lt;/i&gt;. Beihefte</title>
+						<biblScope unit="volume">6</biblScope>
+					</series>
+					<idno type="ISBN">3-05-003751-2</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/FSF83X8Z</idno>
+					<idno type="archiveLocation">Wiemer-2001</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Rizakis1998">
+					<monogr>
+						<title level="m">La cité de Patras. Épigraphie et histoire</title>
+						<title level="m" type="short">&lt;i&gt;Achaïe&lt;/i&gt; II</title>
+						<author>
+							<forename>Athanasios D.</forename>
+							<surname>Rizakis</surname>
+						</author>
+						<imprint>
+							<pubPlace>Athènes, Grèce</pubPlace>
+							<publisher>Centre de recherches de l'Antiquité grecque et romaine, Fondation nationale de la recherche scientifique</publisher>
+							<date when="1998"/>
+						</imprint>
+						<biblScope unit="volume">II</biblScope>
+						<extent>1</extent>
+					</monogr>
+					<series>
+						<title level="s">Meletimata</title>
+						<biblScope unit="volume">25</biblScope>
+					</series>
+					<monogr>
+						<title level="m">Achaïe</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="ISBN">960-7905-02-4</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/Z5RU9RVK</idno>
+					<idno type="archiveLocation">Achaie-II</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Bernand1981">
+					<monogr>
+						<title level="m">La "Méris" de Ptolémôn</title>
+						<title level="m" type="short">&lt;i&gt;I.Fay(o)um&lt;/i&gt; III</title>
+						<author>
+							<forename>Étienne</forename>
+							<surname>Bernand</surname>
+						</author>
+						<imprint>
+							<pubPlace>Le Caire, Égypte</pubPlace>
+							<publisher>Institut français d'archéologie orientale du Caire</publisher>
+							<date when="1981"/>
+						</imprint>
+						<biblScope unit="volume">III</biblScope>
+					</monogr>
+					<series>
+						<title level="s">BdÉ</title>
+						<biblScope unit="volume">80</biblScope>
+					</series>
+					<monogr>
+						<title level="m">Recueil des inscriptions grecques du Fayoum</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="ISBN">90-04-04273-3</idno>
+					<idno type="callNumber">$ harmoniser sur trismegistos ?</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/GEA2P8TE</idno>
+					<idno type="archiveLocation">I-Fayoum-III</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Zagdoun1989">
+					<monogr>
+						<title level="m">La sculpture archaïsante dans l'art hellénistique et dans l'art romain du Haut-Empire</title>
+						<title level="m" type="short">Zagdoun 1989</title>
+						<author>
+							<forename>Mary Anne</forename>
+							<surname>Zagdoun</surname>
+						</author>
+						<imprint>
+							<pubPlace>Paris, France</pubPlace>
+							<publisher>École française d'Athènes</publisher>
+							<date when="1989"/>
+						</imprint>
+						<extent>2 vol.</extent>
+					</monogr>
+					<series>
+						<title level="s">BEFAR</title>
+						<biblScope unit="volume">269</biblScope>
+					</series>
+					<idno type="ISBN">2-86958-023-1</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/7N2644IQ</idno>
+					<idno type="archiveLocation">Zagdoun-1989</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Bernand1960">
+					<monogr>
+						<title level="m">Les inscriptions grecques et latines du Colosse de Memnon</title>
+						<title level="m" type="short">&lt;i&gt;I.Col.Memnon&lt;/i&gt;</title>
+						<author>
+							<forename>André</forename>
+							<surname>Bernand</surname>
+						</author>
+						<author>
+							<forename>Étienne</forename>
+							<surname>Bernand</surname>
+						</author>
+						<imprint>
+							<pubPlace>Le Caire, Égypte</pubPlace>
+							<publisher>Institut français d'archéologie orientale</publisher>
+							<date when="1960"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">BdÉ</title>
+						<biblScope unit="volume">31</biblScope>
+					</series>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/Q9A7PM9X</idno>
+					<idno type="archiveLocation">I-Col-Memnon</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Samama2003">
+					<monogr>
+						<title level="m">Les médecins dans le monde grec. Sources épigraphiques sur la naissance d'un corps médical</title>
+						<title level="m" type="short">Samama ,&lt;i&gt;Médecins&lt;/i&gt;</title>
+						<author>
+							<forename>Évelyne</forename>
+							<surname>Samama</surname>
+						</author>
+						<imprint>
+							<pubPlace>Genève, Suisse</pubPlace>
+							<publisher>Droz</publisher>
+							<date when="2003"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">Hautes études du monde gréco-romain</title>
+						<biblScope unit="volume">31</biblScope>
+					</series>
+					<idno type="ISBN">2-600-00847-0</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/NQNWBTFV</idno>
+					<idno type="archiveLocation">Samama-2003</idno>
+				</biblStruct>
+				<biblStruct type="journalArticle" xml:id="Demargne1900">
+					<analytic>
+						<title level="a">Monuments figurés et inscriptions de Crète</title>
+						<title level="a" type="short">Demargne 1900</title>
+						<author>
+							<forename>J.</forename>
+							<surname>Demargne</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="j">Bulletin de correspondance hellénique</title>
+						<title level="j" type="short">BCH</title>
+						<imprint>
+							<date when="1900"/>
+						</imprint>
+						<biblScope unit="volume">24</biblScope>
+						<biblScope unit="pp">222-246</biblScope>
+					</monogr>
+					<idno type="ISSN">0007-4217</idno>
+					<idno type="DOI">10.3406/bch.1900.3408</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/QSZPXKIF</idno>
+					<idno type="archiveLocation">Demargne-1900</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Preisendanz1973">
+					<monogr>
+						<title level="m">Papyri graecae magicae = Die griechischen Zauberpapyri</title>
+						<title level="m" type="short">&lt;i&gt;P.Graec.Mag.&lt;/i&gt;</title>
+						<editor role="scientificEditor">
+							<forename>Karl</forename>
+							<surname>Preisendanz</surname>
+						</editor>
+						<editor role="scientificEditor">
+							<forename>Albert</forename>
+							<surname>Henrichs</surname>
+						</editor>
+						<edition>2., verb. Aufl.</edition>
+						<imprint>
+							<pubPlace>Stuttgart, Allemagne</pubPlace>
+							<publisher>B. G. Teubner</publisher>
+							<date when="1973"/>
+						</imprint>
+						<extent>2</extent>
+					</monogr>
+					<series>
+						<title level="s">Sammlung wissenschaftlicher Commentare</title>
+					</series>
+					<idno type="ISBN">3-519-04276-2</idno>
+					<idno type="callNumber">$ 00000</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/9XEVZ69U</idno>
+					<idno type="archiveLocation">P.Graec.Mag.</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Rizakis1995">
+					<monogr>
+						<title level="m">Sources textuelles et histoire régionale</title>
+						<title level="m" type="short">&lt;i&gt;Achaïe&lt;/i&gt; I</title>
+						<author>
+							<forename>Athanasios D.</forename>
+							<surname>Rizakis</surname>
+						</author>
+						<imprint>
+							<pubPlace>Athènes, Grèce</pubPlace>
+							<publisher>Centre de recherches de l'Antiquité grecque et romaine, Fondation nationale de la recherche scientifique</publisher>
+							<date when="1995"/>
+						</imprint>
+						<biblScope unit="volume">I</biblScope>
+						<extent>1</extent>
+					</monogr>
+					<series>
+						<title level="s">Meletimata</title>
+						<biblScope unit="volume">20</biblScope>
+					</series>
+					<monogr>
+						<title level="m">Achaïe</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="ISBN">960-7094-87-5</idno>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/E5SP2CUJ</idno>
+					<idno type="archiveLocation">Achaie-I</idno>
+				</biblStruct>
+				<biblStruct type="journalArticle" xml:id="Susini1963">
+					<analytic>
+						<title level="a">Supplemento epigrafico di Caso, Scarpanto, Saro, Calchi, Alinnia e Tilo</title>
+						<title level="a" type="short">&lt;i&gt;Suppl.Epigr.Rh.&lt;/i&gt; II</title>
+						<author>
+							<forename>Giancarlo</forename>
+							<surname>Susini</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="j">Annuario della Scuola archeologica di Atene e delle missioni italiane in Oriente</title>
+						<title level="j" type="short">ASAA</title>
+						<imprint>
+							<date from="1963" to="1964"/>
+						</imprint>
+						<biblScope unit="volume">41-42</biblScope>
+						<biblScope unit="pp">203-292</biblScope>
+					</monogr>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/9BB7PS3I</idno>
+					<idno type="archiveLocation">SupplEpigrRhII</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Rhodes1997">
+					<monogr>
+						<title level="m">The Decrees of the Greek States</title>
+						<title level="m" type="short">Rhodes, &lt;i&gt;Decrees&lt;/i&gt;</title>
+						<author>
+							<forename>Peter John</forename>
+							<surname>Rhodes</surname>
+						</author>
+						<respStmt>
+							<resp>contributor</resp>
+							<persName>
+								<forename>David M.</forename>
+								<surname>Lewis</surname>
+							</persName>
+						</respStmt>
+						<imprint>
+							<pubPlace>Oxford, Royaume-Uni</pubPlace>
+							<publisher>Clarendon Press</publisher>
+							<date when="1997"/>
+						</imprint>
+					</monogr>
+					<idno type="ISBN">0-19-814973-5</idno>
+					<idno type="callNumber">$ 00000</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/KV7Q5UNB</idno>
+					<idno type="archiveLocation">Rhodes</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Humphrey1995">
+					<monogr>
+						<title level="m">The Roman and Byzantine Near East. Some Recent Archaeological Research</title>
+						<title level="m" type="short">&lt;i&gt;The Roman and Byzantine Near East&lt;/i&gt;1</title>
+						<editor role="scientificEditor">
+							<forename>John</forename>
+							<surname>Humphrey</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Ann Arbor (Mich.), États-Unis</pubPlace>
+							<publisher>Journal of Roman Archaeology</publisher>
+							<date when="1995"/>
+						</imprint>
+					</monogr>
+					<series>
+						<title level="s">&lt;i&gt;JRA&lt;/i&gt;. Suppl. Series</title>
+						<biblScope unit="volume">14</biblScope>
+					</series>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/668BSQPF</idno>
+					<idno type="archiveLocation">The Roman-and-Byzantine-Near-East</idno>
+				</biblStruct>
+				<biblStruct type="conferencePaper" xml:id="Hauben1996">
+					<analytic>
+						<title level="a">Timosthène et les autres amiraux de nationalité rhodienne au service de Ptolémées</title>
+						<title level="a" type="short">Hauben 1996</title>
+						<author>
+							<forename>Hans</forename>
+							<surname>Hauben</surname>
+						</author>
+					</analytic>
+					<monogr>
+						<title level="m">Ρόδος, 24 αιώνες. Πρακτικά του Διεθνούς επισημονικού συμποσίου, 1-5 Οκτωβρίου 1992 = Proceedings of the International Scientific Symposium Rhodes. 24
+							Centuries, October 1‑5, 1992</title>
+						<editor role="scientificEditor">
+							<forename>G.</forename>
+							<surname>Gizelis</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Athènes, Grèce</pubPlace>
+							<date when="1996"/>
+						</imprint>
+						<biblScope unit="pp">220-242</biblScope>
+					</monogr>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/HTAANSNH</idno>
+					<idno type="archiveLocation">Hauben-1996</idno>
+				</biblStruct>
+				<biblStruct type="book" xml:id="Guarducci1935">
+					<monogr>
+						<title level="m">Tituli Cretae mediae praeter Gortynios</title>
+						<title level="m" type="short">&lt;i&gt;I.Cret.&lt;/i&gt; I</title>
+						<editor role="scientificEditor">
+							<forename>Margherita</forename>
+							<surname>Guarducci</surname>
+						</editor>
+						<imprint>
+							<pubPlace>Rome, Italie</pubPlace>
+							<publisher>Libreria dello Stato</publisher>
+							<date when="1935"/>
+						</imprint>
+						<biblScope unit="volume">I</biblScope>
+					</monogr>
+					<monogr>
+						<title level="m">Inscriptiones Creticae</title>
+						<imprint>
+							<biblScope/>
+						</imprint>
+					</monogr>
+					<idno type="callNumber">$</idno>
+					<idno type="zotero-uri">http://zotero.org/groups/248770/items/A9RIFHTJ</idno>
+					<idno type="archiveLocation">I-Cret-I</idno>
+				</biblStruct>
+			</listBibl>
+		</body>
+	</text>
+</TEI>

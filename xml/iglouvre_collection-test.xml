@@ -18,7 +18,7 @@
             <listBibl>
                 <biblStruct type="bookSection" xml:id="Waanders2012">
                     <analytic>
-                        <title level="a">Aperçu des formes verbales dans les textes mycéniens : remarques sur la morphologie verbale et sur la distribution et les valeurs des thèmes temporels</title>
+                        <title level="a">Aperçu des formes verbales dans les textes mycéniens : remarques sur la morphologie verbale et sur la distribution et les valeurs des thèmes temporels</title>
                         <title level="a" type="short">Waanders 2012</title>
                         <author>
                             <forename>Frits</forename>
@@ -55,12 +55,12 @@
                         <title level="a">A Re-examination of the Chremonidean War</title>
                         <title level="a" type="short">O'Neil 2008</title>
                         <author>
-                            <forename>James L.</forename>
+                            <forename>James L.</forename>
                             <surname>O'Neil</surname>
                         </author>
                     </analytic>
                     <monogr>
-                        <title level="m">Ptolemy II Philadelphus and His World. Papers of the conference "Auckland Ptolemy Philadelphus", Auckland, 13-16 July 2005</title>
+                        <title level="m">Ptolemy II Philadelphus and His World. Papers of the conference "Auckland Ptolemy Philadelphus", Auckland, 13-16 July 2005</title>
                         <editor role="scientificEditor">
                             <forename>Paul</forename>
                             <surname>McKechnie</surname>
@@ -71,7 +71,7 @@
                         </editor>
                         <imprint>
                             <pubPlace>Leyde, Pays-Bas</pubPlace>
-                            <publisher>E. J. Brill</publisher>
+                            <publisher>E. J. Brill</publisher>
                             <date when="2008"/>
                         </imprint>
                         <biblScope unit="pp">65-89</biblScope>
@@ -105,7 +105,7 @@
                                 <surname>Knoepfler</surname>
                             </persName>
                         </respStmt>
-                        <edition>2e éd. revue et augmentée</edition>
+                        <edition>2e éd. revue et augmentée</edition>
                         <imprint>
                             <pubPlace>Paris</pubPlace>
                             <publisher>Les Belles Lettres</publisher>
@@ -158,7 +158,7 @@
                         <title level="m">RE</title>
                         <imprint>
                             <pubPlace>Stuttgart, Allemagne</pubPlace>
-                            <publisher>J. B. Metzlerscher</publisher>
+                            <publisher>J. B. Metzlerscher</publisher>
                             <date when="1896"/>
                         </imprint>
                         <biblScope unit="volume">II</biblScope>
@@ -187,7 +187,7 @@
                             <surname>Stefanou</surname>
                         </editor>
                         <editor role="scientificEditor">
-                            <forename>Dorothy J.</forename>
+                            <forename>Dorothy J.</forename>
                             <surname>Thompson</surname>
                         </editor>
                         <imprint>
@@ -338,7 +338,7 @@
                         </author>
                         <imprint>
                             <pubPlace>Amsterdam, Pays-Bas</pubPlace>
-                            <publisher>A. M. Hakkert</publisher>
+                            <publisher>A. M. Hakkert</publisher>
                             <date when="1990"/>
                         </imprint>
                         <extent>2</extent>
@@ -353,7 +353,7 @@
                         <title level="m">Dacia Superior. 6, Apulum, instrumentum domesticum</title>
                         <title level="m" type="short">&lt;i&gt;IDR&lt;/i&gt; III,6</title>
                         <editor role="scientificEditor">
-                            <forename>Closça L.</forename>
+                            <forename>Closça L.</forename>
                             <surname>Băluţă</surname>
                         </editor>
                         <imprint>
@@ -396,7 +396,8 @@
                 </biblStruct>
                 <biblStruct type="book" xml:id="Bodel2009">
                     <monogr>
-                        <title level="m">Dediche sacre nel mondo greco-romano. Diffusione, funzioni, tipologie = Religious Dedications in the Greco-Roman World. Distribution, Typology, Use: Institutum Romanum Finlandiae, American Academy in Rome, 19-20 aprile, 2006</title>
+                        <title level="m">Dediche sacre nel mondo greco-romano. Diffusione, funzioni, tipologie = Religious Dedications in the Greco-Roman World. Distribution, Typology, Use: Institutum
+                            Romanum Finlandiae, American Academy in Rome, 19-20 aprile, 2006</title>
                         <title level="m" type="short">&lt;i&gt;Dediche sacre nel mondo greco-romano&lt;/i&gt;</title>
                         <editor role="scientificEditor">
                             <forename>John</forename>
@@ -470,7 +471,7 @@
                 <biblStruct type="book" xml:id="Fränkel1890">
                     <monogr>
                         <title level="m">Die Inschriften von Pergamon. 1, Bis zum Ende der Königszeit</title>
-                        <title level="m" type="short">&lt;i&gt;I.Perg(amon)&lt;/i&gt; I</title>
+                        <title level="m" type="short">&lt;i&gt;I.Perg(amon)&lt;/i&gt; I</title>
                         <editor role="scientificEditor">
                             <forename>Max</forename>
                             <surname>Fränkel</surname>
@@ -491,7 +492,7 @@
                         </respStmt>
                         <imprint>
                             <pubPlace>Berlin, Allemagne</pubPlace>
-                            <publisher>W. Spemann</publisher>
+                            <publisher>W. Spemann</publisher>
                             <date when="1890"/>
                         </imprint>
                         <biblScope unit="volume">VIII</biblScope>
@@ -542,12 +543,12 @@
                         </author>
                         <imprint>
                             <pubPlace>Francfort-sur-le-Main, Allemagne</pubPlace>
-                            <publisher>P. Lang</publisher>
+                            <publisher>P. Lang</publisher>
                             <date when="1984"/>
                         </imprint>
                     </monogr>
                     <series>
-                        <title level="s">Europäische Hochschulschriften. Reihe 3, Geschichte und ihre Hilfswissenschaften</title>
+                        <title level="s">Europäische Hochschulschriften. Reihe 3, Geschichte und ihre Hilfswissenschaften</title>
                         <biblScope unit="volume">213</biblScope>
                     </series>
                     <idno type="ISBN">3-8204-7595-8</idno>
@@ -557,7 +558,7 @@
                 </biblStruct>
                 <biblStruct type="journalArticle" xml:id="Launey1945">
                     <analytic>
-                        <title level="a">Études d'histoire hellénistique. II, L'exécution de Sotadès et l'expédition de Patroklos dans la mer Égée (266 av. J.‑C.)</title>
+                        <title level="a">Études d'histoire hellénistique. II, L'exécution de Sotadès et l'expédition de Patroklos dans la mer Égée (266 av. J.‑C.)</title>
                         <title level="a" type="short">Launey 1945</title>
                         <author>
                             <forename>Marcel</forename>
@@ -609,7 +610,7 @@
                                 <surname>Moretti</surname>
                             </persName>
                         </respStmt>
-                        <edition>4e éd. refondue et mise à jour</edition>
+                        <edition>4e éd. refondue et mise à jour</edition>
                         <imprint>
                             <pubPlace>Athènes, Grèce</pubPlace>
                             <publisher>École française d'Athènes</publisher>
@@ -652,7 +653,7 @@
                 </biblStruct>
                 <biblStruct type="book" xml:id="Ager1996">
                     <monogr>
-                        <title level="m">Interstate Arbitrations in the Greek World, 337-90 B.C.</title>
+                        <title level="m">Interstate Arbitrations in the Greek World, 337-90 B.C.</title>
                         <title level="m" type="short">Ager, &lt;i&gt;Arbitrations&lt;/i&gt;</title>
                         <author>
                             <forename>Sheila Louise</forename>
@@ -683,7 +684,7 @@
                         </author>
                         <imprint>
                             <pubPlace>Berlin, Allemagne</pubPlace>
-                            <publisher>Akademie Verl.</publisher>
+                            <publisher>Akademie Verl.</publisher>
                             <date when="2001"/>
                         </imprint>
                     </monogr>
@@ -730,13 +731,13 @@
                 <biblStruct type="book" xml:id="Bernand1981">
                     <monogr>
                         <title level="m">La "Méris" de Ptolémôn</title>
-                        <title level="m" type="short">&lt;i&gt;I.Fay(o)um&lt;/i&gt; III</title>
+                        <title level="m" type="short">&lt;i&gt;I.Fay(o)um&lt;/i&gt; III</title>
                         <author>
                             <forename>Étienne</forename>
                             <surname>Bernand</surname>
                         </author>
                         <imprint>
-                            <pubPlace>Le Caire, Égypte</pubPlace>
+                            <pubPlace>Le Caire, Égypte</pubPlace>
                             <publisher>Institut français d'archéologie orientale du Caire</publisher>
                             <date when="1981"/>
                         </imprint>
@@ -870,7 +871,7 @@
                         <edition>2., verb. Aufl.</edition>
                         <imprint>
                             <pubPlace>Stuttgart, Allemagne</pubPlace>
-                            <publisher>B. G. Teubner</publisher>
+                            <publisher>B. G. Teubner</publisher>
                             <date when="1973"/>
                         </imprint>
                         <extent>2</extent>
@@ -945,7 +946,7 @@
                         <respStmt>
                             <resp>contributor</resp>
                             <persName>
-                                <forename>David M.</forename>
+                                <forename>David M.</forename>
                                 <surname>Lewis</surname>
                             </persName>
                         </respStmt>
@@ -988,7 +989,8 @@
                         </author>
                     </analytic>
                     <monogr>
-                        <title level="m">Ρόδος, 24 αιώνες. Πρακτικά του Διεθνούς επισημονικού συμποσίου, 1-5 Οκτωβρίου 1992 = Proceedings of the International Scientific Symposium Rhodes. 24 Centuries, October 1-5, 1992</title>
+                        <title level="m">Ρόδος, 24 αιώνες. Πρακτικά του Διεθνούς επισημονικού συμποσίου, 1-5 Οκτωβρίου 1992 = Proceedings of the International Scientific Symposium Rhodes. 24
+                            Centuries, October 1-5, 1992</title>
                         <editor role="scientificEditor">
                             <forename>G.</forename>
                             <surname>Gizelis</surname>
@@ -1006,7 +1008,7 @@
                 <biblStruct type="book" xml:id="Guarducci1935">
                     <monogr>
                         <title level="m">Tituli Cretae mediae praeter Gortynios</title>
-                        <title level="m" type="short">&lt;i&gt;I.Cret.&lt;/i&gt; I</title>
+                        <title level="m" type="short">&lt;i&gt;I.Cret.&lt;/i&gt; I</title>
                         <editor role="scientificEditor">
                             <forename>Margherita</forename>
                             <surname>Guarducci</surname>

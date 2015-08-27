@@ -383,9 +383,6 @@
                     </xsl:otherwise>
                 </xsl:choose>
                 <!-- separateur -->
-                <!-- #EM ajout 20150827 -->
-                <!--  <xsl:text>, </xsl:text>-->
-                <!-- fin ajout -->
             </xsl:when>
             <xsl:otherwise>
                 <xsl:if test="tei:monogr[1]/tei:title[@level='m']">
@@ -411,12 +408,11 @@
         </xsl:if>
         <!-- numéro de volume -->
         <xsl:if test="(@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection') and tei:monogr[1]/tei:biblScope[@unit='volume']">
-            <xsl:text>, </xsl:text>
             <xsl:apply-templates select="tei:monogr[1]/tei:biblScope[@unit='volume']"/>
         </xsl:if>
         <!-- année de publication -->
         <xsl:if test="tei:monogr[1]/tei:imprint/tei:date">
-             <xsl:text>, </xsl:text>
+            <xsl:text>, </xsl:text>
             <xsl:apply-templates select="tei:monogr[1]/tei:imprint/tei:date"/>
         </xsl:if>
         <!-- nombre de volumes -->
@@ -427,9 +423,6 @@
         </xsl:if>
         <!-- pagination -->
         <xsl:if test="@type='journalArticle' or @type='dictionaryEntry' or @type='conferencePaper' or @type='bookSection'">
-            <!-- #EM ajout 20150827-->
-            <xsl:text>, </xsl:text>
-            <!-- #EM fin ajout -->
             <xsl:apply-templates select="tei:monogr/tei:biblScope[@unit='pp']"/>
         </xsl:if>
         <!-- note -->
@@ -574,7 +567,7 @@
         </xsl:if>
         <!-- meeting -->
         <xsl:if test="@type='conferencePaper' and tei:monogr[1]/tei:meeting">
-            <xsl:text>ù, </xsl:text>
+            <xsl:text>, </xsl:text>
             <xsl:apply-templates select="tei:monogr[1]/tei:meeting"/>
         </xsl:if>
         <!-- collection -->
@@ -586,10 +579,9 @@
         </xsl:if>
         <!-- année de publication -->
         <xsl:if test="tei:monogr[1]/tei:imprint/tei:date">
-            <!--  <xsl:text> (</xsl:text> 201508027-->
-            <xsl:text> </xsl:text>
+            <xsl:text> (</xsl:text>
             <xsl:apply-templates select="tei:monogr[1]/tei:imprint/tei:date"/>
-            <!--  <xsl:text>)</xsl:text> 201508027-->
+            <xsl:text>)</xsl:text>
         </xsl:if>
         <!-- pas de extent (nbr volumes) -->
         <!-- pagination -->
@@ -623,7 +615,7 @@
                             <!-- separateur -->
                             <xsl:text>, </xsl:text>
                             <!-- citedRange -->
-                            <xsl:text>p.&#8239;ou n°&#8239; 000...</xsl:text>
+                            <xsl:text>p.&#8239;ou n°&#8239;000...</xsl:text>
                         </xsl:when>
                         <xsl:otherwise/>
                     </xsl:choose>
@@ -637,7 +629,7 @@
                                 </xsl:variable>
                                 <xsl:value-of select="concat($string,', ')"/>
                                 <!-- citedRange -->
-                                <xsl:text>p.&#8239;ou n°&#8239; 000...</xsl:text>
+                                <xsl:text>p.&#8239;ou n°&#8239;000...</xsl:text>
                             </xsl:if>
                         </xsl:when>
                         <xsl:otherwise/>
